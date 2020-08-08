@@ -1,0 +1,120 @@
+usage: handle ACTION PATCH [OPTIONS]
+
+A truly modular implementation of dmenu
+
+Options:
+  -d                  By default the compiler output is redirected, this option prevents this. Useful for debugging
+
+Actions:
+  patch               Apply the PATCH and rebuild
+  depatch             Removes the PATCH and rebuild
+
+Patches:
+  border              Allows borders in the dmenu window
+  case-insensitive    Makes dmenu case insensitive
+  incremental         Makes dmenu to print out the current text each time a key is pressed
+  preselect           This patch adds an option to preselect an item by providing a number
+  initial-text        Adds an option to provide preselected text
+  managed             Makes dmenu a window rather than an overlay
+  reject-no-match     Adds a new flag to dmenu with which text input will be rejected if
+                      it would result in no matching item
+  instant             Adds an flag which will cause dmenu to select an item immediately if
+                      theres one matching option left
+  more-color          This patch creates an additional color scheme, for use with the entries adjacent to
+                      the selection. This is nice if you want to add some more color to your dmenu
+  line-height         The patch adds a '-lh' option, which sets the minimum height of a
+                      dmenu line. This helps integrate dmenu with other UI elements that
+                      require a particular vertical size
+                        - Not compatible with: scroll
+  fuzzyhighlight      This patch make it so that fuzzy matches gets highlighted and is
+                      therefore meant to be used together with fuzzymatch
+                        - Not comaptible with: high-light
+  numbers             Adds text which displays the number of matched and total items in
+                      the top right corner of dmenu
+                        - Not compatible with: symbols
+  fuzzymatch          Allows the users to type non-consecutive portions of the string to
+                      be matched
+                        - Not compatible with: json
+  pipeout             This patch allows the selected text to be piped back out with dmenu
+                        - Not compatible with: json, print-input-text, pipeout
+  center              Makes dmenu appear centered on the screen
+                        - Not compatible with: xyw
+  xyw                 The patch adds options for setting window position and width
+                        - Not compatible with: center
+  dynamic-options     Makes dmenu run the command given to it whenever input is changed
+                      with the current input as the last argument and update the option
+                      list according to the output of that command
+                        - Not compatible with: json
+  grid                Allows you to render dmenu's entries in a grid
+                        - Not compatible with: vertfull
+  password            Makes dmenu replace the keyboard input with dots
+                        - Not compatible with: scroll
+  scroll              This patch adds support for text scrolling, it doesn't append '...'
+                      for long input anymore as it can handle long text now
+                        - Not compatible with: password, line-height
+  json                Adds support for json-files
+                        - Only use object and strings
+                        - Not compatible with: pipeout, fuzzymatch, dynamic-options, print-input-text,
+                          multi-selection
+  multi-selection     Makes dmenu output your selections only on exit
+                        - Use <Ctrl-Enter> to select, and <Enter> to exit
+                        - Not compatible with: pipeout, json, print-input-text
+  prefix-completition Changes the behaviour of the matched items and the Tab key:
+                        - Not compatible with: high-priority
+                        - Only items prefixed by the written text will match
+                        - The Tab key will replace the current query with the longest common
+                          prefix of all matches
+  mouse-support       This patch allows basic mouse support
+                        - Left-mouse click:
+                          - On prompt and input field: clear input text and selection.
+                          - In horizontal and vertical mode on item: select and output
+                            item (same as pressing enter).
+                          - In horizontal mode on arrows: change items to show left
+                            or right.
+                        - Ctrl-left-mouse click: multisel modifier.
+                        - Right-mouse click: close.
+                        - Middle-mouse click:
+                          - Paste current selection.
+                          - While holding shift: paste primary selection.
+                        - Scroll up:
+                          - In horizontal mode: same as left-clicking on left arrow.
+                          - In vertical mode: show items above.
+                        - Scroll down:
+                          - In horizontal mode: same as left-clicking on right arrow.
+                          - In vertical mode: show items below
+  symbols             Add the settings symbol_1 and symbol_2 to config.def.h
+                      These enable to define the symbols which are printed in dmenu to
+                      indicate that either the input is too long or there are too many
+                      options to be shown in dmenu in one line
+                        - Not compatible with: numbers
+  vertfull            Prevents dmenu from indenting items at the same level as the prompt
+                      length
+                        - Not compatible with: grid
+  navhistory          This patch provides dmenu the ability for history navigation similar
+                      to that of bash
+                        - Press alt+p for the previous history and alt+n for the next
+                        - Set the maximum number of histories with a new variable 'maxhist' in config.def.h
+                        - By default, it only records a new history if it is not the same as the last one.
+                          To change this behaviour, set 'histnodup' to 0 in config.def.h
+                        - Press ctrl-r, like in bash or ksh, and the suggestions will be replaced with the
+                          history. Press ctrl-r again to revert
+  print-input-text    This patch adds a flag (-pit) which makes Return key to ignore selection and print the
+                      input text to stdout. The flag basically swaps the functions of Return and Shift+Return
+                      hotkeys
+                        - Not compatible with: pipeout, json, multi-selection
+  xresources          This patch adds the ability to configure dmenu via Xresources. At startup, dmenu will
+                      read and apply the change to the applicable resource. Resources that can be changed:
+                        - dmenu.font : font or font set
+                        - dmenu.background : normal background color
+                        - dmenu.foreground : normal foreground color
+                        - dmenu.selbackground : selected background color
+                        - dmenu.selforeground : selected foreground color
+  high-priority       This patch will automatically sort the search result so that high priority items are shown
+                      first. Adds the option [SchemeHp] to colors in config.def.h and the flags hpb, hpf, and hpl.
+                        - Not compatible with: prefix-completition
+                        - The options available are:
+                          - hpb: Background color of the high priority items
+                          - hpf: Foreground color of the high priority items
+                          - hpl: A CSV (comma-seperated list) of high priority items
+  high-light          This patch highlights the individual characters of matched text for each dmenu list entry
+                        - Not compatible with: fuzzyhighlight
