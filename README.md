@@ -59,11 +59,11 @@ This distribution comes with [handle](https://github.com/jaimecgomezz/st/blob/ma
 ```sh
 # Usage: ./handle ACTION PATCH [OPTIONS]
 
-# Installing alpha patch
-./handle patch alpha
+# Installing patch A
+./handle patch A
 
-# Removing alph patch
-./handle depatch alph
+# Removing patch A
+./handle depatch A
 ```
 
 The rest of ACTIONS, PATCHES and OPTIONS currently available can be found running:
@@ -81,11 +81,11 @@ For those willing to support the project, here’s a handy utility, [test-patch]
 `````sh
 # Usage: ./test-patch PATCH
 
-# Testing the patch center
-./test-patch center
+# Testing the patch A
+./test-patch A
 ...
-border			Ok	# Means both patches can be used simultaneously
-xyw			Failed!	# Means that the both patches have conflicts integrating together
+A			Ok	# Means both patches can be used simultaneously
+A			Failed!	# Means that the both patches have conflicts integrating together
 ...
 `````
 
