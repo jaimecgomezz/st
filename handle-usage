@@ -1,10 +1,1 @@
-usage: handle ACTION PATCH [OPTIONS]
-
-Options:
-  -d                  By default the compiler output is redirected, this option prevents this. Useful for debugging
-
-Actions:
-  patch               Apply the PATCH and rebuild
-  depatch             Removes the PATCH and rebuild
-
 Patches:
