@@ -84,8 +84,8 @@ For those willing to support the project, here’s a handy utility, [test-patch]
 # Testing the patch A
 ./test-patch A
 ...
-A			Ok	# Means both patches can be used simultaneously
-A			Failed!	# Means that the both patches have conflicts integrating together
+B			Ok	# Means both patches (A & B) can be used simultaneously
+C			Failed!	# Means that the both patches (A & C) have conflicts integrating together
 ...
 `````
 
