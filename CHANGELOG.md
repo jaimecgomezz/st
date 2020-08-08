@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [1.2.0] - 2020-08-08
+
+### Removed
+
+- Remove the handle utility
+- Remove the test-path utility
+
+### Changed
+
+- Update README
+
 ## [1.1.0] - 2020-08-08
 
 ### Added
