@@ -255,6 +255,10 @@ static char *opt_title = NULL;
 // ==================== alpha
 // ==================== alpha
 // <<<<<<<<<<<<<<<<<<<< alpha
+// >>>>>>>>>>>>>>>>>>>> focus
+// ==================== focus
+// ==================== focus
+// <<<<<<<<<<<<<<<<<<<< focus
 
 static int oldbutton = 3; /* button event on startup: 3 = release */
 
@@ -708,11 +712,18 @@ int xloadcolor(int i, const char *name, Color *ncolor) {
   return XftColorAllocName(xw.dpy, xw.vis, xw.cmap, name, ncolor);
 }
 
+// >>>>>>>>>>>>>>>>>>>> focus
+// ==================== focus
+// ==================== focus
+// <<<<<<<<<<<<<<<<<<<< focus
+
 void xloadcols(void) {
   int i;
   static int loaded;
   Color *cp;
 
+  // >>>>>>>>>>>>>>>>>>>> focus
+  // ==================== focus
   if (loaded) {
     for (cp = dc.col; cp < &dc.col[dc.collen]; ++cp)
       XftColorFree(xw.dpy, xw.vis, xw.cmap, cp);
@@ -720,8 +731,15 @@ void xloadcols(void) {
     dc.collen = MAX(LEN(colorname), 256);
     dc.col = xmalloc(dc.collen * sizeof(Color));
   }
+  // ==================== focus
+  // <<<<<<<<<<<<<<<<<<<< focus
 
+
+  // >>>>>>>>>>>>>>>>>>>> focus
+  // ==================== focus
   for (i = 0; i < dc.collen; i++)
+  // ==================== focus
+  // <<<<<<<<<<<<<<<<<<<< focus
     if (!xloadcolor(i, NULL, &dc.col[i])) {
       if (colorname[i])
         die("could not allocate color '%s'\n", colorname[i]);
@@ -733,6 +751,11 @@ void xloadcols(void) {
   // ==================== alpha
   // ==================== alpha
   // <<<<<<<<<<<<<<<<<<<< alpha
+
+  // >>>>>>>>>>>>>>>>>>>> focus
+  // ==================== focus
+  // ==================== focus
+  // <<<<<<<<<<<<<<<<<<<< focus
 
   loaded = 1;
 }
@@ -1605,12 +1628,20 @@ void focus(XEvent *ev) {
     xseturgency(0);
     if (IS_SET(MODE_FOCUS))
       ttywrite("\033[I", 3, 0);
+    // >>>>>>>>>>>>>>>>>>>> focus
+    // ==================== focus
+    // ==================== focus
+    // <<<<<<<<<<<<<<<<<<<< focus
   } else {
     if (xw.ime.xic)
       XUnsetICFocus(xw.ime.xic);
     win.mode &= ~MODE_FOCUSED;
     if (IS_SET(MODE_FOCUS))
       ttywrite("\033[O", 3, 0);
+    // >>>>>>>>>>>>>>>>>>>> focus
+    // ==================== focus
+    // ==================== focus
+    // <<<<<<<<<<<<<<<<<<<< focus
   }
 }
 
@@ -1902,6 +1933,10 @@ run:
   XSetLocaleModifiers("");
   cols = MAX(cols, 1);
   rows = MAX(rows, 1);
+  // >>>>>>>>>>>>>>>>>>>> focus
+  // ==================== focus
+  // ==================== focus
+  // <<<<<<<<<<<<<<<<<<<< focus
   tnew(cols, rows);
   xinit(cols, rows);
   xsetenv();

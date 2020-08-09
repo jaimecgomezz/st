@@ -193,13 +193,17 @@ static void tsetscroll(int, int);
 static void tswapscreen(void);
 static void tsetmode(int, int, int *, int);
 static int twrite(const char *, int, int);
-static void tfulldirt(void);
 static void tcontrolcode(uchar );
 static void tdectest(char );
 static void tdefutf8(char);
 static int32_t tdefcolor(int *, int *, int);
 static void tdeftran(char);
 static void tstrsequence(uchar);
+// >>>>>>>>>>>>>>>>>>>> focus
+// ==================== focus
+static void tfulldirt(void);
+// ==================== focus
+// <<<<<<<<<<<<<<<<<<<< focus
 
 static void drawregion(int, int, int, int);
 
