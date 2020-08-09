@@ -53,5 +53,5 @@ dkms.conf
 
 # suckless-patchers
 handle
-test-handle
+test-patch
 applied
