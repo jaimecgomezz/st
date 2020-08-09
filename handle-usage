@@ -1,5 +1,13 @@
 Patches:
-  alpha               This patch allows users to change the opacity of the background
-                        - The alpha value affects the default background only.
-                        - The color designated by 'defaultbg' should not be used elsewhere.
-                        - Embedding might fail after applying this patch.
+  alpha                 This patch allows users to change the opacity of the background
+                          - The alpha value affects the default background only.
+                          - The color designated by 'defaultbg' should not be used elsewhere.
+                          - Embedding might fail after applying this patch.
+                          - alpha defines the opacity if the term
+  alpha-focus-highlight Allows the user to specify two distinct opacity values/background
+                        colors; one for the focused and one for unfocused windows' background
+                          - alpha should be applied first
+                          - alpha/alphaUnfocused opacity of the term when focused/not focused.
+                          - bg/bgUnfocused background color when focused/not focused.
+
+
