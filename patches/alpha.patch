@@ -1,0 +1,230 @@
+diff --git a/config.def.h b/config.def.h
+index 4c968ca..c10a3c9 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -122,8 +122,7 @@ static const char *colorname[] = {
+ 	"#555555",
+ 
+   // >>>>>>>>>>>>>>>>>>>> alpha
+-  // ==================== alpha
+-  // ==================== alpha
++  "black",
+   // <<<<<<<<<<<<<<<<<<<< alpha
+ };
+ 
+@@ -477,6 +476,7 @@ static char ascii_printable[] =
+ 	"`abcdefghijklmnopqrstuvwxyz{|}~";
+ 
+ // >>>>>>>>>>>>>>>>>>>> alpha
+-// ==================== alpha
+-// ==================== alpha
++/* bg opacity */
++float alpha = 0.8;
++defaultbg = 258;
+ // <<<<<<<<<<<<<<<<<<<< alpha
+diff --git a/config.mk b/config.mk
+index 3e0212b..31d084e 100644
+--- a/config.mk
++++ b/config.mk
+@@ -17,11 +17,9 @@ INCS = -I$(X11INC) \
+        `$(PKG_CONFIG) --cflags fontconfig` \
+        `$(PKG_CONFIG) --cflags freetype2`
+ # >>>>>>>>>>>>>>>>>>>> alpha
+-# ==================== alpha
+-LIBS = -L$(X11LIB) -lm -lrt -lX11 -lutil -lXft \
++LIBS = -L$(X11LIB) -lm -lrt -lX11 -lutil -lXft -lXrender\
+        `$(PKG_CONFIG) --libs fontconfig` \
+        `$(PKG_CONFIG) --libs freetype2`
+-# ==================== alpha
+ # <<<<<<<<<<<<<<<<<<<< alpha
+ 
+ # flags
+diff --git a/st.1 b/st.1
+index 56785f5..0c4d8fe 100644
+--- a/st.1
++++ b/st.1
+@@ -23,8 +23,8 @@ st \- simple terminal
+ .RB [ \-w
+ .IR windowid ]
+ \" >>>>>>>>>>>>>>>>>>>> alpha
+-\" ==================== alpha
+-\" ==================== alpha
++.RB [ \-A
++.IR opacity ]
+ \" <<<<<<<<<<<<<<<<<<<< alpha
+ .RB [[ \-e ]
+ .IR command
+@@ -49,8 +49,8 @@ st \- simple terminal
+ .RB [ \-w
+ .IR windowid ]
+ \" >>>>>>>>>>>>>>>>>>>> alpha
+-\" ==================== alpha
+-\" ==================== alpha
++.RB [ \-A
++.IR opacity ]
+ \" <<<<<<<<<<<<<<<<<<<< alpha
+ .RB \-l
+ .IR line
+@@ -132,8 +132,9 @@ This option is only intended for compatibility,
+ and all the remaining arguments are used as a command
+ even without it.
+ \" >>>>>>>>>>>>>>>>>>>> alpha
+-\" ==================== alpha
+-\" ==================== alpha
++.B \-A
++allows users to change the opacity of the background
++.TP
+ \" <<<<<<<<<<<<<<<<<<<< alpha
+ .SH SHORTCUTS
+ .TP
+diff --git a/st.h b/st.h
+index 8ee1c2c..8d8400c 100644
+--- a/st.h
++++ b/st.h
+@@ -125,6 +125,5 @@ extern unsigned int defaultfg;
+ extern unsigned int defaultbg;
+ 
+ // >>>>>>>>>>>>>>>>>>>> alpha
+-// ==================== alpha
+-// ==================== alpha
++extern float alpha;
+ // <<<<<<<<<<<<<<<<<<<< alpha
+diff --git a/x.c b/x.c
+index e423140..52af28f 100644
+--- a/x.c
++++ b/x.c
+@@ -108,8 +108,7 @@ typedef struct {
+   int l, t;    /* left and top offset */
+   int gm;      /* geometry mask */
+   // >>>>>>>>>>>>>>>>>>>> alpha
+-  // ==================== alpha
+-  // ==================== alpha
++  int depth;   /* bit depth */
+   // <<<<<<<<<<<<<<<<<<<< alpha
+ } XWindow;
+ 
+@@ -252,8 +251,7 @@ static char *opt_line = NULL;
+ static char *opt_name = NULL;
+ static char *opt_title = NULL;
+ // >>>>>>>>>>>>>>>>>>>> alpha
+-// ==================== alpha
+-// ==================== alpha
++static char *opt_alpha = NULL;
+ // <<<<<<<<<<<<<<<<<<<< alpha
+ 
+ static int oldbutton = 3; /* button event on startup: 3 = release */
+@@ -673,9 +671,7 @@ void xresize(int col, int row) {
+       win.w,
+       win.h,
+       // >>>>>>>>>>>>>>>>>>>> alpha
+-      // ==================== alpha
+-      DefaultDepth(xw.dpy, xw.scr)
+-      // ==================== alpha
++      xw.depth
+       // <<<<<<<<<<<<<<<<<<<< alpha
+     );
+   XftDrawChange(xw.draw, xw.buf);
+@@ -730,8 +726,12 @@ void xloadcols(void) {
+     }
+ 
+   // >>>>>>>>>>>>>>>>>>>> alpha
+-  // ==================== alpha
+-  // ==================== alpha
++  /* set alpha value of bg color */
++  if (opt_alpha)
++    alpha = strtof(opt_alpha, NULL);
++  dc.col[defaultbg].color.alpha = (unsigned short)(0xffff * alpha);
++  dc.col[defaultbg].pixel &= 0x00FFFFFF;
++  dc.col[defaultbg].pixel |= (unsigned char)(0xff * alpha) << 24;
+   // <<<<<<<<<<<<<<<<<<<< alpha
+ 
+   loaded = 1;
+@@ -1013,17 +1013,24 @@ void xinit(int cols, int rows) {
+   pid_t thispid = getpid();
+   XColor xmousefg, xmousebg;
+   // >>>>>>>>>>>>>>>>>>>> alpha
+-  // ==================== alpha
+-  // ==================== alpha
++  XWindowAttributes attr;
++  XVisualInfo vis;
+   // <<<<<<<<<<<<<<<<<<<< alpha
+ 
+   if (!(xw.dpy = XOpenDisplay(NULL)))
+     die("can't open display\n");
+   xw.scr = XDefaultScreen(xw.dpy);
+   // >>>>>>>>>>>>>>>>>>>> alpha
+-  // ==================== alpha
+-  xw.vis = XDefaultVisual(xw.dpy, xw.scr);
+-  // ==================== alpha
++  if (!(opt_embed && (parent = strtol(opt_embed, NULL, 0)))) {
++    parent = XRootWindow(xw.dpy, xw.scr);
++    xw.depth = 32;
++  } else {
++    XGetWindowAttributes(xw.dpy, parent, &attr);
++    xw.depth = attr.depth;
++  }
++
++  XMatchVisualInfo(xw.dpy, xw.scr, xw.depth, TrueColor, &vis);
++  xw.vis = vis.visual;
+   // <<<<<<<<<<<<<<<<<<<< alpha
+ 
+   /* font */
+@@ -1035,9 +1042,7 @@ void xinit(int cols, int rows) {
+ 
+   /* colors */
+   // >>>>>>>>>>>>>>>>>>>> alpha
+-  // ==================== alpha
+-  xw.cmap = XDefaultColormap(xw.dpy, xw.scr);
+-  // ==================== alpha
++  xw.cmap = XCreateColormap(xw.dpy, parent, xw.vis, None);
+   // <<<<<<<<<<<<<<<<<<<< alpha
+   xloadcols();
+ 
+@@ -1060,10 +1065,6 @@ void xinit(int cols, int rows) {
+   xw.attrs.colormap = xw.cmap;
+ 
+   // >>>>>>>>>>>>>>>>>>>> alpha
+-  // ==================== alpha
+-  if (!(opt_embed && (parent = strtol(opt_embed, NULL, 0))))
+-    parent = XRootWindow(xw.dpy, xw.scr);
+-  // ==================== alpha
+   // <<<<<<<<<<<<<<<<<<<< alpha
+   xw.win = XCreateWindow(
+       xw.dpy,
+@@ -1074,9 +1075,7 @@ void xinit(int cols, int rows) {
+       win.h,
+       0,
+       // >>>>>>>>>>>>>>>>>>>> alpha
+-      // ==================== alpha
+-      XDefaultDepth(xw.dpy, xw.scr),
+-      // ==================== alpha
++      xw.depth,
+       // <<<<<<<<<<<<<<<<<<<< alpha
+       InputOutput,
+       xw.vis,
+@@ -1087,11 +1086,8 @@ void xinit(int cols, int rows) {
+   memset(&gcvalues, 0, sizeof(gcvalues));
+   gcvalues.graphics_exposures = False;
+   // >>>>>>>>>>>>>>>>>>>> alpha
+-  // ==================== alpha
+-  dc.gc = XCreateGC(xw.dpy, parent, GCGraphicsExposures, &gcvalues);
+-  xw.buf =
+-    XCreatePixmap(xw.dpy, xw.win, win.w, win.h, DefaultDepth(xw.dpy, xw.scr));
+-  // ==================== alpha
++  xw.buf = XCreatePixmap(xw.dpy, xw.win, win.w, win.h, xw.depth);
++  dc.gc = XCreateGC(xw.dpy, xw.buf, GCGraphicsExposures, &gcvalues);
+   // <<<<<<<<<<<<<<<<<<<< alpha
+   XSetForeground(xw.dpy, dc.gc, dc.col[defaultbg].pixel);
+   XFillRectangle(xw.dpy, xw.buf, dc.gc, 0, 0, win.w, win.h);
+@@ -1883,8 +1879,9 @@ int main(int argc, char *argv[]) {
+     die("%s " VERSION "\n", argv0);
+     break;
+   // >>>>>>>>>>>>>>>>>>>> alpha
+-  // ==================== alpha
+-  // ==================== alpha
++  case 'A':
++    opt_alpha = EARGF(usage());
++    break;
+   // <<<<<<<<<<<<<<<<<<<< alpha
+   default:
+     usage();
