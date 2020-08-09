@@ -7,7 +7,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
-## [1.2.0] - 2020-08-08
+## [0.3.0] - 2020-08-08
+
+### Changed
+
+- Prepare the alpha patch integration
+- Fix changelog version numbers
+
+### Added
+
+- Add the alpha patch
+- Add alpha patch to docs
+
+## [0.2.0] - 2020-08-08
 
 ### Removed
 
@@ -18,7 +30,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 - Update README
 
-## [1.1.0] - 2020-08-08
+## [0.1.0] - 2020-08-08
 
 ### Added
 
@@ -30,7 +42,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Format code
 - Update README
 
-## [1.0.0] - 2020-08-07
+## [0.0.0] - 2020-08-07
 
 ### Added
 
