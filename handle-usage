@@ -1,1 +1,5 @@
 Patches:
+  alpha               This patch allows users to change the opacity of the background
+                        - The alpha value affects the default background only.
+                        - The color designated by 'defaultbg' should not be used elsewhere.
+                        - Embedding might fail after applying this patch.
