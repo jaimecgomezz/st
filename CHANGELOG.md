@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 - Prepare the alpha patch integration
 - Fix changelog version numbers
+- Add suckless-patchers to gitignore
 
 ### Added
 
