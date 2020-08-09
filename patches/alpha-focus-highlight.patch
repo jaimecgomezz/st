@@ -1,0 +1,150 @@
+diff --git a/config.def.h b/config.def.h
+index 5107c0e..5a43f2c 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -482,6 +482,7 @@ static char ascii_printable[] =
+ // <<<<<<<<<<<<<<<<<<<< alpha
+ 
+ // >>>>>>>>>>>>>>>>>>>> focus
+-// ==================== focus
+-// ==================== focus
++/* Unfocused opacity */
++float alphaUnfocused = 0.6;
++unsigned int bg = 17, bgUnfocused = 16;
+ // <<<<<<<<<<<<<<<<<<<< focus
+diff --git a/st.c b/st.c
+index 93fc154..c29490a 100644
+--- a/st.c
++++ b/st.c
+@@ -200,9 +200,6 @@ static int32_t tdefcolor(int *, int *, int);
+ static void tdeftran(char);
+ static void tstrsequence(uchar);
+ // >>>>>>>>>>>>>>>>>>>> focus
+-// ==================== focus
+-static void tfulldirt(void);
+-// ==================== focus
+ // <<<<<<<<<<<<<<<<<<<< focus
+ 
+ static void drawregion(int, int, int, int);
+diff --git a/st.h b/st.h
+index 62fab9f..50407e9 100644
+--- a/st.h
++++ b/st.h
+@@ -130,6 +130,6 @@ extern unsigned int defaultbg;
+ // <<<<<<<<<<<<<<<<<<<< alpha
+ 
+ // >>>>>>>>>>>>>>>>>>>> focus
+-// ==================== focus
+-// ==================== focus
++void tfulldirt(void);
++extern float alphaUnfocused;
+ // <<<<<<<<<<<<<<<<<<<< focus
+diff --git a/x.c b/x.c
+index 2b0d988..ebbee9a 100644
+--- a/x.c
++++ b/x.c
+@@ -256,8 +256,7 @@ static char *opt_title = NULL;
+ // ==================== alpha
+ // <<<<<<<<<<<<<<<<<<<< alpha
+ // >>>>>>>>>>>>>>>>>>>> focus
+-// ==================== focus
+-// ==================== focus
++static int focused = 0;
+ // <<<<<<<<<<<<<<<<<<<< focus
+ 
+ static int oldbutton = 3; /* button event on startup: 3 = release */
+@@ -713,8 +712,15 @@ int xloadcolor(int i, const char *name, Color *ncolor) {
+ }
+ 
+ // >>>>>>>>>>>>>>>>>>>> focus
+-// ==================== focus
+-// ==================== focus
++void
++xloadalpha(void)
++{
++  float const usedAlpha = focused ? alpha : alphaUnfocused;
++  if (opt_alpha) alpha = strtof(opt_alpha, NULL);
++  dc.col[defaultbg].color.alpha = (unsigned short)(0xffff * usedAlpha);
++  dc.col[defaultbg].pixel &= 0x00FFFFFF;
++  dc.col[defaultbg].pixel |= (unsigned char)(0xff * usedAlpha) << 24;
++}
+ // <<<<<<<<<<<<<<<<<<<< focus
+ 
+ void xloadcols(void) {
+@@ -723,22 +729,15 @@ void xloadcols(void) {
+   Color *cp;
+ 
+   // >>>>>>>>>>>>>>>>>>>> focus
+-  // ==================== focus
+-  if (loaded) {
+-    for (cp = dc.col; cp < &dc.col[dc.collen]; ++cp)
+-      XftColorFree(xw.dpy, xw.vis, xw.cmap, cp);
+-  } else {
+-    dc.collen = MAX(LEN(colorname), 256);
+-    dc.col = xmalloc(dc.collen * sizeof(Color));
++  if (!loaded) {
++    dc.collen = 1 + (defaultbg = MAX(LEN(colorname), 256));
++    dc.col = xmalloc((dc.collen) * sizeof(Color));
+   }
+-  // ==================== focus
+   // <<<<<<<<<<<<<<<<<<<< focus
+ 
+ 
+   // >>>>>>>>>>>>>>>>>>>> focus
+-  // ==================== focus
+-  for (i = 0; i < dc.collen; i++)
+-  // ==================== focus
++  for (i = 0; i+1 < dc.collen; ++i)
+   // <<<<<<<<<<<<<<<<<<<< focus
+     if (!xloadcolor(i, NULL, &dc.col[i])) {
+       if (colorname[i])
+@@ -753,8 +752,9 @@ void xloadcols(void) {
+   // <<<<<<<<<<<<<<<<<<<< alpha
+ 
+   // >>>>>>>>>>>>>>>>>>>> focus
+-  // ==================== focus
+-  // ==================== focus
++  if (dc.collen) // cannot die, as the color is already loaded.
++    xloadcolor(focused ?bg :bgUnfocused, NULL, &dc.col[defaultbg]);
++  xloadalpha();
+   // <<<<<<<<<<<<<<<<<<<< focus
+ 
+   loaded = 1;
+@@ -1629,8 +1629,11 @@ void focus(XEvent *ev) {
+     if (IS_SET(MODE_FOCUS))
+       ttywrite("\033[I", 3, 0);
+     // >>>>>>>>>>>>>>>>>>>> focus
+-    // ==================== focus
+-    // ==================== focus
++    if (!focused) {
++      focused = 1;
++      xloadcols();
++      tfulldirt();
++    }
+     // <<<<<<<<<<<<<<<<<<<< focus
+   } else {
+     if (xw.ime.xic)
+@@ -1639,8 +1642,11 @@ void focus(XEvent *ev) {
+     if (IS_SET(MODE_FOCUS))
+       ttywrite("\033[O", 3, 0);
+     // >>>>>>>>>>>>>>>>>>>> focus
+-    // ==================== focus
+-    // ==================== focus
++    if (focused) {
++      focused = 0;
++      xloadcols();
++      tfulldirt();
++    }
+     // <<<<<<<<<<<<<<<<<<<< focus
+   }
+ }
+@@ -1934,8 +1940,7 @@ run:
+   cols = MAX(cols, 1);
+   rows = MAX(rows, 1);
+   // >>>>>>>>>>>>>>>>>>>> focus
+-  // ==================== focus
+-  // ==================== focus
++  defaultbg = MAX(LEN(colorname), 256);
+   // <<<<<<<<<<<<<<<<<<<< focus
+   tnew(cols, rows);
+   xinit(cols, rows);
