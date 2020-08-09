@@ -107,6 +107,10 @@ typedef struct {
   int isfixed; /* is fixed geometry? */
   int l, t;    /* left and top offset */
   int gm;      /* geometry mask */
+  // >>>>>>>>>>>>>>>>>>>> alpha
+  // ==================== alpha
+  // ==================== alpha
+  // <<<<<<<<<<<<<<<<<<<< alpha
 } XWindow;
 
 typedef struct {
@@ -247,6 +251,10 @@ static char *opt_io = NULL;
 static char *opt_line = NULL;
 static char *opt_name = NULL;
 static char *opt_title = NULL;
+// >>>>>>>>>>>>>>>>>>>> alpha
+// ==================== alpha
+// ==================== alpha
+// <<<<<<<<<<<<<<<<<<<< alpha
 
 static int oldbutton = 3; /* button event on startup: 3 = release */
 
@@ -659,8 +667,17 @@ void xresize(int col, int row) {
   win.th = row * win.ch;
 
   XFreePixmap(xw.dpy, xw.buf);
-  xw.buf =
-      XCreatePixmap(xw.dpy, xw.win, win.w, win.h, DefaultDepth(xw.dpy, xw.scr));
+  xw.buf = XCreatePixmap(
+      xw.dpy,
+      xw.win,
+      win.w,
+      win.h,
+      // >>>>>>>>>>>>>>>>>>>> alpha
+      // ==================== alpha
+      DefaultDepth(xw.dpy, xw.scr)
+      // ==================== alpha
+      // <<<<<<<<<<<<<<<<<<<< alpha
+    );
   XftDrawChange(xw.draw, xw.buf);
   xclear(0, 0, win.w, win.h);
 
@@ -711,6 +728,12 @@ void xloadcols(void) {
       else
         die("could not allocate color %d\n", i);
     }
+
+  // >>>>>>>>>>>>>>>>>>>> alpha
+  // ==================== alpha
+  // ==================== alpha
+  // <<<<<<<<<<<<<<<<<<<< alpha
+
   loaded = 1;
 }
 
@@ -989,11 +1012,19 @@ void xinit(int cols, int rows) {
   Window parent;
   pid_t thispid = getpid();
   XColor xmousefg, xmousebg;
+  // >>>>>>>>>>>>>>>>>>>> alpha
+  // ==================== alpha
+  // ==================== alpha
+  // <<<<<<<<<<<<<<<<<<<< alpha
 
   if (!(xw.dpy = XOpenDisplay(NULL)))
     die("can't open display\n");
   xw.scr = XDefaultScreen(xw.dpy);
+  // >>>>>>>>>>>>>>>>>>>> alpha
+  // ==================== alpha
   xw.vis = XDefaultVisual(xw.dpy, xw.scr);
+  // ==================== alpha
+  // <<<<<<<<<<<<<<<<<<<< alpha
 
   /* font */
   if (!FcInit())
@@ -1003,7 +1034,11 @@ void xinit(int cols, int rows) {
   xloadfonts(usedfont, 0);
 
   /* colors */
+  // >>>>>>>>>>>>>>>>>>>> alpha
+  // ==================== alpha
   xw.cmap = XDefaultColormap(xw.dpy, xw.scr);
+  // ==================== alpha
+  // <<<<<<<<<<<<<<<<<<<< alpha
   xloadcols();
 
   /* adjust fixed window geometry */
@@ -1024,19 +1059,40 @@ void xinit(int cols, int rows) {
                         ButtonPressMask | ButtonReleaseMask;
   xw.attrs.colormap = xw.cmap;
 
+  // >>>>>>>>>>>>>>>>>>>> alpha
+  // ==================== alpha
   if (!(opt_embed && (parent = strtol(opt_embed, NULL, 0))))
     parent = XRootWindow(xw.dpy, xw.scr);
-  xw.win = XCreateWindow(xw.dpy, parent, xw.l, xw.t, win.w, win.h, 0,
-                         XDefaultDepth(xw.dpy, xw.scr), InputOutput, xw.vis,
-                         CWBackPixel | CWBorderPixel | CWBitGravity |
-                             CWEventMask | CWColormap,
-                         &xw.attrs);
+  // ==================== alpha
+  // <<<<<<<<<<<<<<<<<<<< alpha
+  xw.win = XCreateWindow(
+      xw.dpy,
+      parent,
+      xw.l,
+      xw.t,
+      win.w,
+      win.h,
+      0,
+      // >>>>>>>>>>>>>>>>>>>> alpha
+      // ==================== alpha
+      XDefaultDepth(xw.dpy, xw.scr),
+      // ==================== alpha
+      // <<<<<<<<<<<<<<<<<<<< alpha
+      InputOutput,
+      xw.vis,
+      CWBackPixel | CWBorderPixel | CWBitGravity | CWEventMask | CWColormap,
+      &xw.attrs
+    );
 
   memset(&gcvalues, 0, sizeof(gcvalues));
   gcvalues.graphics_exposures = False;
+  // >>>>>>>>>>>>>>>>>>>> alpha
+  // ==================== alpha
   dc.gc = XCreateGC(xw.dpy, parent, GCGraphicsExposures, &gcvalues);
   xw.buf =
-      XCreatePixmap(xw.dpy, xw.win, win.w, win.h, DefaultDepth(xw.dpy, xw.scr));
+    XCreatePixmap(xw.dpy, xw.win, win.w, win.h, DefaultDepth(xw.dpy, xw.scr));
+  // ==================== alpha
+  // <<<<<<<<<<<<<<<<<<<< alpha
   XSetForeground(xw.dpy, dc.gc, dc.col[defaultbg].pixel);
   XFillRectangle(xw.dpy, xw.buf, dc.gc, 0, 0, win.w, win.h);
 
@@ -1826,6 +1882,10 @@ int main(int argc, char *argv[]) {
   case 'v':
     die("%s " VERSION "\n", argv0);
     break;
+  // >>>>>>>>>>>>>>>>>>>> alpha
+  // ==================== alpha
+  // ==================== alpha
+  // <<<<<<<<<<<<<<<<<<<< alpha
   default:
     usage();
   }

@@ -120,6 +120,11 @@ static const char *colorname[] = {
 	/* more colors can be added after 255 to use with DefaultXX */
 	"#cccccc",
 	"#555555",
+
+  // >>>>>>>>>>>>>>>>>>>> alpha
+  // ==================== alpha
+  // ==================== alpha
+  // <<<<<<<<<<<<<<<<<<<< alpha
 };
 
 
@@ -470,3 +475,8 @@ static char ascii_printable[] =
 	" !\"#$%&'()*+,-./0123456789:;<=>?"
 	"@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_"
 	"`abcdefghijklmnopqrstuvwxyz{|}~";
+
+// >>>>>>>>>>>>>>>>>>>> alpha
+// ==================== alpha
+// ==================== alpha
+// <<<<<<<<<<<<<<<<<<<< alpha
