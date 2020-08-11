@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.5.0] - 2020-08-11
+
+### Changed
+
+- Prepare the anysize patch integration
+- Update gitignore
+
+### Added
+
+- Add the anysize patch
+- Add anysize patch to docs
+
 ## [0.4.0] - 2020-08-09
 
 ### Changed
