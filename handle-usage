@@ -9,5 +9,9 @@ Patches:
                           - alpha should be applied first
                           - alpha/alphaUnfocused opacity of the term when focused/not focused.
                           - bg/bgUnfocused background color when focused/not focused.
+  anysize               This patch allows st to resize to any pixel size, makes the inner border
+                        size dynamic, and centers the content of the terminal so that the
+                        left/right and top/bottom borders are balanced. With this patch, st on a
+                        tiling WM will always fill the entire space allocated to it
 
 

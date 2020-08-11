@@ -55,3 +55,12 @@ dkms.conf
 handle
 test-patch
 applied
+
+# patching-files
+*.rej
+*.orig
+patches/*/
+
+# project-files
+config.h
+st

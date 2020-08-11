@@ -1,0 +1,213 @@
+diff --git a/x.c b/x.c
+index 1b9bf95..5720da1 100644
+--- a/x.c
++++ b/x.c
+@@ -86,8 +86,7 @@ typedef struct {
+   int mode;   /* window state/mode flags */
+   int cursor; /* cursor style */
+   // >>>>>>>>>>>>>>>>>>>> anysize
+-  // ==================== anysize
+-  // ==================== anysize
++  int hborderpx, vborderpx;
+   // <<<<<<<<<<<<<<<<<<<< anysize
+ } TermWindow;
+ 
+@@ -322,9 +321,7 @@ void ttysend(const Arg *arg) { ttywrite(arg->s, strlen(arg->s), 1); }
+ 
+ int evcol(XEvent *e) {
+   // >>>>>>>>>>>>>>>>>>>> anysize
+-  // ==================== anysize
+-  int x = e->xbutton.x - borderpx;
+-  // ==================== anysize
++  int x = e->xbutton.x - win.hborderpx;
+   // <<<<<<<<<<<<<<<<<<<< anysize
+   LIMIT(x, 0, win.tw - 1);
+   return x / win.cw;
+@@ -332,9 +329,7 @@ int evcol(XEvent *e) {
+ 
+ int evrow(XEvent *e) {
+   // >>>>>>>>>>>>>>>>>>>> anysize
+-  // ==================== anysize
+-  int y = e->xbutton.y - borderpx;
+-  // ==================== anysize
++  int y = e->xbutton.y - win.vborderpx;
+   // <<<<<<<<<<<<<<<<<<<< anysize
+   LIMIT(y, 0, win.th - 1);
+   return y / win.ch;
+@@ -674,8 +669,8 @@ void cresize(int width, int height) {
+   row = MAX(1, row);
+ 
+   // >>>>>>>>>>>>>>>>>>>> anysize
+-  // ==================== anysize
+-  // ==================== anysize
++  win.hborderpx = (win.w - col * win.cw) / 2;
++  win.vborderpx = (win.h - row * win.ch) / 2;
+   // <<<<<<<<<<<<<<<<<<<< anysize
+ 
+   tresize(col, row);
+@@ -812,10 +807,8 @@ void xhints(void) {
+   sizeh->height = win.h;
+   sizeh->width = win.w;
+   // >>>>>>>>>>>>>>>>>>>> anysize
+-  // ==================== anysize
+-  sizeh->height_inc = win.ch;
+-  sizeh->width_inc = win.cw;
+-  // ==================== anysize
++  sizeh->height_inc = 1;
++  sizeh->width_inc = 1;
+   // <<<<<<<<<<<<<<<<<<<< anysize
+   sizeh->base_height = 2 * borderpx;
+   sizeh->base_width = 2 * borderpx;
+@@ -1087,10 +1080,8 @@ void xinit(int cols, int rows) {
+ 
+   /* adjust fixed window geometry */
+   // >>>>>>>>>>>>>>>>>>>> anysize
+-  // ==================== anysize
+-  win.w = 2 * borderpx + cols * win.cw;
+-  win.h = 2 * borderpx + rows * win.ch;
+-  // ==================== anysize
++  win.w = 2 * win.hborderpx + cols * win.cw;
++  win.h = 2 * win.vborderpx + rows * win.ch;
+   // <<<<<<<<<<<<<<<<<<<< anysize
+   if (xw.gm & XNegative)
+     xw.l += DisplayWidth(xw.dpy, xw.scr) - win.w - 2;
+@@ -1201,9 +1192,7 @@ void xinit(int cols, int rows) {
+ int xmakeglyphfontspecs(XftGlyphFontSpec *specs, const Glyph *glyphs, int len,
+                         int x, int y) {
+   // >>>>>>>>>>>>>>>>>>>> anysize
+-  // ==================== anysize
+-  float winx = borderpx + x * win.cw, winy = borderpx + y * win.ch, xp, yp;
+-  // ==================== anysize
++  float winx = win.hborderpx + x * win.cw, winy = win.vborderpx + y * win.ch, xp, yp;
+   // <<<<<<<<<<<<<<<<<<<< anysize
+   ushort mode, prevmode = USHRT_MAX;
+   Font *font = &dc.font;
+@@ -1331,9 +1320,7 @@ void xdrawglyphfontspecs(const XftGlyphFontSpec *specs, Glyph base, int len,
+                          int x, int y) {
+   int charlen = len * ((base.mode & ATTR_WIDE) ? 2 : 1);
+   // >>>>>>>>>>>>>>>>>>>> anysize
+-  // ==================== anysize
+-  int winx = borderpx + x * win.cw, winy = borderpx + y * win.ch,
+-  // ==================== anysize
++  int winx = win.hborderpx + x * win.cw, winy = win.vborderpx + y * win.ch,
+   // <<<<<<<<<<<<<<<<<<<< anysize
+       width = charlen * win.cw;
+   Color *fg, *bg, *temp, revfg, revbg, truefg, truebg;
+@@ -1423,33 +1410,25 @@ void xdrawglyphfontspecs(const XftGlyphFontSpec *specs, Glyph base, int len,
+   /* Intelligent cleaning up of the borders. */
+   if (x == 0) {
+     // >>>>>>>>>>>>>>>>>>>> anysize
+-    // ==================== anysize
+-    xclear(0, (y == 0) ? 0 : winy, borderpx,
+-        winy + win.ch + ((winy + win.ch >= borderpx + win.th) ? win.h : 0));
+-    // ==================== anysize
++    xclear(0, (y == 0)? 0 : winy, win.vborderpx,
++        winy + win.ch + ((winy + win.ch >= win.vborderpx + win.th)? win.h : 0));
+     // <<<<<<<<<<<<<<<<<<<< anysize
+   }
+ 
+   // >>>>>>>>>>>>>>>>>>>> anysize
+-  // ==================== anysize
+-  if (winx + width >= borderpx + win.tw) {
++  if (winx + width >= win.hborderpx + win.tw) {
+     xclear(winx + width, (y == 0) ? 0 : winy, win.w,
+-        ((winy + win.ch >= borderpx + win.th) ? win.h : (winy + win.ch)));
++      ((winy + win.ch >= win.vborderpx + win.th)? win.h : (winy + win.ch)));
+   }
+-  // ==================== anysize
+   // <<<<<<<<<<<<<<<<<<<< anysize
+ 
+   if (y == 0)
+     // >>>>>>>>>>>>>>>>>>>> anysize
+-    // ==================== anysize
+-    xclear(winx, 0, winx + width, borderpx);
+-    // ==================== anysize
++    xclear(winx, 0, winx + width, win.hborderpx);
+     // <<<<<<<<<<<<<<<<<<<< anysize
+ 
+   // >>>>>>>>>>>>>>>>>>>> anysize
+-  // ==================== anysize
+-  if (winy + win.ch >= borderpx + win.th)
+-  // ==================== anysize
++  if (winy + win.ch >= win.vborderpx + win.th)
+   // <<<<<<<<<<<<<<<<<<<< anysize
+     xclear(winx, winy + win.ch, winx + width, win.h);
+ 
+@@ -1541,10 +1520,8 @@ void xdrawcursor(int cx, int cy, Glyph g, int ox, int oy, Glyph og) {
+         xw.draw,
+         &drawcol,
+         // >>>>>>>>>>>>>>>>>>>> anysize
+-        // ==================== anysize
+-        borderpx + cx * win.cw,
+-        borderpx + (cy + 1) * win.ch - cursorthickness,
+-        // ==================== anysize
++        win.hborderpx + cx * win.cw,
++        win.vborderpx + (cy + 1) * win.ch - cursorthickness,
+         // <<<<<<<<<<<<<<<<<<<< anysize
+         win.cw,
+         cursorthickness
+@@ -1556,10 +1533,8 @@ void xdrawcursor(int cx, int cy, Glyph g, int ox, int oy, Glyph og) {
+         xw.draw,
+         &drawcol,
+         // >>>>>>>>>>>>>>>>>>>> anysize
+-        // ==================== anysize
+-        borderpx + cx * win.cw,
+-        borderpx + cy * win.ch,
+-        // ==================== anysize
++        win.hborderpx + cx * win.cw,
++        win.vborderpx + cy * win.ch,
+         // <<<<<<<<<<<<<<<<<<<< anysize
+         cursorthickness,
+         win.ch
+@@ -1571,10 +1546,8 @@ void xdrawcursor(int cx, int cy, Glyph g, int ox, int oy, Glyph og) {
+       xw.draw,
+       &drawcol,
+       // >>>>>>>>>>>>>>>>>>>> anysize
+-      // ==================== anysize
+-      borderpx + cx * win.cw,
+-      borderpx + cy * win.ch,
+-      // ==================== anysize
++      win.hborderpx + cx * win.cw,
++      win.vborderpx + cy * win.ch,
+       // <<<<<<<<<<<<<<<<<<<< anysize
+       win.cw - 1,
+       1
+@@ -1583,10 +1556,8 @@ void xdrawcursor(int cx, int cy, Glyph g, int ox, int oy, Glyph og) {
+       xw.draw,
+       &drawcol,
+       // >>>>>>>>>>>>>>>>>>>> anysize
+-      // ==================== anysize
+-      borderpx + cx * win.cw,
+-      borderpx + cy * win.ch,
+-      // ==================== anysize
++      win.hborderpx + cx * win.cw,
++      win.vborderpx + cy * win.ch,
+       // <<<<<<<<<<<<<<<<<<<< anysize
+       1,
+       win.ch - 1
+@@ -1595,10 +1566,8 @@ void xdrawcursor(int cx, int cy, Glyph g, int ox, int oy, Glyph og) {
+       xw.draw,
+       &drawcol,
+       // >>>>>>>>>>>>>>>>>>>> anysize
+-      // ==================== anysize
+-      borderpx + (cx + 1) * win.cw - 1,
+-      borderpx + cy * win.ch,
+-      // ==================== anysize
++      win.hborderpx + (cx + 1) * win.cw - 1,
++      win.vborderpx + cy * win.ch,
+       // <<<<<<<<<<<<<<<<<<<< anysize
+       1,
+       win.ch - 1
+@@ -1607,10 +1576,8 @@ void xdrawcursor(int cx, int cy, Glyph g, int ox, int oy, Glyph og) {
+       xw.draw,
+       &drawcol,
+       // >>>>>>>>>>>>>>>>>>>> anysize
+-      // ==================== anysize
+-      borderpx + cx * win.cw,
+-      borderpx + (cy + 1) * win.ch - 1,
+-      // ==================== anysize
++      win.hborderpx + cx * win.cw,
++      win.vborderpx + (cy + 1) * win.ch - 1,
+       // <<<<<<<<<<<<<<<<<<<< anysize
+       win.cw,
+       1
