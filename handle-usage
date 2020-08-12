@@ -23,3 +23,5 @@ Patches:
                           - echo -e -n "\x1b[\x36 q" # Steady bar
                           - echo -e -n "\x1b[\x37 q" # Blinking st cursor
                           - echo -e -n "\x1b[\x38 q" # Steady st cursor
+  bold-is-not-bright    This patch makes bold text rendered simply as bold, leaving the color
+                        unaffected
