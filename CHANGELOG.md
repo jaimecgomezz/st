@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.7.0] - 2020-08-12
+
+### Changed
+
+- Prepare the bold-is-not-bright patch integration
+
+### Added
+
+- Add the bold-is-not-bright patch
+- Add bold-is-not-bright to docs
+
 ## [0.6.0] - 2020-08-11
 
 ### Changed
