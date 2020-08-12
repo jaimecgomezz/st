@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.6.0] - 2020-08-11
+
+### Changed
+
+- Reorder cursor switch statement
+- Update anysize patch
+- Prepare the blinking-cursor patch integration
+
+### Added
+
+- Add the blinking-cursor patch
+- Add the blinking-cursor patch to docs
+
 ## [0.5.0] - 2020-08-11
 
 ### Changed

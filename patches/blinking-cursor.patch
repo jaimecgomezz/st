@@ -1,0 +1,159 @@
+diff --git a/config.def.h b/config.def.h
+index f1acdcb..d8f2ffb 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -138,16 +138,22 @@ static unsigned int defaultcs = 256;
+ static unsigned int defaultrcs = 257;
+ 
+ // >>>>>>>>>>>>>>>>>>>> blinking-cursor
+-// ==================== blinking-cursor
+ /*
+  * Default shape of cursor
+- * 2: Block ("█")
+- * 4: Underline ("_")
+- * 6: Bar ("|")
+- * 7: Snowman ("☃")
++ * https://invisible-island.net/xterm/ctlseqs/ctlseqs.html#h4-Functions-using-CSI-_-ordered-by-the-final-character-lparen-s-rparen:CSI-Ps-SP-q.1D81
++ * Default style of cursor
++ * 0: Blinking block
++ * 1: Blinking block (default)
++ * 2: Steady block ("█")
++ * 3: Blinking underline
++ * 4: Steady underline ("_")
++ * 5: Blinking bar
++ * 6: Steady bar ("|")
++ * 7: Blinking st cursor
++ * 8: Steady st cursor
+  */
+-static unsigned int cursorshape = 2;
+-// ==================== blinking-cursor
++static unsigned int cursorstyle = 1;
++static Rune stcursor = 0x2603; /* snowman (U+2603) */
+ // <<<<<<<<<<<<<<<<<<<< blinking-cursor
+ 
+ /*
+diff --git a/x.c b/x.c
+index ed74bec..51ad4af 100644
+--- a/x.c
++++ b/x.c
+@@ -264,8 +264,7 @@ static char *opt_title = NULL;
+ // ==================== focus
+ // <<<<<<<<<<<<<<<<<<<< focus
+ // >>>>>>>>>>>>>>>>>>>> blinking-cursor
+-// ==================== blinking-cursor
+-// ==================== blinking-cursor
++static int cursorblinks = 0;
+ // <<<<<<<<<<<<<<<<<<<< blinking-cursor
+ 
+ static int oldbutton = 3; /* button event on startup: 3 = release */
+@@ -1534,16 +1533,18 @@ void xdrawcursor(int cx, int cy, Glyph g, int ox, int oy, Glyph og) {
+     case 0:         /* Blinking Block */
+     case 1:         /* Blinking Block (Default) */
+       // >>>>>>>>>>>>>>>>>>>> blinking-cursor
+-      // ==================== blinking-cursor
+-      // ==================== blinking-cursor
++      if (IS_SET(MODE_BLINK))
++        break;
++      /* FALLTHROUGH */
+       // <<<<<<<<<<<<<<<<<<<< blinking-cursor
+     case 2:         /* Steady Block */
+       xdrawglyph(g, cx, cy);
+       break;
+     case 3: /* Blinking Underline */
+       // >>>>>>>>>>>>>>>>>>>> blinking-cursor
+-      // ==================== blinking-cursor
+-      // ==================== blinking-cursor
++      if (IS_SET(MODE_BLINK))
++        break;
++      /* FALLTHROUGH */
+       // <<<<<<<<<<<<<<<<<<<< blinking-cursor
+     case 4: /* Steady Underline */
+       XftDrawRect(
+@@ -1561,8 +1562,9 @@ void xdrawcursor(int cx, int cy, Glyph g, int ox, int oy, Glyph og) {
+       break;
+     case 5: /* Blinking bar */
+       // >>>>>>>>>>>>>>>>>>>> blinking-cursor
+-      // ==================== blinking-cursor
+-      // ==================== blinking-cursor
++      if (IS_SET(MODE_BLINK))
++        break;
++      /* FALLTHROUGH */
+       // <<<<<<<<<<<<<<<<<<<< blinking-cursor
+     case 6: /* Steady bar */
+       XftDrawRect(
+@@ -1579,11 +1581,14 @@ void xdrawcursor(int cx, int cy, Glyph g, int ox, int oy, Glyph og) {
+       );
+       break;
+     // >>>>>>>>>>>>>>>>>>>> blinking-cursor
+-    // ==================== blinking-cursor
+-    case 7:         /* st extension */
+-      g.u = 0x2603; /* snowman (U+2603) */
+-                    /* FALLTHROUGH */
+-    // ==================== blinking-cursor
++    case 7: /* Blinking st cursor */
++      if (IS_SET(MODE_BLINK))
++        break;
++      /* FALLTHROUGH */
++    case 8: /* Steady st cursor */
++      g.u = stcursor;
++      xdrawglyph(g, cx, cy);
++      break;
+     // <<<<<<<<<<<<<<<<<<<< blinking-cursor
+     }
+   } else {
+@@ -1726,16 +1731,15 @@ void xsetmode(int set, unsigned int flags) {
+ 
+ int xsetcursor(int cursor) {
+   // >>>>>>>>>>>>>>>>>>>> blinking-cursor
+-  // ==================== blinking-cursor
+-  if (!BETWEEN(cursor, 0, 7)) /* 7: st extension */
+-  // ==================== blinking-cursor
++  if (!BETWEEN(cursor, 0, 8)) /* 7-8: st extensions */
+   // <<<<<<<<<<<<<<<<<<<< blinking-cursor
+     return 1;
+   win.cursor = cursor;
+ 
+   // >>>>>>>>>>>>>>>>>>>> blinking-cursor
+-  // ==================== blinking-cursor
+-  // ==================== blinking-cursor
++  cursorblinks = win.cursor == 0 || win.cursor == 1 ||
++                 win.cursor == 3 || win.cursor == 5 ||
++                 win.cursor == 7;
+   // <<<<<<<<<<<<<<<<<<<< blinking-cursor
+ 
+   return 0;
+@@ -1973,8 +1977,10 @@ void run(void) {
+         trigger = now;
+ 
+         // >>>>>>>>>>>>>>>>>>>> blinking-cursor
+-        // ==================== blinking-cursor
+-        // ==================== blinking-cursor
++        if (IS_SET(MODE_BLINK)) {
++          win.mode ^= MODE_BLINK;
++        }
++        lastblink = now;
+         // <<<<<<<<<<<<<<<<<<<< blinking-cursor
+ 
+         drawing = 1;
+@@ -1987,9 +1993,7 @@ void run(void) {
+     /* idle detected or maxlatency exhausted -> draw */
+     timeout = -1;
+     // >>>>>>>>>>>>>>>>>>>> blinking-cursor
+-    // ==================== blinking-cursor
+-    if (blinktimeout && tattrset(ATTR_BLINK)) {
+-    // ==================== blinking-cursor
++    if (blinktimeout && (cursorblinks || tattrset(ATTR_BLINK))) {
+     // <<<<<<<<<<<<<<<<<<<< blinking-cursor
+       timeout = blinktimeout - TIMEDIFF(now, lastblink);
+       if (timeout <= 0) {
+@@ -2024,9 +2028,7 @@ int main(int argc, char *argv[]) {
+   xw.l = xw.t = 0;
+   xw.isfixed = False;
+   // >>>>>>>>>>>>>>>>>>>> blinking-cursor
+-  // ==================== blinking-cursor
+-  xsetcursor(cursorshape);
+-  // ==================== blinking-cursor
++  xsetcursor(cursorstyle);
+   // <<<<<<<<<<<<<<<<<<<< blinking-cursor
+ 
+   ARGBEGIN {

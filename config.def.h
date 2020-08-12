@@ -137,6 +137,8 @@ unsigned int defaultbg = 0;
 static unsigned int defaultcs = 256;
 static unsigned int defaultrcs = 257;
 
+// >>>>>>>>>>>>>>>>>>>> blinking-cursor
+// ==================== blinking-cursor
 /*
  * Default shape of cursor
  * 2: Block ("█")
@@ -145,6 +147,8 @@ static unsigned int defaultrcs = 257;
  * 7: Snowman ("☃")
  */
 static unsigned int cursorshape = 2;
+// ==================== blinking-cursor
+// <<<<<<<<<<<<<<<<<<<< blinking-cursor
 
 /*
  * Default columns and rows numbers

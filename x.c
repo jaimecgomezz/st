@@ -263,6 +263,10 @@ static char *opt_title = NULL;
 // ==================== focus
 // ==================== focus
 // <<<<<<<<<<<<<<<<<<<< focus
+// >>>>>>>>>>>>>>>>>>>> blinking-cursor
+// ==================== blinking-cursor
+// ==================== blinking-cursor
+// <<<<<<<<<<<<<<<<<<<< blinking-cursor
 
 static int oldbutton = 3; /* button event on startup: 3 = release */
 
@@ -1527,15 +1531,20 @@ void xdrawcursor(int cx, int cy, Glyph g, int ox, int oy, Glyph og) {
   /* draw the new one */
   if (IS_SET(MODE_FOCUSED)) {
     switch (win.cursor) {
-    case 7:         /* st extension */
-      g.u = 0x2603; /* snowman (U+2603) */
-                    /* FALLTHROUGH */
     case 0:         /* Blinking Block */
     case 1:         /* Blinking Block (Default) */
+      // >>>>>>>>>>>>>>>>>>>> blinking-cursor
+      // ==================== blinking-cursor
+      // ==================== blinking-cursor
+      // <<<<<<<<<<<<<<<<<<<< blinking-cursor
     case 2:         /* Steady Block */
       xdrawglyph(g, cx, cy);
       break;
     case 3: /* Blinking Underline */
+      // >>>>>>>>>>>>>>>>>>>> blinking-cursor
+      // ==================== blinking-cursor
+      // ==================== blinking-cursor
+      // <<<<<<<<<<<<<<<<<<<< blinking-cursor
     case 4: /* Steady Underline */
       XftDrawRect(
         xw.draw,
@@ -1551,6 +1560,10 @@ void xdrawcursor(int cx, int cy, Glyph g, int ox, int oy, Glyph og) {
       );
       break;
     case 5: /* Blinking bar */
+      // >>>>>>>>>>>>>>>>>>>> blinking-cursor
+      // ==================== blinking-cursor
+      // ==================== blinking-cursor
+      // <<<<<<<<<<<<<<<<<<<< blinking-cursor
     case 6: /* Steady bar */
       XftDrawRect(
         xw.draw,
@@ -1565,6 +1578,13 @@ void xdrawcursor(int cx, int cy, Glyph g, int ox, int oy, Glyph og) {
         win.ch
       );
       break;
+    // >>>>>>>>>>>>>>>>>>>> blinking-cursor
+    // ==================== blinking-cursor
+    case 7:         /* st extension */
+      g.u = 0x2603; /* snowman (U+2603) */
+                    /* FALLTHROUGH */
+    // ==================== blinking-cursor
+    // <<<<<<<<<<<<<<<<<<<< blinking-cursor
     }
   } else {
     XftDrawRect(
@@ -1705,9 +1725,19 @@ void xsetmode(int set, unsigned int flags) {
 }
 
 int xsetcursor(int cursor) {
+  // >>>>>>>>>>>>>>>>>>>> blinking-cursor
+  // ==================== blinking-cursor
   if (!BETWEEN(cursor, 0, 7)) /* 7: st extension */
+  // ==================== blinking-cursor
+  // <<<<<<<<<<<<<<<<<<<< blinking-cursor
     return 1;
   win.cursor = cursor;
+
+  // >>>>>>>>>>>>>>>>>>>> blinking-cursor
+  // ==================== blinking-cursor
+  // ==================== blinking-cursor
+  // <<<<<<<<<<<<<<<<<<<< blinking-cursor
+
   return 0;
 }
 
@@ -1941,6 +1971,12 @@ void run(void) {
     if (FD_ISSET(ttyfd, &rfd) || xev) {
       if (!drawing) {
         trigger = now;
+
+        // >>>>>>>>>>>>>>>>>>>> blinking-cursor
+        // ==================== blinking-cursor
+        // ==================== blinking-cursor
+        // <<<<<<<<<<<<<<<<<<<< blinking-cursor
+
         drawing = 1;
       }
       timeout = (maxlatency - TIMEDIFF(now, trigger)) / maxlatency * minlatency;
@@ -1950,7 +1986,11 @@ void run(void) {
 
     /* idle detected or maxlatency exhausted -> draw */
     timeout = -1;
+    // >>>>>>>>>>>>>>>>>>>> blinking-cursor
+    // ==================== blinking-cursor
     if (blinktimeout && tattrset(ATTR_BLINK)) {
+    // ==================== blinking-cursor
+    // <<<<<<<<<<<<<<<<<<<< blinking-cursor
       timeout = blinktimeout - TIMEDIFF(now, lastblink);
       if (timeout <= 0) {
         if (-timeout > blinktimeout) /* start visible */
@@ -1983,7 +2023,11 @@ void usage(void) {
 int main(int argc, char *argv[]) {
   xw.l = xw.t = 0;
   xw.isfixed = False;
+  // >>>>>>>>>>>>>>>>>>>> blinking-cursor
+  // ==================== blinking-cursor
   xsetcursor(cursorshape);
+  // ==================== blinking-cursor
+  // <<<<<<<<<<<<<<<<<<<< blinking-cursor
 
   ARGBEGIN {
   case 'a':
