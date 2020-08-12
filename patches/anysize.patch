@@ -1,5 +1,5 @@
 diff --git a/x.c b/x.c
-index 1b9bf95..5720da1 100644
+index f72fb12..7d7fce7 100644
 --- a/x.c
 +++ b/x.c
 @@ -86,8 +86,7 @@ typedef struct {
@@ -133,7 +133,7 @@ index 1b9bf95..5720da1 100644
    // <<<<<<<<<<<<<<<<<<<< anysize
      xclear(winx, winy + win.ch, winx + width, win.h);
  
-@@ -1541,10 +1520,8 @@ void xdrawcursor(int cx, int cy, Glyph g, int ox, int oy, Glyph og) {
+@@ -1538,10 +1517,8 @@ void xdrawcursor(int cx, int cy, Glyph g, int ox, int oy, Glyph og) {
          xw.draw,
          &drawcol,
          // >>>>>>>>>>>>>>>>>>>> anysize
@@ -146,7 +146,7 @@ index 1b9bf95..5720da1 100644
          // <<<<<<<<<<<<<<<<<<<< anysize
          win.cw,
          cursorthickness
-@@ -1556,10 +1533,8 @@ void xdrawcursor(int cx, int cy, Glyph g, int ox, int oy, Glyph og) {
+@@ -1553,10 +1530,8 @@ void xdrawcursor(int cx, int cy, Glyph g, int ox, int oy, Glyph og) {
          xw.draw,
          &drawcol,
          // >>>>>>>>>>>>>>>>>>>> anysize
