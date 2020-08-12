@@ -1527,9 +1527,6 @@ void xdrawcursor(int cx, int cy, Glyph g, int ox, int oy, Glyph og) {
   /* draw the new one */
   if (IS_SET(MODE_FOCUSED)) {
     switch (win.cursor) {
-    case 7:         /* st extension */
-      g.u = 0x2603; /* snowman (U+2603) */
-                    /* FALLTHROUGH */
     case 0:         /* Blinking Block */
     case 1:         /* Blinking Block (Default) */
     case 2:         /* Steady Block */
@@ -1565,6 +1562,9 @@ void xdrawcursor(int cx, int cy, Glyph g, int ox, int oy, Glyph og) {
         win.ch
       );
       break;
+    case 7:         /* st extension */
+      g.u = 0x2603; /* snowman (U+2603) */
+                    /* FALLTHROUGH */
     }
   } else {
     XftDrawRect(
