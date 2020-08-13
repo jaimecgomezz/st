@@ -12,7 +12,7 @@ A patch-friendly [st](https://st.suckless.org/) distribution. Lets make `suckles
 | [anysize](https://st.suckless.org/patches/anysize/)          | ✔️    | [external-pipe](https://st.suckless.org/patches/externalpipe/) |      | [netwmicon](https://st.suckless.org/patches/netwmicon/)      |      |
 | [blinking-cursor](https://st.suckless.org/patches/blinking_cursor/) | ✔️    | [external-pipe-signal](https://st.suckless.org/patches/externalpipe-signal/) |      | [new-term](https://st.suckless.org/patches/newterm/)         |      |
 | [bold-is-not-bright](https://st.suckless.org/patches/bold-is-not-bright/) | ✔️    | [fix-ime](https://st.suckless.org/patches/fix_ime/)          |      | [nord-theme](https://st.suckless.org/patches/nordtheme/)     |      |
-| [boxdraw](https://st.suckless.org/patches/boxdraw/)          |      | [fix-keyboard-input](https://st.suckless.org/patches/fix_keyboard_input/) |      | [open-copied-url](https://st.suckless.org/patches/open_copied_url/) |      |
+| [iceberg-theme](https://notabug.org/vejetaryenvampir/st-iceberg) | ✔️    | [fix-keyboard-input](https://st.suckless.org/patches/fix_keyboard_input/) |      | [open-copied-url](https://st.suckless.org/patches/open_copied_url/) |      |
 | [clipboard](https://st.suckless.org/patches/clipboard/)      |      | [font-2](https://st.suckless.org/patches/font2/)             |      | [open-bsd](https://st.suckless.org/patches/openbsd/)         |      |
 | [colors-at-launch](https://st.suckless.org/patches/colors_at_launch/) |      | [gruvbox](https://st.suckless.org/patches/gruvbox/)          |      | [osc-10-11-12](https://st.suckless.org/patches/osc_10_11_12/) |      |
 | [copy-url](https://st.suckless.org/patches/copyurl/)         |      | [hide-cursor](https://st.suckless.org/patches/hidecursor/)   |      | [palettes](https://st.suckless.org/patches/palettes/)        |      |
@@ -24,6 +24,7 @@ A patch-friendly [st](https://st.suckless.org/) distribution. Lets make `suckles
 | [universcroll](https://st.suckless.org/patches/universcroll/) |      | [vertcenter](https://st.suckless.org/patches/vertcenter/)    |      | [vim-browse](https://st.suckless.org/patches/vim_browse/)    |      |
 | [visual-bell](https://st.suckless.org/patches/visualbell/)   |      | [visual-bell-2](https://st.suckless.org/patches/visualbell2/) |      | [w3m](https://st.suckless.org/patches/w3m/)                  |      |
 | [working-dir](https://st.suckless.org/patches/workingdir/)   |      | [xclearwin](https://st.suckless.org/patches/xclearwin/)      |      | [xresources](https://st.suckless.org/patches/xresources/)    |      |
+| [boxdraw](https://st.suckless.org/patches/boxdraw/)          |      |                                                              |      |                                                              |      |
 
 
 
