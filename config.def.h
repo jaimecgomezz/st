@@ -95,6 +95,8 @@ unsigned int tabspaces = 8;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
+  // >>>>>>>>>>>>>>>>>>>> iceberg-theme
+  // ==================== iceberg-theme
 	/* 8 normal colors */
 	"black",
 	"red3",
@@ -114,6 +116,8 @@ static const char *colorname[] = {
 	"magenta",
 	"cyan",
 	"white",
+  // ==================== iceberg-theme
+  // <<<<<<<<<<<<<<<<<<<< iceberg-theme
 
 	[255] = 0,
 
@@ -128,6 +132,8 @@ static const char *colorname[] = {
 };
 
 
+// >>>>>>>>>>>>>>>>>>>> iceberg-theme
+// ==================== iceberg-theme
 /*
  * Default colors (colorname index)
  * foreground, background, cursor, reverse cursor
@@ -136,6 +142,8 @@ unsigned int defaultfg = 7;
 unsigned int defaultbg = 0;
 static unsigned int defaultcs = 256;
 static unsigned int defaultrcs = 257;
+// ==================== iceberg-theme
+// <<<<<<<<<<<<<<<<<<<< iceberg-theme
 
 // >>>>>>>>>>>>>>>>>>>> blinking-cursor
 // ==================== blinking-cursor
