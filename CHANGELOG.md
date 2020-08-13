@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.8.0] - 2021-08-13
+
+### Changed
+
+- Prepare the iceberg-theme patch integration
+
+### Added
+
+- Add the iceberg-theme patch
+- Add the iceberg-theme to docs
+
 ## [0.7.0] - 2020-08-12
 
 ### Changed
