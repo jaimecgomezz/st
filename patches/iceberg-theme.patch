@@ -1,0 +1,69 @@
+diff --git a/config.def.h b/config.def.h
+index ddbabab..5ddd569 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -96,27 +96,25 @@ unsigned int tabspaces = 8;
+ /* Terminal colors (16 first used in escape sequence) */
+ static const char *colorname[] = {
+   // >>>>>>>>>>>>>>>>>>>> iceberg-theme
+-  // ==================== iceberg-theme
+-	/* 8 normal colors */
+-	"black",
+-	"red3",
+-	"green3",
+-	"yellow3",
+-	"blue2",
+-	"magenta3",
+-	"cyan3",
+-	"gray90",
++  /* 8 normal colors */
++  "#161821", /* black   */
++  "#e27878", /* red     */
++  "#b4be82", /* green   */
++  "#e2a478", /* yellow  */
++  "#84a0c6", /* blue    */
++  "#a093c7", /* magenta */
++  "#89b8c2", /* cyan    */
++  "#c6c8d1", /* white   */
+ 
+-	/* 8 bright colors */
+-	"gray50",
+-	"red",
+-	"green",
+-	"yellow",
+-	"#5c5cff",
+-	"magenta",
+-	"cyan",
+-	"white",
+-  // ==================== iceberg-theme
++  /* 8 bright colors */
++  "#6b7089", /* black   */
++  "#e98989", /* red     */
++  "#c0ca8e", /* green   */
++  "#e9b189", /* yellow  */
++  "#91acd1", /* blue    */
++  "#ada0d3", /* magenta */
++  "#95c4ce", /* cyan    */
++  "#d2d4de", /* white   */
+   // <<<<<<<<<<<<<<<<<<<< iceberg-theme
+ 
+ 	[255] = 0,
+@@ -133,16 +131,14 @@ static const char *colorname[] = {
+ 
+ 
+ // >>>>>>>>>>>>>>>>>>>> iceberg-theme
+-// ==================== iceberg-theme
+ /*
+  * Default colors (colorname index)
+  * foreground, background, cursor, reverse cursor
+  */
+ unsigned int defaultfg = 7;
+ unsigned int defaultbg = 0;
+-static unsigned int defaultcs = 256;
+-static unsigned int defaultrcs = 257;
+-// ==================== iceberg-theme
++static unsigned int defaultcs = 13;
++static unsigned int defaultrcs = 0;
+ // <<<<<<<<<<<<<<<<<<<< iceberg-theme
+ 
+ // >>>>>>>>>>>>>>>>>>>> blinking-cursor
