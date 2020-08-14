@@ -26,3 +26,4 @@ Patches:
   bold-is-not-bright    This patch makes bold text rendered simply as bold, leaving the color
                         unaffected
   iceberg-theme         This patch applies the iceberg theme to st
+  clipboard             This trivial patch sets CLIPBOARD on selection, the same as your browser
