@@ -7,7 +7,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
-## [0.8.0] - 2021-08-13
+## [0.9.0] - 2020-08-14
+
+### Changed
+
+- Prepare the clipboard patch integration
+
+### Added
+
+- Add the clipboard patch integration
+- Add the clipboard patch to docs
+
+## [0.8.0] - 2020-08-13
 
 ### Changed
 

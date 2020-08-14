@@ -1,0 +1,14 @@
+diff --git a/x.c b/x.c
+index 3cb6bec..099b1c3 100644
+--- a/x.c
++++ b/x.c
+@@ -640,8 +640,7 @@ void setsel(char *str, Time t) {
+   if (XGetSelectionOwner(xw.dpy, XA_PRIMARY) != xw.win)
+     selclear();
+   // >>>>>>>>>>>>>>>>>>>> clipboard
+-  // ==================== clipboard
+-  // ==================== clipboard
++  clipcopy(NULL);
+   // <<<<<<<<<<<<<<<<<<<< clipboard
+ }
+ 
