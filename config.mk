@@ -20,6 +20,14 @@ ALPHA_OPTS =
 # <<<<<<<<<<<<<<<<<<<< alpha
 
 
+# >>>>>>>>>>>>>>>>>>>> ligatures
+# ==================== ligatures
+LIGATURES_INCS =
+LIGATURES_LIBS =
+# ==================== ligatures
+# <<<<<<<<<<<<<<<<<<<< ligatures
+
+
 # includes and libs
 INCS = -I$(X11INC) `$(PKG_CONFIG) --cflags fontconfig` `$(PKG_CONFIG) --cflags freetype2`
 

@@ -19,6 +19,10 @@ char *argv0;
 #include "arg.h"
 #include "st.h"
 #include "win.h"
+// >>>>>>>>>>>>>>>>>>>> ligatures
+// ==================== ligatures
+// ==================== ligatures
+// <<<<<<<<<<<<<<<<<<<< ligatures
 
 /* types used in config.h */
 typedef struct {
@@ -1005,6 +1009,11 @@ void xunloadfont(Font *f) {
 }
 
 void xunloadfonts(void) {
+  // >>>>>>>>>>>>>>>>>>>> ligatures
+  // ==================== ligatures
+  // ==================== ligatures
+  // <<<<<<<<<<<<<<<<<<<< ligatures
+
   /* Free the loaded fonts in the font cache.  */
   while (frclen > 0)
     XftFontClose(xw.dpy, frc[--frclen].font);
@@ -1231,7 +1240,11 @@ int xmakeglyphfontspecs(XftGlyphFontSpec *specs, const Glyph *glyphs, int len,
     mode = glyphs[i].mode;
 
     /* Skip dummy wide-character spacing. */
+    // >>>>>>>>>>>>>>>>>>>> ligatures
+    // ==================== ligatures
     if (mode == ATTR_WDUMMY)
+    // ==================== ligatures
+    // <<<<<<<<<<<<<<<<<<<< ligatures
       continue;
 
     /* Determine font for glyph if different from previous glyph. */
@@ -1331,6 +1344,11 @@ int xmakeglyphfontspecs(XftGlyphFontSpec *specs, const Glyph *glyphs, int len,
     xp += runewidth;
     numspecs++;
   }
+
+  // >>>>>>>>>>>>>>>>>>>> ligatures
+  // ==================== ligatures
+  // ==================== ligatures
+  // <<<<<<<<<<<<<<<<<<<< ligatures
 
   return numspecs;
 }
@@ -1499,13 +1517,29 @@ void xdrawglyph(Glyph g, int x, int y) {
   xdrawglyphfontspecs(&spec, g, numspecs, x, y);
 }
 
-void xdrawcursor(int cx, int cy, Glyph g, int ox, int oy, Glyph og) {
+void xdrawcursor(
+    int cx,
+    int cy,
+    Glyph g,
+    int ox,
+    int oy,
+    Glyph og
+    // >>>>>>>>>>>>>>>>>>>> ligatures
+    // ==================== ligatures
+    // ==================== ligatures
+    // <<<<<<<<<<<<<<<<<<<< ligatures
+  ) {
   Color drawcol;
 
   /* remove the old cursor */
   if (selected(ox, oy))
     og.mode ^= ATTR_REVERSE;
+
+  // >>>>>>>>>>>>>>>>>>>> ligatures
+  // ==================== ligatures
   xdrawglyph(og, ox, oy);
+  // ==================== ligatures
+  // <<<<<<<<<<<<<<<<<<<< ligatures
 
   if (IS_SET(MODE_HIDE))
     return;

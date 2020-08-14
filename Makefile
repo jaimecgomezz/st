@@ -4,7 +4,11 @@
 
 include config.mk
 
+# >>>>>>>>>>>>>>>>>>>> ligatures
+# ==================== ligatures
 SRC = st.c x.c
+# ==================== ligatures
+# <<<<<<<<<<<<<<<<<<<< ligatures
 OBJ = $(SRC:.c=.o)
 
 all: options st
@@ -22,7 +26,11 @@ config.h: config.def.h
 	$(CC) $(STCFLAGS) -c $<
 
 st.o: config.h st.h win.h
+# >>>>>>>>>>>>>>>>>>>> ligatures
+# ==================== ligatures
 x.o: arg.h config.h st.h win.h
+# ==================== ligatures
+# <<<<<<<<<<<<<<<<<<<< ligatures
 
 $(OBJ): config.h config.mk
 
