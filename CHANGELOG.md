@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.12.0] - 2020-08-15
+
+### Changed
+
+- Prepare the delkey patch integration
+
+### Added
+
+- Add the delkey patch
+- Add the delkey patch to docs
+
 ## [0.11.0] - 2020-08-15
 
 ### Changed

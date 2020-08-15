@@ -32,3 +32,4 @@ Patches:
                           - The original patch does not work very well with the boxdraw patch
   copy-url              Select, highlight and copy the last URL displayed with Mod1+l. Multiple
                         invocations cycle through the available URLs
+  delkey                Return BS on pressing backspace and DEL on pressing the delete key
