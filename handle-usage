@@ -33,3 +33,5 @@ Patches:
   copy-url              Select, highlight and copy the last URL displayed with Mod1+l. Multiple
                         invocations cycle through the available URLs
   delkey                Return BS on pressing backspace and DEL on pressing the delete key
+  desktop-entry         Creates a desktop-entry for st. This enables to find st in a graphical
+                        menu and to display it with a nice icon
