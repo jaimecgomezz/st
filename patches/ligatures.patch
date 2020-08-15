@@ -1,0 +1,173 @@
+diff --git a/Makefile b/Makefile
+index bf02eab..4863399 100644
+--- a/Makefile
++++ b/Makefile
+@@ -5,9 +5,7 @@
+ include config.mk
+ 
+ # >>>>>>>>>>>>>>>>>>>> ligatures
+-# ==================== ligatures
+-SRC = st.c x.c
+-# ==================== ligatures
++SRC = st.c x.c hb.c
+ # <<<<<<<<<<<<<<<<<<<< ligatures
+ OBJ = $(SRC:.c=.o)
+ 
+@@ -27,9 +25,8 @@ config.h: config.def.h
+ 
+ st.o: config.h st.h win.h
+ # >>>>>>>>>>>>>>>>>>>> ligatures
+-# ==================== ligatures
+-x.o: arg.h config.h st.h win.h
+-# ==================== ligatures
++x.o: arg.h config.h st.h win.h hb.h
++hb.o: st.h
+ # <<<<<<<<<<<<<<<<<<<< ligatures
+ 
+ $(OBJ): config.h config.mk
+diff --git a/config.mk b/config.mk
+index 64e00fb..fda885a 100644
+--- a/config.mk
++++ b/config.mk
+@@ -21,10 +21,8 @@ ALPHA_OPTS =
+ 
+ 
+ # >>>>>>>>>>>>>>>>>>>> ligatures
+-# ==================== ligatures
+-LIGATURES_INCS =
+-LIGATURES_LIBS =
+-# ==================== ligatures
++LIGATURES_INCS = `$(PKG_CONFIG) --cflags harfbuzz`
++LIGATURES_LIBS = `$(PKG_CONFIG) --libs harfbuzz`
+ # <<<<<<<<<<<<<<<<<<<< ligatures
+ 
+ 
+diff --git a/st.c b/st.c
+index 26aa517..7018c25 100644
+--- a/st.c
++++ b/st.c
+@@ -2384,8 +2384,8 @@ void draw(void) {
+     term.ocy,
+     term.line[term.ocy][term.ocx]
+     // >>>>>>>>>>>>>>>>>>>> ligatures
+-    // ==================== ligatures
+-    // ==================== ligatures
++    ,term.line[term.ocy],
++    term.col
+     // <<<<<<<<<<<<<<<<<<<< ligatures
+   );
+ 
+diff --git a/st.h b/st.h
+index 8ef28b7..cf37434 100644
+--- a/st.h
++++ b/st.h
+@@ -12,10 +12,9 @@
+ #define DEFAULT(a, b)		(a) = (a) ? (a) : (b)
+ #define LIMIT(x, a, b)		(x) = (x) < (a) ? (a) : (x) > (b) ? (b) : (x)
+ // >>>>>>>>>>>>>>>>>>>> ligatures
+-// ==================== ligatures
+-#define ATTRCMP(a, b)		((a).mode != (b).mode || (a).fg != (b).fg || \
+-				(a).bg != (b).bg)
+-// ==================== ligatures
++#define ATTRCMP(a, b)		(((a).mode & (~ATTR_WRAP) & (~ATTR_LIGA)) != ((b).mode & (~ATTR_WRAP) & (~ATTR_LIGA)) || \
++        (a).fg != (b).fg || \
++        (a).bg != (b).bg)
+ // <<<<<<<<<<<<<<<<<<<< ligatures
+ #define TIMEDIFF(t1, t2)	((t1.tv_sec-t2.tv_sec)*1000 + \
+ 				(t1.tv_nsec-t2.tv_nsec)/1E6)
+@@ -38,8 +37,7 @@ enum glyph_attribute {
+ 	ATTR_WIDE       = 1 << 9,
+ 	ATTR_WDUMMY     = 1 << 10,
+   // >>>>>>>>>>>>>>>>>>>> ligatures
+-  // ==================== ligatures
+-  // ==================== ligatures
++  ATTR_LIGA       = 1 << 11,
+   // <<<<<<<<<<<<<<<<<<<< ligatures
+ 	ATTR_BOLD_FAINT = ATTR_BOLD | ATTR_FAINT,
+ };
+diff --git a/win.h b/win.h
+index b1652df..bb77cba 100644
+--- a/win.h
++++ b/win.h
+@@ -26,9 +26,7 @@ enum win_mode {
+ void xbell(void);
+ void xclipcopy(void);
+ // >>>>>>>>>>>>>>>>>>>> ligatures
+-// ==================== ligatures
+-void xdrawcursor(int, int, Glyph, int, int, Glyph);
+-// ==================== ligatures
++void xdrawcursor(int, int, Glyph, int, int, Glyph, Line, int);
+ // <<<<<<<<<<<<<<<<<<<< ligatures
+ void xdrawline(Line, int, int, int);
+ void xfinishdraw(void);
+diff --git a/x.c b/x.c
+index 82b8cc9..b5ffe24 100644
+--- a/x.c
++++ b/x.c
+@@ -20,8 +20,7 @@ char *argv0;
+ #include "st.h"
+ #include "win.h"
+ // >>>>>>>>>>>>>>>>>>>> ligatures
+-// ==================== ligatures
+-// ==================== ligatures
++#include "hb.h"
+ // <<<<<<<<<<<<<<<<<<<< ligatures
+ 
+ /* types used in config.h */
+@@ -1010,8 +1009,8 @@ void xunloadfont(Font *f) {
+ 
+ void xunloadfonts(void) {
+   // >>>>>>>>>>>>>>>>>>>> ligatures
+-  // ==================== ligatures
+-  // ==================== ligatures
++  /* Clear Harfbuzz font cache. */
++  hbunloadfonts();
+   // <<<<<<<<<<<<<<<<<<<< ligatures
+ 
+   /* Free the loaded fonts in the font cache.  */
+@@ -1241,9 +1240,7 @@ int xmakeglyphfontspecs(XftGlyphFontSpec *specs, const Glyph *glyphs, int len,
+ 
+     /* Skip dummy wide-character spacing. */
+     // >>>>>>>>>>>>>>>>>>>> ligatures
+-    // ==================== ligatures
+-    if (mode == ATTR_WDUMMY)
+-    // ==================== ligatures
++    if (mode & ATTR_WDUMMY)
+     // <<<<<<<<<<<<<<<<<<<< ligatures
+       continue;
+ 
+@@ -1346,8 +1343,8 @@ int xmakeglyphfontspecs(XftGlyphFontSpec *specs, const Glyph *glyphs, int len,
+   }
+ 
+   // >>>>>>>>>>>>>>>>>>>> ligatures
+-  // ==================== ligatures
+-  // ==================== ligatures
++  /* Harfbuzz transformation for ligatures. */
++  hbtransform(specs, glyphs, len, x, y);
+   // <<<<<<<<<<<<<<<<<<<< ligatures
+ 
+   return numspecs;
+@@ -1525,8 +1522,8 @@ void xdrawcursor(
+     int oy,
+     Glyph og
+     // >>>>>>>>>>>>>>>>>>>> ligatures
+-    // ==================== ligatures
+-    // ==================== ligatures
++    ,Line line,
++    int len
+     // <<<<<<<<<<<<<<<<<<<< ligatures
+   ) {
+   Color drawcol;
+@@ -1536,9 +1533,9 @@ void xdrawcursor(
+     og.mode ^= ATTR_REVERSE;
+ 
+   // >>>>>>>>>>>>>>>>>>>> ligatures
+-  // ==================== ligatures
+-  xdrawglyph(og, ox, oy);
+-  // ==================== ligatures
++  /* Redraw the line where cursor was previously.
++   * It will restore the ligatures broken by the cursor. */
++  xdrawline(line, 0, oy, len);
+   // <<<<<<<<<<<<<<<<<<<< ligatures
+ 
+   if (IS_SET(MODE_HIDE))
