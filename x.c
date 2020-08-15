@@ -218,7 +218,7 @@ static void (*handler[LASTEvent])(XEvent *) = {
      * Uncomment if you want the selection to disappear when you select
      * something different in another window.
      */
-    /*	[SelectionClear] = selclear_, */
+    /*  [SelectionClear] = selclear_, */
     [SelectionNotify] = selnotify,
     /*
      * PropertyNotify is only turned on when there is some INCR transfer
