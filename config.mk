@@ -29,9 +29,9 @@ LIGATURES_LIBS =
 
 
 # includes and libs
-INCS = -I$(X11INC) `$(PKG_CONFIG) --cflags fontconfig` `$(PKG_CONFIG) --cflags freetype2`
+INCS = -I$(X11INC) `$(PKG_CONFIG) --cflags fontconfig` `$(PKG_CONFIG) --cflags freetype2` $(LIGATURES_INCS)
 
-LIBS = -L$(X11LIB) -lm -lrt -lX11 -lutil -lXft $(ALPHA_OPTS) `$(PKG_CONFIG) --libs fontconfig` `$(PKG_CONFIG) --libs freetype2`
+LIBS = -L$(X11LIB) -lm -lrt -lX11 -lutil -lXft $(ALPHA_OPTS) `$(PKG_CONFIG) --libs fontconfig` `$(PKG_CONFIG) --libs freetype2` $(LIGATURES_LIBS)
 
 
 # flags
