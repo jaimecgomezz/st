@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.13.0] - 2020-08-15
+
+### Changed
+
+- Prepare the desktop-entry patch integration
+
+### Added
+
+- Add the st desktop file
+- Add the desktop-entry patch
+- Add the desktop-entry patch to docs
+
 ## [0.12.0] - 2020-08-15
 
 ### Changed

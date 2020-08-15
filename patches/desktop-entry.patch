@@ -1,0 +1,19 @@
+diff --git a/Makefile b/Makefile
+index 124328e..f89ef31 100644
+--- a/Makefile
++++ b/Makefile
+@@ -11,12 +11,10 @@ SRC = st.c x.c
+ # <<<<<<<<<<<<<<<<<<<< ligatures
+ OBJ = $(SRC:.c=.o)
+ # >>>>>>>>>>>>>>>>>>>> desktop-entry
+-# ==================== desktop-entry
+ DESKTOP_FILE = st.desktop
+ DESKTOP_FOLDER = $(DESTDIR)$(PREFIX)/share/applications
+-INSTALL_DESKTOP =
+-UNINSTALL_DESKTOP =
+-# ==================== desktop-entry
++UNINSTALL_DESKTOP = rm -f $(DESKTOP_FOLDER)/$(DESKTOP_FILE)
++INSTALL_DESKTOP = mkdir -p $(DESKTOP_FOLDER) ; cp -f $(DESKTOP_FILE) $(DESKTOP_FOLDER)
+ # <<<<<<<<<<<<<<<<<<<< desktop-entry
+ 
+ all: options st
