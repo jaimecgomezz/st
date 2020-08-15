@@ -204,6 +204,10 @@ static void tstrsequence(uchar);
 static void tfulldirt(void);
 // ==================== focus
 // <<<<<<<<<<<<<<<<<<<< focus
+// >>>>>>>>>>>>>>>>>>>> copy-url
+// ==================== copy-url
+// ==================== copy-url
+// <<<<<<<<<<<<<<<<<<<< copy-url
 
 static void drawregion(int, int, int, int);
 
@@ -2400,3 +2404,8 @@ void redraw(void) {
   tfulldirt();
   draw();
 }
+
+// >>>>>>>>>>>>>>>>>>>> copy-url
+// ==================== copy-url
+// ==================== copy-url
+// <<<<<<<<<<<<<<<<<<<< copy-url
