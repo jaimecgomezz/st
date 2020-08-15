@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.10.0] - 2020-08-14
+
+### Changed
+
+-  Improve flexibility in config.mk
+-  Make alpha patch compatible with config.mk changes
+-  Prepare the ligatures patch integration
+-  Add ligatures arg by default in includes and libs
+
+### Added
+
+- Add ligatures patch files
+- Add the ligatures patch
+- Add ligatures patch to docs
+
 ## [0.9.0] - 2020-08-14
 
 ### Changed
