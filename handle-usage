@@ -30,3 +30,5 @@ Patches:
   ligatures             This patch adds proper drawing of ligatures
                           - It is not 100% compatible with Scrollback and Alpha patches
                           - The original patch does not work very well with the boxdraw patch
+  copy-url              Select, highlight and copy the last URL displayed with Mod1+l. Multiple
+                        invocations cycle through the available URLs
