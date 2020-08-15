@@ -3,8 +3,8 @@ index e964d55..92117fe 100644
 --- a/config.def.h
 +++ b/config.def.h
 @@ -217,8 +217,7 @@ static Shortcut shortcuts[] = {
- 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
- 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
+  { ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
+  { TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
    // >>>>>>>>>>>>>>>>>>>> copy-url
 -  // ==================== copy-url
 -  // ==================== copy-url

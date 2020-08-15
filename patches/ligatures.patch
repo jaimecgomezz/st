@@ -1,5 +1,5 @@
 diff --git a/Makefile b/Makefile
-index bf02eab..4863399 100644
+index 7d7a5f1..b11db0f 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -5,9 +5,7 @@
@@ -43,10 +43,10 @@ index 64e00fb..fda885a 100644
  
  
 diff --git a/st.c b/st.c
-index 26aa517..7018c25 100644
+index 02d9411..182be74 100644
 --- a/st.c
 +++ b/st.c
-@@ -2384,8 +2384,8 @@ void draw(void) {
+@@ -2388,8 +2388,8 @@ void draw(void) {
      term.ocy,
      term.line[term.ocy][term.ocx]
      // >>>>>>>>>>>>>>>>>>>> ligatures
@@ -58,35 +58,34 @@ index 26aa517..7018c25 100644
    );
  
 diff --git a/st.h b/st.h
-index 8ef28b7..cf37434 100644
+index 3615e79..a8daaaf 100644
 --- a/st.h
 +++ b/st.h
 @@ -12,10 +12,9 @@
- #define DEFAULT(a, b)		(a) = (a) ? (a) : (b)
- #define LIMIT(x, a, b)		(x) = (x) < (a) ? (a) : (x) > (b) ? (b) : (x)
+ #define DEFAULT(a, b)   (a) = (a) ? (a) : (b)
+ #define LIMIT(x, a, b)    (x) = (x) < (a) ? (a) : (x) > (b) ? (b) : (x)
  // >>>>>>>>>>>>>>>>>>>> ligatures
 -// ==================== ligatures
--#define ATTRCMP(a, b)		((a).mode != (b).mode || (a).fg != (b).fg || \
--				(a).bg != (b).bg)
--// ==================== ligatures
-+#define ATTRCMP(a, b)		(((a).mode & (~ATTR_WRAP) & (~ATTR_LIGA)) != ((b).mode & (~ATTR_WRAP) & (~ATTR_LIGA)) || \
+-#define ATTRCMP(a, b)   ((a).mode != (b).mode || (a).fg != (b).fg || \
++#define ATTRCMP(a, b)   (((a).mode & (~ATTR_WRAP) & (~ATTR_LIGA)) != ((b).mode & (~ATTR_WRAP) & (~ATTR_LIGA)) || \
 +        (a).fg != (b).fg || \
-+        (a).bg != (b).bg)
+         (a).bg != (b).bg)
+-// ==================== ligatures
  // <<<<<<<<<<<<<<<<<<<< ligatures
- #define TIMEDIFF(t1, t2)	((t1.tv_sec-t2.tv_sec)*1000 + \
- 				(t1.tv_nsec-t2.tv_nsec)/1E6)
+ #define TIMEDIFF(t1, t2)  ((t1.tv_sec-t2.tv_sec)*1000 + \
+         (t1.tv_nsec-t2.tv_nsec)/1E6)
 @@ -38,8 +37,7 @@ enum glyph_attribute {
- 	ATTR_WIDE       = 1 << 9,
- 	ATTR_WDUMMY     = 1 << 10,
+   ATTR_WIDE       = 1 << 9,
+   ATTR_WDUMMY     = 1 << 10,
    // >>>>>>>>>>>>>>>>>>>> ligatures
 -  // ==================== ligatures
 -  // ==================== ligatures
 +  ATTR_LIGA       = 1 << 11,
    // <<<<<<<<<<<<<<<<<<<< ligatures
- 	ATTR_BOLD_FAINT = ATTR_BOLD | ATTR_FAINT,
+   ATTR_BOLD_FAINT = ATTR_BOLD | ATTR_FAINT,
  };
 diff --git a/win.h b/win.h
-index b1652df..bb77cba 100644
+index 939a9c3..22dd129 100644
 --- a/win.h
 +++ b/win.h
 @@ -26,9 +26,7 @@ enum win_mode {
@@ -101,7 +100,7 @@ index b1652df..bb77cba 100644
  void xdrawline(Line, int, int, int);
  void xfinishdraw(void);
 diff --git a/x.c b/x.c
-index 82b8cc9..b5ffe24 100644
+index 1000b14..14417f3 100644
 --- a/x.c
 +++ b/x.c
 @@ -20,8 +20,7 @@ char *argv0;
