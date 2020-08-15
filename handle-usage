@@ -27,3 +27,6 @@ Patches:
                         unaffected
   iceberg-theme         This patch applies the iceberg theme to st
   clipboard             This trivial patch sets CLIPBOARD on selection, the same as your browser
+  ligatures             This patch adds proper drawing of ligatures
+                          - It is not 100% compatible with Scrollback and Alpha patches
+                          - The original patch does not work very well with the boxdraw patch
