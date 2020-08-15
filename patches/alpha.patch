@@ -3,7 +3,7 @@ index ddbabab..6789ba2 100644
 --- a/config.def.h
 +++ b/config.def.h
 @@ -126,8 +126,7 @@ static const char *colorname[] = {
- 	"#555555",
+  "#555555",
  
    // >>>>>>>>>>>>>>>>>>>> alpha
 -  // ==================== alpha
@@ -13,7 +13,7 @@ index ddbabab..6789ba2 100644
  };
  
 @@ -489,8 +488,8 @@ static char ascii_printable[] =
- 	"`abcdefghijklmnopqrstuvwxyz{|}~";
+  "`abcdefghijklmnopqrstuvwxyz{|}~";
  
  // >>>>>>>>>>>>>>>>>>>> alpha
 -// ==================== alpha
