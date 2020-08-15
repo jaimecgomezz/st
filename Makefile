@@ -10,6 +10,14 @@ SRC = st.c x.c
 # ==================== ligatures
 # <<<<<<<<<<<<<<<<<<<< ligatures
 OBJ = $(SRC:.c=.o)
+# >>>>>>>>>>>>>>>>>>>> desktop-entry
+# ==================== desktop-entry
+DESKTOP_FILE = st.desktop
+DESKTOP_FOLDER = $(DESTDIR)$(PREFIX)/share/applications
+INSTALL_DESKTOP =
+UNINSTALL_DESKTOP =
+# ==================== desktop-entry
+# <<<<<<<<<<<<<<<<<<<< desktop-entry
 
 all: options st
 
@@ -57,9 +65,11 @@ install: st
 	chmod 644 $(DESTDIR)$(MANPREFIX)/man1/st.1
 	tic -sx st.info
 	@echo Please see the README file regarding the terminfo entry of st.
+	$(INSTALL_DESKTOP)
 
 uninstall:
 	rm -f $(DESTDIR)$(PREFIX)/bin/st
 	rm -f $(DESTDIR)$(MANPREFIX)/man1/st.1
+	$(UNINSTALL_DESKTOP)
 
 .PHONY: all options clean dist install uninstall
