@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.11.0] - 2020-08-15
+
+### Changed
+
+- Prepare the copy-url patch integration
+
+### Added
+
+- Add the copy-url patch
+- Add the copy-url patch to docs
+
 ## [0.10.0] - 2020-08-14
 
 ### Changed
