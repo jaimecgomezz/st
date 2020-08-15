@@ -1,0 +1,53 @@
+diff --git a/config.def.h b/config.def.h
+index dac7b2c..bca4b8c 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -299,9 +299,7 @@ static Key key[] = {
+ 	{ XK_KP_Delete,     ShiftMask,      "\033[3;2~",    +1,    0},
+ 	{ XK_KP_Delete,     XK_ANY_MOD,     "\033[P",       -1,    0},
+   // >>>>>>>>>>>>>>>>>>>> delkey
+-  // ==================== delkey
+-  { XK_KP_Delete,     XK_ANY_MOD,     "\033[3~",      +1,    0},
+-  // ==================== delkey
++  { XK_KP_Delete,     XK_ANY_MOD,     "\177",         +1,    0},
+   // <<<<<<<<<<<<<<<<<<<< delkey
+ 	{ XK_KP_Multiply,   XK_ANY_MOD,     "\033Oj",       +2,    0},
+ 	{ XK_KP_Add,        XK_ANY_MOD,     "\033Ok",       +2,    0},
+@@ -371,10 +369,7 @@ static Key key[] = {
+ 	{ XK_Delete,        ShiftMask,      "\033[3;2~",    +1,    0},
+ 	{ XK_Delete,        XK_ANY_MOD,     "\033[P",       -1,    0},
+   // >>>>>>>>>>>>>>>>>>>> delkey
+-  // ==================== delkey
+-  { XK_Delete,        XK_ANY_MOD,     "\033[3~",      +1,    0},
+-  { XK_BackSpace,     XK_NO_MOD,      "\177",          0,    0},
+-  // ==================== delkey
++  { XK_Delete,        XK_ANY_MOD,     "\177",         +1,    0},
+   // <<<<<<<<<<<<<<<<<<<< delkey
+ 	{ XK_BackSpace,     Mod1Mask,       "\033\177",      0,    0},
+ 	{ XK_Home,          ShiftMask,      "\033[2J",       0,   -1},
+diff --git a/st.info b/st.info
+index 43933be..d2df834 100644
+--- a/st.info
++++ b/st.info
+@@ -55,9 +55,7 @@ st-mono| simpleterm monocolor,
+ 	kc1=\E[4~,
+ 	kc3=\E[6~,
+   /* >>>>>>>>>>>>>>>>>>>> delkey */
+-  /* ==================== delkey */
+-  kbs=\177,
+-  /* ==================== delkey */
++  kbs=\010,
+   /* <<<<<<<<<<<<<<<<<<<< delkey */
+ 	kcbt=\E[Z,
+ 	kb2=\EOu,
+@@ -79,9 +77,7 @@ st-mono| simpleterm monocolor,
+ 	kclr=\E[3;5~,
+ 	kdl1=\E[3;2~,
+   /* >>>>>>>>>>>>>>>>>>>> delkey */
+-  /* ==================== delkey */
+-  kdch1=\E[3~,
+-  /* ==================== delkey */
++  kdch1=\177~,
+   /* <<<<<<<<<<<<<<<<<<<< delkey */
+ 	kich1=\E[2~,
+ 	kend=\E[4~,
