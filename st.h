@@ -11,8 +11,12 @@
 #define DIVCEIL(n, d)		(((n) + ((d) - 1)) / (d))
 #define DEFAULT(a, b)		(a) = (a) ? (a) : (b)
 #define LIMIT(x, a, b)		(x) = (x) < (a) ? (a) : (x) > (b) ? (b) : (x)
+// >>>>>>>>>>>>>>>>>>>> ligatures
+// ==================== ligatures
 #define ATTRCMP(a, b)		((a).mode != (b).mode || (a).fg != (b).fg || \
 				(a).bg != (b).bg)
+// ==================== ligatures
+// <<<<<<<<<<<<<<<<<<<< ligatures
 #define TIMEDIFF(t1, t2)	((t1.tv_sec-t2.tv_sec)*1000 + \
 				(t1.tv_nsec-t2.tv_nsec)/1E6)
 #define MODBIT(x, set, bit)	((set) ? ((x) |= (bit)) : ((x) &= ~(bit)))
@@ -33,6 +37,10 @@ enum glyph_attribute {
 	ATTR_WRAP       = 1 << 8,
 	ATTR_WIDE       = 1 << 9,
 	ATTR_WDUMMY     = 1 << 10,
+  // >>>>>>>>>>>>>>>>>>>> ligatures
+  // ==================== ligatures
+  // ==================== ligatures
+  // <<<<<<<<<<<<<<<<<<<< ligatures
 	ATTR_BOLD_FAINT = ATTR_BOLD | ATTR_FAINT,
 };
 
