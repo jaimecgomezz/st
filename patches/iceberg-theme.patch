@@ -1,5 +1,5 @@
 diff --git a/config.def.h b/config.def.h
-index ddbabab..5ddd569 100644
+index 898e20e..e649a08 100644
 --- a/config.def.h
 +++ b/config.def.h
 @@ -96,27 +96,25 @@ unsigned int tabspaces = 8;
@@ -7,16 +7,15 @@ index ddbabab..5ddd569 100644
  static const char *colorname[] = {
    // >>>>>>>>>>>>>>>>>>>> iceberg-theme
 -  // ==================== iceberg-theme
-- /* 8 normal colors */
-- "black",
-- "red3",
-- "green3",
-- "yellow3",
-- "blue2",
-- "magenta3",
-- "cyan3",
-- "gray90",
-+  /* 8 normal colors */
+   /* 8 normal colors */
+-  "black",
+-  "red3",
+-  "green3",
+-  "yellow3",
+-  "blue2",
+-  "magenta3",
+-  "cyan3",
+-  "gray90",
 +  "#161821", /* black   */
 +  "#e27878", /* red     */
 +  "#b4be82", /* green   */
@@ -26,17 +25,16 @@ index ddbabab..5ddd569 100644
 +  "#89b8c2", /* cyan    */
 +  "#c6c8d1", /* white   */
  
-- /* 8 bright colors */
-- "gray50",
-- "red",
-- "green",
-- "yellow",
-- "#5c5cff",
-- "magenta",
-- "cyan",
-- "white",
+   /* 8 bright colors */
+-  "gray50",
+-  "red",
+-  "green",
+-  "yellow",
+-  "#5c5cff",
+-  "magenta",
+-  "cyan",
+-  "white",
 -  // ==================== iceberg-theme
-+  /* 8 bright colors */
 +  "#6b7089", /* black   */
 +  "#e98989", /* red     */
 +  "#c0ca8e", /* green   */
@@ -47,7 +45,7 @@ index ddbabab..5ddd569 100644
 +  "#d2d4de", /* white   */
    // <<<<<<<<<<<<<<<<<<<< iceberg-theme
  
-  [255] = 0,
+   [255] = 0,
 @@ -133,16 +131,14 @@ static const char *colorname[] = {
  
  
