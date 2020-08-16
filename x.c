@@ -274,6 +274,11 @@ static char *opt_title = NULL;
 
 static int oldbutton = 3; /* button event on startup: 3 = release */
 
+// >>>>>>>>>>>>>>>>>>>> swap-mouse
+// ==================== swap-mouse
+// ==================== swap-mouse
+// <<<<<<<<<<<<<<<<<<<< swap-mouse
+
 void clipcopy(const Arg *dummy) {
   Atom clipboard;
 
@@ -1077,8 +1082,12 @@ void xinit(int cols, int rows) {
   XGCValues gcvalues;
   Window parent;
   pid_t thispid = getpid();
+  // >>>>>>>>>>>>>>>>>>>> swap-mouse
+  // ==================== swap-mouse
   Cursor cursor;
   XColor xmousefg, xmousebg;
+  // ==================== swap-mouse
+  // <<<<<<<<<<<<<<<<<<<< swap-mouse
 
   // >>>>>>>>>>>>>>>>>>>> alpha
   // ==================== alpha
@@ -1794,6 +1803,12 @@ void xsetpointermotion(int set) {
 void xsetmode(int set, unsigned int flags) {
   int mode = win.mode;
   MODBIT(win.mode, set, flags);
+
+  // >>>>>>>>>>>>>>>>>>>> swap-mouse
+  // ==================== swap-mouse
+  // ==================== swap-mouse
+  // <<<<<<<<<<<<<<<<<<<< swap-mouse
+
   if ((win.mode & MODE_REVERSE) != (mode & MODE_REVERSE))
     redraw();
 }
