@@ -1075,10 +1075,11 @@ int xicdestroy(XIC xim, XPointer client, XPointer call) {
 
 void xinit(int cols, int rows) {
   XGCValues gcvalues;
-  Cursor cursor;
   Window parent;
   pid_t thispid = getpid();
+  Cursor cursor;
   XColor xmousefg, xmousebg;
+
   // >>>>>>>>>>>>>>>>>>>> alpha
   // ==================== alpha
   // ==================== alpha
