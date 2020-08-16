@@ -1,0 +1,41 @@
+diff --git a/x.c b/x.c
+index cfc0525..145b8ba 100644
+--- a/x.c
++++ b/x.c
+@@ -275,8 +275,8 @@ static char *opt_title = NULL;
+ static int oldbutton = 3; /* button event on startup: 3 = release */
+ 
+ // >>>>>>>>>>>>>>>>>>>> swap-mouse
+-// ==================== swap-mouse
+-// ==================== swap-mouse
++static Cursor cursor;
++static XColor xmousefg, xmousebg;
+ // <<<<<<<<<<<<<<<<<<<< swap-mouse
+ 
+ void clipcopy(const Arg *dummy) {
+@@ -1083,10 +1083,6 @@ void xinit(int cols, int rows) {
+   Window parent;
+   pid_t thispid = getpid();
+   // >>>>>>>>>>>>>>>>>>>> swap-mouse
+-  // ==================== swap-mouse
+-  Cursor cursor;
+-  XColor xmousefg, xmousebg;
+-  // ==================== swap-mouse
+   // <<<<<<<<<<<<<<<<<<<< swap-mouse
+ 
+   // >>>>>>>>>>>>>>>>>>>> alpha
+@@ -1805,8 +1801,12 @@ void xsetmode(int set, unsigned int flags) {
+   MODBIT(win.mode, set, flags);
+ 
+   // >>>>>>>>>>>>>>>>>>>> swap-mouse
+-  // ==================== swap-mouse
+-  // ==================== swap-mouse
++  if (flags & MODE_MOUSE) {
++    if (win.mode & MODE_MOUSE)
++      XUndefineCursor(xw.dpy, xw.win);
++    else
++      XDefineCursor(xw.dpy, xw.win, cursor);
++  }
+   // <<<<<<<<<<<<<<<<<<<< swap-mouse
+ 
+   if ((win.mode & MODE_REVERSE) != (mode & MODE_REVERSE))
