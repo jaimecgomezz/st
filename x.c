@@ -659,6 +659,12 @@ void brelease(XEvent *e) {
 
   if (mouseaction(e, 1))
     return;
+
+  // >>>>>>>>>>>>>>>>>>>> right-click-paste
+  // ==================== right-click-paste
+  // ==================== right-click-paste
+  // <<<<<<<<<<<<<<<<<<<< right-click-paste
+
   if (e->xbutton.button == Button1)
     mousesel(e, 1);
 }
