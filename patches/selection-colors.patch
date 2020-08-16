@@ -1,0 +1,123 @@
+diff --git a/config.def.h b/config.def.h
+index 3e98437..9349526 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -124,9 +124,7 @@ static const char *colorname[] = {
+   /* more colors can be added after 255 to use with DefaultXX */
+   "#cccccc",
+   // >>>>>>>>>>>>>>>>>>>> selection-colors
+-  // ==================== selection-colors
+-  "#555555",
+-  // ==================== selection-colors
++  "#2e3440",
+   // <<<<<<<<<<<<<<<<<<<< selection-colors
+ 
+   // >>>>>>>>>>>>>>>>>>>> alpha
+@@ -150,8 +148,12 @@ static unsigned int defaultrcs = 257;
+ // <<<<<<<<<<<<<<<<<<<< iceberg-theme
+ 
+ // >>>>>>>>>>>>>>>>>>>> selection-colors
+-// ==================== selection-colors
+-// ==================== selection-colors
++/* Colors used for selection */
++unsigned int selectionbg = 257;
++unsigned int selectionfg = 7;
++/* If 0 use selectionfg as foreground in order to have a uniform foreground-color */
++/* Else if 1 keep original foreground-color of each cell => more colors :) */
++static int ignoreselfg = 1;
+ // <<<<<<<<<<<<<<<<<<<< selection-colors
+ 
+ // >>>>>>>>>>>>>>>>>>>> blinking-cursor
+diff --git a/st.h b/st.h
+index e9456b1..8941128 100644
+--- a/st.h
++++ b/st.h
+@@ -42,8 +42,7 @@ enum glyph_attribute {
+   // ==================== ligatures
+   // <<<<<<<<<<<<<<<<<<<< ligatures
+   // >>>>>>>>>>>>>>>>>>>> selection-colors
+-  // ==================== selection-colors
+-  // ==================== selection-colors
++  ATTR_SELECTED   = 1 << 12,
+   // <<<<<<<<<<<<<<<<<<<< selection-colors
+   ATTR_BOLD_FAINT = ATTR_BOLD | ATTR_FAINT,
+ };
+diff --git a/x.c b/x.c
+index daa7ebb..c4afdac 100644
+--- a/x.c
++++ b/x.c
+@@ -1451,8 +1451,11 @@ void xdrawglyphfontspecs(const XftGlyphFontSpec *specs, Glyph base, int len,
+   }
+ 
+   // >>>>>>>>>>>>>>>>>>>> selection-colors
+-  // ==================== selection-colors
+-  // ==================== selection-colors
++  if (base.mode & ATTR_SELECTED) {
++    bg = &dc.col[selectionbg];
++    if (!ignoreselfg)
++      fg = &dc.col[selectionfg];
++  }
+   // <<<<<<<<<<<<<<<<<<<< selection-colors
+ 
+   if (base.mode & ATTR_BLINK && win.mode & MODE_BLINK)
+@@ -1545,9 +1548,7 @@ void xdrawcursor(
+   /* remove the old cursor */
+   if (selected(ox, oy))
+     // >>>>>>>>>>>>>>>>>>>> selection-colors
+-    // ==================== selection-colors
+-    og.mode ^= ATTR_REVERSE;
+-    // ==================== selection-colors
++    og.mode ^= ATTR_SELECTED;
+     // <<<<<<<<<<<<<<<<<<<< selection-colors
+ 
+   // >>>>>>>>>>>>>>>>>>>> ligatures
+@@ -1567,33 +1568,17 @@ void xdrawcursor(
+   if (IS_SET(MODE_REVERSE)) {
+     g.mode |= ATTR_REVERSE;
+     // >>>>>>>>>>>>>>>>>>>> selection-colors
+-    // ==================== selection-colors
+-    // ==================== selection-colors
++    g.fg = defaultcs;
+     // <<<<<<<<<<<<<<<<<<<< selection-colors
+     g.bg = defaultfg;
+     // >>>>>>>>>>>>>>>>>>>> selection-colors
+-    // ==================== selection-colors
+-    if (selected(cx, cy)) {
+-      drawcol = dc.col[defaultcs];
+-      g.fg = defaultrcs;
+-    } else {
+-      drawcol = dc.col[defaultrcs];
+-      g.fg = defaultcs;
+-    }
+-    // ==================== selection-colors
++    drawcol = dc.col[defaultrcs];
+     // <<<<<<<<<<<<<<<<<<<< selection-colors
+   } else {
+     // >>>>>>>>>>>>>>>>>>>> selection-colors
+-    // ==================== selection-colors
+-    if (selected(cx, cy)) {
+-      g.fg = defaultfg;
+-      g.bg = defaultrcs;
+-    } else {
+-      g.fg = defaultbg;
+-      g.bg = defaultcs;
+-    }
+-    drawcol = dc.col[g.bg];
+-    // ==================== selection-colors
++    g.fg = defaultbg;
++    g.bg = defaultcs;
++    drawcol = dc.col[defaultcs];
+     // <<<<<<<<<<<<<<<<<<<< selection-colors
+   }
+ 
+@@ -1739,9 +1724,7 @@ void xdrawline(Line line, int x1, int y1, int x2) {
+       continue;
+     if (selected(x, y1))
+       // >>>>>>>>>>>>>>>>>>>> selection-colors
+-      // ==================== selection-colors
+-      new.mode ^= ATTR_REVERSE;
+-      // ==================== selection-colors
++      new.mode ^= ATTR_SELECTED;
+       // <<<<<<<<<<<<<<<<<<<< selection-colors
+     if (i > 0 && ATTRCMP(base, new)) {
+       xdrawglyphfontspecs(specs, base, i, ox, y1);

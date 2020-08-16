@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.15.0] - 2020-08-15
+
+### Changed
+
+- Prepare the selection-colors patch integration
+
+### Added
+
+- Add the selection-colors patch
+- Add the selection-colors patch to docs
+
 ## [0.14.0] - 2020-08-15
 
 - Prepare the right-click-paste patch integration

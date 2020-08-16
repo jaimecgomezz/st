@@ -41,6 +41,10 @@ enum glyph_attribute {
   // ==================== ligatures
   // ==================== ligatures
   // <<<<<<<<<<<<<<<<<<<< ligatures
+  // >>>>>>>>>>>>>>>>>>>> selection-colors
+  // ==================== selection-colors
+  // ==================== selection-colors
+  // <<<<<<<<<<<<<<<<<<<< selection-colors
   ATTR_BOLD_FAINT = ATTR_BOLD | ATTR_FAINT,
 };
 
