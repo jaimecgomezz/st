@@ -37,3 +37,6 @@ Patches:
                         menu and to display it with a nice icon
   right-click-paste     Pressing right-click pastes from the primary-selection
                           - If combined with the clipboard-patch right-click pastes from the clipboard
+  selection-colors      This patch adds the two color-settings selectionfg and selectionbg to config.def.h
+                          - Defines the fore- and background colors which are used when text on the screen
+                            is selected with the mouse
