@@ -1,7 +1,8 @@
 # st
+
 A patch-friendly [st](https://st.suckless.org/) distribution. Lets make `suckless software for everybody`.
 
-
+[![ss-Sat-15-Aug20-21-54.png](https://i.postimg.cc/zfKKZKFs/ss-Sat-15-Aug20-21-54.png)](https://postimg.cc/GB3HvBNK)
 
 ## Features
 
