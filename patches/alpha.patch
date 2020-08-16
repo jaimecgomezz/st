@@ -1,9 +1,9 @@
 diff --git a/config.def.h b/config.def.h
-index ddbabab..6789ba2 100644
+index 3e98437..270d52b 100644
 --- a/config.def.h
 +++ b/config.def.h
-@@ -126,8 +126,7 @@ static const char *colorname[] = {
-  "#555555",
+@@ -130,8 +130,7 @@ static const char *colorname[] = {
+   // <<<<<<<<<<<<<<<<<<<< selection-colors
  
    // >>>>>>>>>>>>>>>>>>>> alpha
 -  // ==================== alpha
@@ -12,8 +12,8 @@ index ddbabab..6789ba2 100644
    // <<<<<<<<<<<<<<<<<<<< alpha
  };
  
-@@ -489,8 +488,8 @@ static char ascii_printable[] =
-  "`abcdefghijklmnopqrstuvwxyz{|}~";
+@@ -510,8 +509,8 @@ static char ascii_printable[] =
+   "`abcdefghijklmnopqrstuvwxyz{|}~";
  
  // >>>>>>>>>>>>>>>>>>>> alpha
 -// ==================== alpha
@@ -24,7 +24,7 @@ index ddbabab..6789ba2 100644
  
  // >>>>>>>>>>>>>>>>>>>> focus
 diff --git a/config.mk b/config.mk
-index 43309cc..1d4c40c 100644
+index 64e00fb..39a72a1 100644
 --- a/config.mk
 +++ b/config.mk
 @@ -14,9 +14,7 @@ PKG_CONFIG = pkg-config
@@ -77,10 +77,10 @@ index 56785f5..0c4d8fe 100644
  .SH SHORTCUTS
  .TP
 diff --git a/st.h b/st.h
-index 62fab9f..d73f0f1 100644
+index e9456b1..c34df6e 100644
 --- a/st.h
 +++ b/st.h
-@@ -125,8 +125,7 @@ extern unsigned int defaultfg;
+@@ -137,8 +137,7 @@ extern unsigned int defaultfg;
  extern unsigned int defaultbg;
  
  // >>>>>>>>>>>>>>>>>>>> alpha
@@ -91,10 +91,10 @@ index 62fab9f..d73f0f1 100644
  
  // >>>>>>>>>>>>>>>>>>>> focus
 diff --git a/x.c b/x.c
-index 3cb6bec..ec49748 100644
+index 8716b6a..094411f 100644
 --- a/x.c
 +++ b/x.c
-@@ -112,8 +112,7 @@ typedef struct {
+@@ -116,8 +116,7 @@ typedef struct {
    int l, t;    /* left and top offset */
    int gm;      /* geometry mask */
    // >>>>>>>>>>>>>>>>>>>> alpha
@@ -104,7 +104,7 @@ index 3cb6bec..ec49748 100644
    // <<<<<<<<<<<<<<<<<<<< alpha
  } XWindow;
  
-@@ -256,8 +255,7 @@ static char *opt_line = NULL;
+@@ -260,8 +259,7 @@ static char *opt_line = NULL;
  static char *opt_name = NULL;
  static char *opt_title = NULL;
  // >>>>>>>>>>>>>>>>>>>> alpha
@@ -114,7 +114,7 @@ index 3cb6bec..ec49748 100644
  // <<<<<<<<<<<<<<<<<<<< alpha
  // >>>>>>>>>>>>>>>>>>>> focus
  // ==================== focus
-@@ -702,9 +700,7 @@ void xresize(int col, int row) {
+@@ -712,9 +710,7 @@ void xresize(int col, int row) {
        win.w,
        win.h,
        // >>>>>>>>>>>>>>>>>>>> alpha
@@ -125,7 +125,7 @@ index 3cb6bec..ec49748 100644
        // <<<<<<<<<<<<<<<<<<<< alpha
      );
    XftDrawChange(xw.draw, xw.buf);
-@@ -773,8 +769,12 @@ void xloadcols(void) {
+@@ -783,8 +779,12 @@ void xloadcols(void) {
      }
  
    // >>>>>>>>>>>>>>>>>>>> alpha
@@ -140,9 +140,9 @@ index 3cb6bec..ec49748 100644
    // <<<<<<<<<<<<<<<<<<<< alpha
  
    // >>>>>>>>>>>>>>>>>>>> focus
-@@ -1065,17 +1065,24 @@ void xinit(int cols, int rows) {
-   pid_t thispid = getpid();
+@@ -1081,17 +1081,24 @@ void xinit(int cols, int rows) {
    XColor xmousefg, xmousebg;
+ 
    // >>>>>>>>>>>>>>>>>>>> alpha
 -  // ==================== alpha
 -  // ==================== alpha
@@ -170,7 +170,7 @@ index 3cb6bec..ec49748 100644
    // <<<<<<<<<<<<<<<<<<<< alpha
  
    /* font */
-@@ -1087,9 +1094,7 @@ void xinit(int cols, int rows) {
+@@ -1103,9 +1110,7 @@ void xinit(int cols, int rows) {
  
    /* colors */
    // >>>>>>>>>>>>>>>>>>>> alpha
@@ -181,7 +181,7 @@ index 3cb6bec..ec49748 100644
    // <<<<<<<<<<<<<<<<<<<< alpha
    xloadcols();
  
-@@ -1116,10 +1121,6 @@ void xinit(int cols, int rows) {
+@@ -1132,10 +1137,6 @@ void xinit(int cols, int rows) {
    xw.attrs.colormap = xw.cmap;
  
    // >>>>>>>>>>>>>>>>>>>> alpha
@@ -192,7 +192,7 @@ index 3cb6bec..ec49748 100644
    // <<<<<<<<<<<<<<<<<<<< alpha
    xw.win = XCreateWindow(
        xw.dpy,
-@@ -1130,9 +1131,7 @@ void xinit(int cols, int rows) {
+@@ -1146,9 +1147,7 @@ void xinit(int cols, int rows) {
        win.h,
        0,
        // >>>>>>>>>>>>>>>>>>>> alpha
@@ -203,7 +203,7 @@ index 3cb6bec..ec49748 100644
        // <<<<<<<<<<<<<<<<<<<< alpha
        InputOutput,
        xw.vis,
-@@ -1143,11 +1142,8 @@ void xinit(int cols, int rows) {
+@@ -1159,11 +1158,8 @@ void xinit(int cols, int rows) {
    memset(&gcvalues, 0, sizeof(gcvalues));
    gcvalues.graphics_exposures = False;
    // >>>>>>>>>>>>>>>>>>>> alpha
@@ -217,7 +217,7 @@ index 3cb6bec..ec49748 100644
    // <<<<<<<<<<<<<<<<<<<< alpha
    XSetForeground(xw.dpy, dc.gc, dc.col[defaultbg].pixel);
    XFillRectangle(xw.dpy, xw.buf, dc.gc, 0, 0, win.w, win.h);
-@@ -2077,8 +2073,9 @@ int main(int argc, char *argv[]) {
+@@ -2143,8 +2139,9 @@ int main(int argc, char *argv[]) {
      die("%s " VERSION "\n", argv0);
      break;
    // >>>>>>>>>>>>>>>>>>>> alpha
