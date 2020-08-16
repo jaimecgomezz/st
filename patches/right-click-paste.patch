@@ -1,0 +1,15 @@
+diff --git a/x.c b/x.c
+index b529f8c..b19ea43 100644
+--- a/x.c
++++ b/x.c
+@@ -661,8 +661,8 @@ void brelease(XEvent *e) {
+     return;
+ 
+   // >>>>>>>>>>>>>>>>>>>> right-click-paste
+-  // ==================== right-click-paste
+-  // ==================== right-click-paste
++  if (e->xbutton.button == Button3)
++    selpaste(NULL);
+   // <<<<<<<<<<<<<<<<<<<< right-click-paste
+ 
+   if (e->xbutton.button == Button1)
