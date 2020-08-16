@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.16.0] - 2020-08-15
+
+### Changed
+
+- Prevent crasg between alpha and swap-mouse patches
+- Update alpha-patc
+- Prepare the swap-mouse patch integration
+
+### Added
+
+- Add the swap-mouse patch
+- Add the swap-mouse patch to docs
+
 ## [0.15.0] - 2020-08-15
 
 ### Changed
