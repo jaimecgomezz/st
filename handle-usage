@@ -35,3 +35,5 @@ Patches:
   delkey                Return BS on pressing backspace and DEL on pressing the delete key
   desktop-entry         Creates a desktop-entry for st. This enables to find st in a graphical
                         menu and to display it with a nice icon
+  right-click-paste     Pressing right-click pastes from the primary-selection
+                          - If combined with the clipboard-patch right-click pastes from the clipboard
