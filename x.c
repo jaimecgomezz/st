@@ -1450,6 +1450,11 @@ void xdrawglyphfontspecs(const XftGlyphFontSpec *specs, Glyph base, int len,
     bg = temp;
   }
 
+  // >>>>>>>>>>>>>>>>>>>> selection-colors
+  // ==================== selection-colors
+  // ==================== selection-colors
+  // <<<<<<<<<<<<<<<<<<<< selection-colors
+
   if (base.mode & ATTR_BLINK && win.mode & MODE_BLINK)
     fg = bg;
 
@@ -1539,7 +1544,11 @@ void xdrawcursor(
 
   /* remove the old cursor */
   if (selected(ox, oy))
+    // >>>>>>>>>>>>>>>>>>>> selection-colors
+    // ==================== selection-colors
     og.mode ^= ATTR_REVERSE;
+    // ==================== selection-colors
+    // <<<<<<<<<<<<<<<<<<<< selection-colors
 
   // >>>>>>>>>>>>>>>>>>>> ligatures
   // ==================== ligatures
@@ -1557,7 +1566,13 @@ void xdrawcursor(
 
   if (IS_SET(MODE_REVERSE)) {
     g.mode |= ATTR_REVERSE;
+    // >>>>>>>>>>>>>>>>>>>> selection-colors
+    // ==================== selection-colors
+    // ==================== selection-colors
+    // <<<<<<<<<<<<<<<<<<<< selection-colors
     g.bg = defaultfg;
+    // >>>>>>>>>>>>>>>>>>>> selection-colors
+    // ==================== selection-colors
     if (selected(cx, cy)) {
       drawcol = dc.col[defaultcs];
       g.fg = defaultrcs;
@@ -1565,7 +1580,11 @@ void xdrawcursor(
       drawcol = dc.col[defaultrcs];
       g.fg = defaultcs;
     }
+    // ==================== selection-colors
+    // <<<<<<<<<<<<<<<<<<<< selection-colors
   } else {
+    // >>>>>>>>>>>>>>>>>>>> selection-colors
+    // ==================== selection-colors
     if (selected(cx, cy)) {
       g.fg = defaultfg;
       g.bg = defaultrcs;
@@ -1574,6 +1593,8 @@ void xdrawcursor(
       g.bg = defaultcs;
     }
     drawcol = dc.col[g.bg];
+    // ==================== selection-colors
+    // <<<<<<<<<<<<<<<<<<<< selection-colors
   }
 
   /* draw the new one */
@@ -1717,7 +1738,11 @@ void xdrawline(Line line, int x1, int y1, int x2) {
     if (new.mode == ATTR_WDUMMY)
       continue;
     if (selected(x, y1))
+      // >>>>>>>>>>>>>>>>>>>> selection-colors
+      // ==================== selection-colors
       new.mode ^= ATTR_REVERSE;
+      // ==================== selection-colors
+      // <<<<<<<<<<<<<<<<<<<< selection-colors
     if (i > 0 && ATTRCMP(base, new)) {
       xdrawglyphfontspecs(specs, base, i, ox, y1);
       specs += i;

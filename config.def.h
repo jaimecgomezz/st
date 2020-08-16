@@ -123,7 +123,11 @@ static const char *colorname[] = {
 
   /* more colors can be added after 255 to use with DefaultXX */
   "#cccccc",
+  // >>>>>>>>>>>>>>>>>>>> selection-colors
+  // ==================== selection-colors
   "#555555",
+  // ==================== selection-colors
+  // <<<<<<<<<<<<<<<<<<<< selection-colors
 
   // >>>>>>>>>>>>>>>>>>>> alpha
   // ==================== alpha
@@ -144,6 +148,11 @@ static unsigned int defaultcs = 256;
 static unsigned int defaultrcs = 257;
 // ==================== iceberg-theme
 // <<<<<<<<<<<<<<<<<<<< iceberg-theme
+
+// >>>>>>>>>>>>>>>>>>>> selection-colors
+// ==================== selection-colors
+// ==================== selection-colors
+// <<<<<<<<<<<<<<<<<<<< selection-colors
 
 // >>>>>>>>>>>>>>>>>>>> blinking-cursor
 // ==================== blinking-cursor
