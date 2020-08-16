@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.14.0] - 2020-08-15
+
+- Prepare the right-click-paste patch integration
+
+### Added
+
+- Add the right-click-paste patch
+- Add the right-click-paste to docs
+
 ## [0.13.0] - 2020-08-15
 
 ### Changed
