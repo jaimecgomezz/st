@@ -7,11 +7,25 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.17.1] - 2020-08-18
+
+### Changed
+
+- Prepare the visual-bell patch integration
+- Remove buggy section from delkey patch
+- Retab st.info file
+- Update delkey patch with previous changes
+
+### Added
+
+- Add the visual-bell patch
+- Add the visual-bell patch to docs
+
 ## [0.16.0] - 2020-08-15
 
 ### Changed
 
-- Prevent crasg between alpha and swap-mouse patches
+- Prevent crash between alpha and swap-mouse patches
 - Update alpha-patc
 - Prepare the swap-mouse patch integration
 
