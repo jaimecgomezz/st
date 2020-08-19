@@ -42,3 +42,4 @@ Patches:
                             is selected with the mouse
   swap-mouse            This patch changes the mouse shape to the global default when the running program
                         subscribes for mouse events, for instance, in programs like ranger and fzf
+  visual-bell           Briefly inverts window content on terminal bell event

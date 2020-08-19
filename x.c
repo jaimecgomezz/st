@@ -271,6 +271,10 @@ static char *opt_title = NULL;
 // ==================== blinking-cursor
 // ==================== blinking-cursor
 // <<<<<<<<<<<<<<<<<<<< blinking-cursor
+// >>>>>>>>>>>>>>>>>>>> visualbell
+// ==================== visualbell
+// ==================== visualbell
+// <<<<<<<<<<<<<<<<<<<< visualbell
 
 static int oldbutton = 3; /* button event on startup: 3 = release */
 
@@ -1843,6 +1847,10 @@ void xbell(void) {
     xseturgency(1);
   if (bellvolume)
     XkbBell(xw.dpy, xw.win, bellvolume, (Atom)NULL);
+  // >>>>>>>>>>>>>>>>>>>> visualbell
+  // ==================== visualbell
+  // ==================== visualbell
+  // <<<<<<<<<<<<<<<<<<<< visualbell
 }
 
 void focus(XEvent *ev) {
@@ -2091,7 +2099,11 @@ void run(void) {
       }
     }
 
+    // >>>>>>>>>>>>>>>>>>>> visualbell
+    // ==================== visualbell
     draw();
+    // ==================== visualbell
+    // <<<<<<<<<<<<<<<<<<<< visualbell
     XFlush(xw.dpy);
     drawing = 0;
   }
