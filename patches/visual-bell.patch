@@ -1,0 +1,42 @@
+diff --git a/x.c b/x.c
+index a846153..d7d8b61 100644
+--- a/x.c
++++ b/x.c
+@@ -272,8 +272,7 @@ static char *opt_title = NULL;
+ // ==================== blinking-cursor
+ // <<<<<<<<<<<<<<<<<<<< blinking-cursor
+ // >>>>>>>>>>>>>>>>>>>> visualbell
+-// ==================== visualbell
+-// ==================== visualbell
++static int bellon = 0;    /* visual bell status */
+ // <<<<<<<<<<<<<<<<<<<< visualbell
+ 
+ static int oldbutton = 3; /* button event on startup: 3 = release */
+@@ -1848,8 +1847,8 @@ void xbell(void) {
+   if (bellvolume)
+     XkbBell(xw.dpy, xw.win, bellvolume, (Atom)NULL);
+   // >>>>>>>>>>>>>>>>>>>> visualbell
+-  // ==================== visualbell
+-  // ==================== visualbell
++  if (!bellon) /* turn visual bell on */
++    bellon = 1;
+   // <<<<<<<<<<<<<<<<<<<< visualbell
+ }
+ 
+@@ -2100,9 +2099,13 @@ void run(void) {
+     }
+ 
+     // >>>>>>>>>>>>>>>>>>>> visualbell
+-    // ==================== visualbell
+-    draw();
+-    // ==================== visualbell
++    if (bellon) {
++      bellon++;
++      bellon %= 3;
++      MODBIT(win.mode, !IS_SET(MODE_REVERSE), MODE_REVERSE);
++      redraw();
++    }
++    else draw();
+     // <<<<<<<<<<<<<<<<<<<< visualbell
+     XFlush(xw.dpy);
+     drawing = 0;
