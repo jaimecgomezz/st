@@ -275,6 +275,10 @@ static char *opt_title = NULL;
 // ==================== visualbell
 // ==================== visualbell
 // <<<<<<<<<<<<<<<<<<<< visualbell
+// >>>>>>>>>>>>>>>>>>>> working-dir
+// ==================== working-dir
+// ==================== working-dir
+// <<<<<<<<<<<<<<<<<<<< working-dir
 
 static int oldbutton = 3; /* button event on startup: 3 = release */
 
@@ -2122,6 +2126,10 @@ void usage(void) {
     "          [-T title]"
     "[-t title]"
     "[-w windowid]"
+    // >>>>>>>>>>>>>>>>>>>> working-dir
+    // ==================== working-dir
+    // ==================== working-dir
+    // <<<<<<<<<<<<<<<<<<<< working-dir
     " [[-e] command"
     "[args ...]]"
     "\n"
@@ -2136,6 +2144,10 @@ void usage(void) {
     "          [-T title]"
     "[-t title]"
     "[-w windowid]"
+    // >>>>>>>>>>>>>>>>>>>> working-dir
+    // ==================== working-dir
+    // ==================== working-dir
+    // <<<<<<<<<<<<<<<<<<<< working-dir
     "-l line"
     " [stty_args ...]"
     "\n",
@@ -2196,6 +2208,10 @@ int main(int argc, char *argv[]) {
   // ==================== alpha
   // ==================== alpha
   // <<<<<<<<<<<<<<<<<<<< alpha
+  // >>>>>>>>>>>>>>>>>>>> working-dir
+  // ==================== working-dir
+  // ==================== working-dir
+  // <<<<<<<<<<<<<<<<<<<< working-dir
   default:
     usage();
   }
@@ -2220,6 +2236,10 @@ run:
   xinit(cols, rows);
   xsetenv();
   selinit();
+  // >>>>>>>>>>>>>>>>>>>> working-dir
+  // ==================== working-dir
+  // ==================== working-dir
+  // <<<<<<<<<<<<<<<<<<<< working-dir
   run();
 
   return 0;
