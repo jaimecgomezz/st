@@ -275,6 +275,10 @@ static char *opt_title = NULL;
 // ==================== visualbell
 // ==================== visualbell
 // <<<<<<<<<<<<<<<<<<<< visualbell
+// >>>>>>>>>>>>>>>>>>>> working-dir
+// ==================== working-dir
+// ==================== working-dir
+// <<<<<<<<<<<<<<<<<<<< working-dir
 
 static int oldbutton = 3; /* button event on startup: 3 = release */
 
@@ -2110,15 +2114,46 @@ void run(void) {
 }
 
 void usage(void) {
-  die("usage: %s [-aiv] [-c class] [-f font] [-g geometry]"
-      " [-n name] [-o file]\n"
-      "          [-T title] [-t title] [-w windowid]"
-      " [[-e] command [args ...]]\n"
-      "       %s [-aiv] [-c class] [-f font] [-g geometry]"
-      " [-n name] [-o file]\n"
-      "          [-T title] [-t title] [-w windowid] -l line"
-      " [stty_args ...]\n",
-      argv0, argv0);
+  die(
+    "usage: %s"
+    "[-aiv]"
+    "[-c class]"
+    "[-f font]"
+    "[-g geometry]"
+    " [-n name]"
+    "[-o file]"
+    "\n"
+    "          [-T title]"
+    "[-t title]"
+    "[-w windowid]"
+    // >>>>>>>>>>>>>>>>>>>> working-dir
+    // ==================== working-dir
+    // ==================== working-dir
+    // <<<<<<<<<<<<<<<<<<<< working-dir
+    " [[-e] command"
+    "[args ...]]"
+    "\n"
+    "       %s"
+    "[-aiv]"
+    "[-c class]"
+    "[-f font]"
+    "[-g geometry]"
+    " [-n name]"
+    "[-o file]"
+    "\n"
+    "          [-T title]"
+    "[-t title]"
+    "[-w windowid]"
+    // >>>>>>>>>>>>>>>>>>>> working-dir
+    // ==================== working-dir
+    // ==================== working-dir
+    // <<<<<<<<<<<<<<<<<<<< working-dir
+    "-l line"
+    " [stty_args ...]"
+    "\n",
+    argv0,
+    argv0
+  );
 }
 
 int main(int argc, char *argv[]) {
@@ -2173,6 +2208,10 @@ int main(int argc, char *argv[]) {
   // ==================== alpha
   // ==================== alpha
   // <<<<<<<<<<<<<<<<<<<< alpha
+  // >>>>>>>>>>>>>>>>>>>> working-dir
+  // ==================== working-dir
+  // ==================== working-dir
+  // <<<<<<<<<<<<<<<<<<<< working-dir
   default:
     usage();
   }
@@ -2197,6 +2236,10 @@ run:
   xinit(cols, rows);
   xsetenv();
   selinit();
+  // >>>>>>>>>>>>>>>>>>>> working-dir
+  // ==================== working-dir
+  // ==================== working-dir
+  // <<<<<<<<<<<<<<<<<<<< working-dir
   run();
 
   return 0;

@@ -1,0 +1,95 @@
+diff --git a/st.1 b/st.1
+index 53c4445..2e15181 100644
+--- a/st.1
++++ b/st.1
+@@ -27,8 +27,8 @@ st \- simple terminal
+ \" ==================== alpha
+ \" <<<<<<<<<<<<<<<<<<<< alpha
+ \" >>>>>>>>>>>>>>>>>>>> working-dir
+-\" ==================== working-dir
+-\" ==================== working-dir
++.RB [ \-d
++.IR path ]
+ \" <<<<<<<<<<<<<<<<<<<< working-dir
+ .RB [[ \-e ]
+ .IR command
+@@ -57,8 +57,8 @@ st \- simple terminal
+ \" ==================== alpha
+ \" <<<<<<<<<<<<<<<<<<<< alpha
+ \" >>>>>>>>>>>>>>>>>>>> working-dir
+-\" ==================== working-dir
+-\" ==================== working-dir
++.RB [ \-d
++.IR path ]
+ \" <<<<<<<<<<<<<<<<<<<< working-dir
+ .RB \-l
+ .IR line
+@@ -144,8 +144,10 @@ even without it.
+ \" ==================== alpha
+ \" <<<<<<<<<<<<<<<<<<<< alpha
+ \" >>>>>>>>>>>>>>>>>>>> working-dir
+-\" ==================== working-dir
+-\" ==================== working-dir
++.BI \-d " path"
++changes the working directory to
++.IR path .
++.TP
+ \" <<<<<<<<<<<<<<<<<<<< working-dir
+ .SH SHORTCUTS
+ .TP
+diff --git a/x.c b/x.c
+index 95b81d6..d5c1e4d 100644
+--- a/x.c
++++ b/x.c
+@@ -276,8 +276,7 @@ static char *opt_title = NULL;
+ // ==================== visualbell
+ // <<<<<<<<<<<<<<<<<<<< visualbell
+ // >>>>>>>>>>>>>>>>>>>> working-dir
+-// ==================== working-dir
+-// ==================== working-dir
++static char *opt_dir   = NULL;
+ // <<<<<<<<<<<<<<<<<<<< working-dir
+ 
+ static int oldbutton = 3; /* button event on startup: 3 = release */
+@@ -2127,8 +2126,7 @@ void usage(void) {
+     "[-t title]"
+     "[-w windowid]"
+     // >>>>>>>>>>>>>>>>>>>> working-dir
+-    // ==================== working-dir
+-    // ==================== working-dir
++    "[-d path]"
+     // <<<<<<<<<<<<<<<<<<<< working-dir
+     " [[-e] command"
+     "[args ...]]"
+@@ -2145,8 +2143,7 @@ void usage(void) {
+     "[-t title]"
+     "[-w windowid]"
+     // >>>>>>>>>>>>>>>>>>>> working-dir
+-    // ==================== working-dir
+-    // ==================== working-dir
++    "[-d path]"
+     // <<<<<<<<<<<<<<<<<<<< working-dir
+     "-l line"
+     " [stty_args ...]"
+@@ -2209,8 +2206,9 @@ int main(int argc, char *argv[]) {
+   // ==================== alpha
+   // <<<<<<<<<<<<<<<<<<<< alpha
+   // >>>>>>>>>>>>>>>>>>>> working-dir
+-  // ==================== working-dir
+-  // ==================== working-dir
++  case 'd':
++    opt_dir = EARGF(usage());
++    break;
+   // <<<<<<<<<<<<<<<<<<<< working-dir
+   default:
+     usage();
+@@ -2237,8 +2235,7 @@ run:
+   xsetenv();
+   selinit();
+   // >>>>>>>>>>>>>>>>>>>> working-dir
+-  // ==================== working-dir
+-  // ==================== working-dir
++  chdir(opt_dir);
+   // <<<<<<<<<<<<<<<<<<<< working-dir
+   run();
+ 
