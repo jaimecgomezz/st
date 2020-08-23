@@ -43,3 +43,4 @@ Patches:
   swap-mouse            This patch changes the mouse shape to the global default when the running program
                         subscribes for mouse events, for instance, in programs like ranger and fzf
   visual-bell           Briefly inverts window content on terminal bell event
+  working-dir           Allows user to specify the initial path st should use as working directory
