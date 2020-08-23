@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.18.0] - 2020-08-22
+
+### Changed
+
+- Make usage func flexible
+- Prepare the working-dir patch integration
+
+### Added
+
+- Add the working-dir patch
+- Add the working-dir patch to docs
+
 ## [0.17.1] - 2020-08-18
 
 ### Changed
