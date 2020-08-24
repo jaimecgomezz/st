@@ -208,6 +208,10 @@ static void tfulldirt(void);
 // ==================== copy-url
 // ==================== copy-url
 // <<<<<<<<<<<<<<<<<<<< copy-url
+// >>>>>>>>>>>>>>>>>>>> new-term
+// ==================== new-term
+// ==================== new-term
+// <<<<<<<<<<<<<<<<<<<< new-term
 
 static void drawregion(int, int, int, int);
 
@@ -2409,3 +2413,8 @@ void redraw(void) {
 // ==================== copy-url
 // ==================== copy-url
 // <<<<<<<<<<<<<<<<<<<< copy-url
+
+// >>>>>>>>>>>>>>>>>>>> new-term
+// ==================== new-term
+// ==================== new-term
+// <<<<<<<<<<<<<<<<<<<< new-term
