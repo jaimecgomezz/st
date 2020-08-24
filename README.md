@@ -24,8 +24,8 @@ A patch-friendly [st](https://st.suckless.org/) distribution. Lets make `suckles
 | [swap-mouse](https://st.suckless.org/patches/swapmouse/)     | ✔️    | [sync](https://st.suckless.org/patches/sync/)                |      | [themed-cursor](https://st.suckless.org/patches/themed_cursor/) |      |
 | [visual-bell](https://st.suckless.org/patches/visualbell/)   | ✔️    | [vertcenter](https://st.suckless.org/patches/vertcenter/)    |      | [vim-browse](https://st.suckless.org/patches/vim_browse/)    |      |
 | [working-dir](https://st.suckless.org/patches/workingdir/)   | ✔️    | [universcroll](https://st.suckless.org/patches/universcroll/) |      | [w3m](https://st.suckless.org/patches/w3m/)                  |      |
-| [xresources](https://st.suckless.org/patches/xresources/)    |      | [xclearwin](https://st.suckless.org/patches/xclearwin/)      |      | [boxdraw](https://st.suckless.org/patches/boxdraw/)          |      |
-| [new-term](https://st.suckless.org/patches/newterm/)         |      |                                                              |      |                                                              |      |
+| [new-term](https://st.suckless.org/patches/newterm/)         | ✔️    | [xclearwin](https://st.suckless.org/patches/xclearwin/)      |      | [boxdraw](https://st.suckless.org/patches/boxdraw/)          |      |
+| [xresources](https://st.suckless.org/patches/xresources/)    |      |                                                              |      |                                                              |      |
 
 
 
