@@ -44,3 +44,5 @@ Patches:
                         subscribes for mouse events, for instance, in programs like ranger and fzf
   visual-bell           Briefly inverts window content on terminal bell event
   working-dir           Allows user to specify the initial path st should use as working directory
+  new-term              allows you to spawn a new st terminal using Ctrl-Shift-Return. It will have the
+                        same CWD (current working directory) as the original st instance
