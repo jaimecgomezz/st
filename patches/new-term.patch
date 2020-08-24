@@ -1,0 +1,64 @@
+diff --git a/config.def.h b/config.def.h
+index 22acd0e..7f77fc2 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -230,8 +230,7 @@ static Shortcut shortcuts[] = {
+   // ==================== copy-url
+   // <<<<<<<<<<<<<<<<<<<< copy-url
+   // >>>>>>>>>>>>>>>>>>>> new-term
+-  // ==================== new-term
+-  // ==================== new-term
++  { TERMMOD,              XK_Return,      newterm,        {.i =  0} },
+   // <<<<<<<<<<<<<<<<<<<< new-term
+ };
+ 
+diff --git a/st.c b/st.c
+index 5084002..c258063 100644
+--- a/st.c
++++ b/st.c
+@@ -209,8 +209,7 @@ static void tfulldirt(void);
+ // ==================== copy-url
+ // <<<<<<<<<<<<<<<<<<<< copy-url
+ // >>>>>>>>>>>>>>>>>>>> new-term
+-// ==================== new-term
+-// ==================== new-term
++static char *getcwd_by_pid(pid_t pid);
+ // <<<<<<<<<<<<<<<<<<<< new-term
+ 
+ static void drawregion(int, int, int, int);
+@@ -2415,6 +2414,21 @@ void redraw(void) {
+ // <<<<<<<<<<<<<<<<<<<< copy-url
+ 
+ // >>>>>>>>>>>>>>>>>>>> new-term
+-// ==================== new-term
+-// ==================== new-term
++void newterm(const Arg *a) {
++  switch (fork()) {
++  case -1:
++    die("fork failed: %s\n", strerror(errno));
++    break;
++  case 0:
++    chdir(getcwd_by_pid(pid));
++    execlp("st", "./st", NULL);
++    break;
++  }
++}
++
++static char *getcwd_by_pid(pid_t pid) {
++  char buf[32];
++  snprintf(buf, sizeof buf, "/proc/%d/cwd", pid);
++  return realpath(buf, NULL);
++}
+ // <<<<<<<<<<<<<<<<<<<< new-term
+diff --git a/st.h b/st.h
+index adbc7af..c316612 100644
+--- a/st.h
++++ b/st.h
+@@ -152,6 +152,5 @@ extern unsigned int defaultbg;
+ // <<<<<<<<<<<<<<<<<<<< copy-url
+ 
+ // >>>>>>>>>>>>>>>>>>>> new-term
+-// ==================== new-term
+-// ==================== new-term
++void newterm(const Arg *);
+ // <<<<<<<<<<<<<<<<<<<< new-term
