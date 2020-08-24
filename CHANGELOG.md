@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.19.0] - 2020-08-23
+
+### Changed
+
+- Prepare the new-term patch integration
+
+### Added
+
+- Add support for the new-term patch
+
 ## [0.18.0] - 2020-08-22
 
 ### Changed
