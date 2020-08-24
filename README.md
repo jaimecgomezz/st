@@ -8,7 +8,7 @@ A patch-friendly [st](https://st.suckless.org/) distribution. Lets make `suckles
 
 |                                                              |      | Patches                                                      |      |                                                              |      |
 | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ | ---- |
-| [alpha](https://st.suckless.org/patches/alpha/)              | ✔️    | [disable-bold-italic-fonts](https://st.suckless.org/patches/disable_bold_italic_fonts/) |      | [key-board-select](https://st.suckless.org/patches/keyboard_select/) |      |
+| [alpha](https://st.suckless.org/patches/alpha/)              | ✔️    | [disable-bold-italic-fonts](https://st.suckless.org/patches/disable_bold_italic_fonts/) | ✔️    | [key-board-select](https://st.suckless.org/patches/keyboard_select/) |      |
 | [alpha-focus-highlight](https://st.suckless.org/patches/alpha_focus_highlight/) | ✔️    | [dracula](https://st.suckless.org/patches/dracula/)          |      | [colors-at-launch](https://st.suckless.org/patches/colors_at_launch/) |      |
 | [anysize](https://st.suckless.org/patches/anysize/)          | ✔️    | [external-pipe](https://st.suckless.org/patches/externalpipe/) |      | [netwmicon](https://st.suckless.org/patches/netwmicon/)      |      |
 | [blinking-cursor](https://st.suckless.org/patches/blinking_cursor/) | ✔️    | [external-pipe-signal](https://st.suckless.org/patches/externalpipe-signal/) |      | [visual-bell-2](https://st.suckless.org/patches/visualbell2/) |      |

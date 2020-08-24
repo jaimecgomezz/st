@@ -1,50 +1,52 @@
 Patches:
-  alpha                 This patch allows users to change the opacity of the background
-                          - The alpha value affects the default background only.
-                          - The color designated by 'defaultbg' should not be used elsewhere.
-                          - Embedding might fail after applying this patch.
-                          - alpha defines the opacity if the term
-  alpha-focus-highlight Allows the user to specify two distinct opacity values/background
-                        colors; one for the focused and one for unfocused windows' background
-                          - alpha should be applied first
-                          - alpha/alphaUnfocused opacity of the term when focused/not focused.
-                          - bg/bgUnfocused background color when focused/not focused.
-  anysize               This patch allows st to resize to any pixel size, makes the inner border
-                        size dynamic, and centers the content of the terminal so that the
-                        left/right and top/bottom borders are balanced. With this patch, st on a
-                        tiling WM will always fill the entire space allocated to it
-  blinking-cursor       This patch allows the use of a blinking cursor, you can test them with:
-                          - echo -e -n "\x1b[\x30 q" # Blinking block
-                          - echo -e -n "\x1b[\x31 q" # Blinking block (default)
-                          - echo -e -n "\x1b[\x32 q" # Steady block
-                          - echo -e -n "\x1b[\x33 q" # Blinking underline
-                          - echo -e -n "\x1b[\x34 q" # Steady underline
-                          - echo -e -n "\x1b[\x35 q" # Blinking bar
-                          - echo -e -n "\x1b[\x36 q" # Steady bar
-                          - echo -e -n "\x1b[\x37 q" # Blinking st cursor
-                          - echo -e -n "\x1b[\x38 q" # Steady st cursor
-  bold-is-not-bright    This patch makes bold text rendered simply as bold, leaving the color
-                        unaffected
-  iceberg-theme         This patch applies the iceberg theme to st
-  clipboard             This trivial patch sets CLIPBOARD on selection, the same as your browser
-  ligatures             This patch adds proper drawing of ligatures
-                          - It is not 100% compatible with Scrollback and Alpha patches
-                          - The original patch does not work very well with the boxdraw patch
-  copy-url              Select, highlight and copy the last URL displayed with Mod1+l. Multiple
-                        invocations cycle through the available URLs
-  delkey                Return BS on pressing backspace and DEL on pressing the delete key
-  desktop-entry         Creates a desktop-entry for st. This enables to find st in a graphical
-                        menu and to display it with a nice icon
-  right-click-paste     Pressing right-click pastes from the primary-selection
-                          - If combined with the clipboard-patch right-click pastes from the clipboard
-  selection-colors      This patch adds the two color-settings selectionfg and selectionbg to config.def.h
-                          - Defines the fore- and background colors which are used when text on the screen
-                            is selected with the mouse
-  swap-mouse            This patch changes the mouse shape to the global default when the running program
-                        subscribes for mouse events, for instance, in programs like ranger and fzf
-  visual-bell           Briefly inverts window content on terminal bell event
-  working-dir           Allows user to specify the initial path st should use as working directory
-  new-term              allows you to spawn a new st terminal using Ctrl-Shift-Return. It will have the
-                        same CWD (current working directory) as the original st instance
-  xresources            This patch adds the ability to configure st via Xresources. At startup, st will read
-                        and apply the resources named in the resources[] array in config.h
+  alpha                     This patch allows users to change the opacity of the background
+                              - The alpha value affects the default background only.
+                              - The color designated by 'defaultbg' should not be used elsewhere.
+                              - Embedding might fail after applying this patch.
+                              - alpha defines the opacity if the term
+  alpha-focus-highlight     Allows the user to specify two distinct opacity values/background
+                            colors; one for the focused and one for unfocused windows' background
+                              - alpha should be applied first
+                              - alpha/alphaUnfocused opacity of the term when focused/not focused.
+                              - bg/bgUnfocused background color when focused/not focused.
+  anysize                   This patch allows st to resize to any pixel size, makes the inner border
+                            size dynamic, and centers the content of the terminal so that the
+                            left/right and top/bottom borders are balanced. With this patch, st on a
+                            tiling WM will always fill the entire space allocated to it
+  blinking-cursor           This patch allows the use of a blinking cursor, you can test them with:
+                              - echo -e -n "\x1b[\x30 q" # Blinking block
+                              - echo -e -n "\x1b[\x31 q" # Blinking block (default)
+                              - echo -e -n "\x1b[\x32 q" # Steady block
+                              - echo -e -n "\x1b[\x33 q" # Blinking underline
+                              - echo -e -n "\x1b[\x34 q" # Steady underline
+                              - echo -e -n "\x1b[\x35 q" # Blinking bar
+                              - echo -e -n "\x1b[\x36 q" # Steady bar
+                              - echo -e -n "\x1b[\x37 q" # Blinking st cursor
+                              - echo -e -n "\x1b[\x38 q" # Steady st cursor
+  bold-is-not-bright        This patch makes bold text rendered simply as bold, leaving the color
+                            unaffected
+  iceberg-theme             This patch applies the iceberg theme to st
+  clipboard                 This trivial patch sets CLIPBOARD on selection, the same as your browser
+  ligatures                 This patch adds proper drawing of ligatures
+                              - It is not 100% compatible with Scrollback and Alpha patches
+                              - The original patch does not work very well with the boxdraw patch
+  copy-url                  Select, highlight and copy the last URL displayed with Mod1+l. Multiple
+                            invocations cycle through the available URLs
+  delkey                    Return BS on pressing backspace and DEL on pressing the delete key
+  desktop-entry             Creates a desktop-entry for st. This enables to find st in a graphical
+                            menu and to display it with a nice icon
+  right-click-paste         Pressing right-click pastes from the primary-selection
+                              - If combined with the clipboard-patch right-click pastes from the clipboard
+  selection-colors          This patch adds the two color-settings selectionfg and selectionbg to config.def.h
+                              - Defines the fore- and background colors which are used when text on the screen
+                                is selected with the mouse
+  swap-mouse                This patch changes the mouse shape to the global default when the running program
+                            subscribes for mouse events, for instance, in programs like ranger and fzf
+  visual-bell               Briefly inverts window content on terminal bell event
+  working-dir               Allows user to specify the initial path st should use as working directory
+  new-term                  allows you to spawn a new st terminal using Ctrl-Shift-Return. It will have the
+                            same CWD (current working directory) as the original st instance
+  xresources                This patch adds the ability to configure st via Xresources. At startup, st will read
+                            and apply the resources named in the resources[] array in config.h
+  disable-bold-italic-fonts Some terminals allow disabling bold/italic fonts globally. So this patch adds such
+                            option as well.
