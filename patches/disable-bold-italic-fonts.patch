@@ -1,0 +1,46 @@
+diff --git a/config.def.h b/config.def.h
+index e43bf96..38a9e48 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -529,6 +529,8 @@ static char ascii_printable[] =
+ // <<<<<<<<<<<<<<<<<<<< xresources
+ 
+ // >>>>>>>>>>>>>>>>>>>> disable-bold-italic-fonts
+-// ==================== disable-bold-italic-fonts
+-// ==================== disable-bold-italic-fonts
++/* disable bold, italic and roman fonts globally */
++int disablebold = 0;
++int disableitalic = 0;
++int disableroman = 0;
+ // <<<<<<<<<<<<<<<<<<<< disable-bold-italic-fonts
+diff --git a/x.c b/x.c
+index 6618220..1046349 100644
+--- a/x.c
++++ b/x.c
+@@ -289,8 +289,10 @@ static char *opt_title = NULL;
+ // ==================== working-dir
+ // <<<<<<<<<<<<<<<<<<<< working-dir
+ // >>>>>>>>>>>>>>>>>>>> disable-bold-italic-fonts
+-// ==================== disable-bold-italic-fonts
+-// ==================== disable-bold-italic-fonts
++/* declared in config.h */
++extern int disablebold;
++extern int disableitalic;
++extern int disableroman;
+ // <<<<<<<<<<<<<<<<<<<< disable-bold-italic-fonts
+ 
+ static int oldbutton = 3; /* button event on startup: 3 = release */
+@@ -1021,9 +1023,10 @@ void xloadfonts(char *fontstr, double fontsize) {
+ 
+   FcPatternDel(pattern, FC_SLANT);
+   // >>>>>>>>>>>>>>>>>>>> disable-bold-italic-fonts
+-  // ==================== disable-bold-italic-fonts
+-  FcPatternAddInteger(pattern, FC_SLANT, FC_SLANT_ITALIC);
+-  // ==================== disable-bold-italic-fonts
++  if (!disableitalic)
++    FcPatternAddInteger(pattern, FC_SLANT, FC_SLANT_ITALIC);
++  if (!disableroman)
++    FcPatternAddInteger(pattern, FC_SLANT, FC_SLANT_ROMAN);
+   // <<<<<<<<<<<<<<<<<<<< disable-bold-italic-fonts
+   if (xloadfont(&dc.ifont, pattern))
+     die("can't open font %s\n", fontstr);
