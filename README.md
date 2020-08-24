@@ -25,7 +25,7 @@ A patch-friendly [st](https://st.suckless.org/) distribution. Lets make `suckles
 | [visual-bell](https://st.suckless.org/patches/visualbell/)   | ✔️    | [vertcenter](https://st.suckless.org/patches/vertcenter/)    |      | [vim-browse](https://st.suckless.org/patches/vim_browse/)    |      |
 | [working-dir](https://st.suckless.org/patches/workingdir/)   | ✔️    | [universcroll](https://st.suckless.org/patches/universcroll/) |      | [w3m](https://st.suckless.org/patches/w3m/)                  |      |
 | [new-term](https://st.suckless.org/patches/newterm/)         | ✔️    | [xclearwin](https://st.suckless.org/patches/xclearwin/)      |      | [boxdraw](https://st.suckless.org/patches/boxdraw/)          |      |
-| [xresources](https://st.suckless.org/patches/xresources/)    |      |                                                              |      |                                                              |      |
+| [xresources](https://st.suckless.org/patches/xresources/)    | ✔️    |                                                              |      |                                                              |      |
 
 
 
