@@ -23,6 +23,10 @@ char *argv0;
 // ==================== ligatures
 // ==================== ligatures
 // <<<<<<<<<<<<<<<<<<<< ligatures
+// >>>>>>>>>>>>>>>>>>>> xresources
+// ==================== xresources
+// ==================== xresources
+// <<<<<<<<<<<<<<<<<<<< xresources
 
 /* types used in config.h */
 typedef struct {
@@ -48,6 +52,11 @@ typedef struct {
   signed char appkey;    /* application keypad */
   signed char appcursor; /* application cursor */
 } Key;
+
+// >>>>>>>>>>>>>>>>>>>> xresources
+// ==================== xresources
+// ==================== xresources
+// <<<<<<<<<<<<<<<<<<<< xresources
 
 /* X modifiers */
 #define XK_ANY_MOD UINT_MAX
@@ -832,8 +841,12 @@ void xclear(int x1, int y1, int x2, int y2) {
 }
 
 void xhints(void) {
+  // >>>>>>>>>>>>>>>>>>>> xresources
+  // ==================== xresources
   XClassHint class = {opt_name ? opt_name : termname,
                       opt_class ? opt_class : termname};
+  // ==================== xresources
+  // <<<<<<<<<<<<<<<<<<<< xresources
   XWMHints wm = {.flags = InputHint, .input = 1};
   XSizeHints *sizeh;
 
@@ -1102,8 +1115,12 @@ void xinit(int cols, int rows) {
   // ==================== alpha
   // <<<<<<<<<<<<<<<<<<<< alpha
 
+  // >>>>>>>>>>>>>>>>>>>> xresources
+  // ==================== xresources
   if (!(xw.dpy = XOpenDisplay(NULL)))
     die("can't open display\n");
+  // ==================== xresources
+  // <<<<<<<<<<<<<<<<<<<< xresources
   xw.scr = XDefaultScreen(xw.dpy);
   // >>>>>>>>>>>>>>>>>>>> alpha
   // ==================== alpha
@@ -2113,6 +2130,11 @@ void run(void) {
   }
 }
 
+// >>>>>>>>>>>>>>>>>>>> xresources
+// ==================== xresources
+// ==================== xresources
+// <<<<<<<<<<<<<<<<<<<< xresources
+
 void usage(void) {
   die(
     "usage: %s"
@@ -2226,6 +2248,10 @@ run:
 
   setlocale(LC_CTYPE, "");
   XSetLocaleModifiers("");
+  // >>>>>>>>>>>>>>>>>>>> xresources
+  // ==================== xresources
+  // ==================== xresources
+  // <<<<<<<<<<<<<<<<<<<< xresources
   cols = MAX(cols, 1);
   rows = MAX(rows, 1);
   // >>>>>>>>>>>>>>>>>>>> focus

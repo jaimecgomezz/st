@@ -1,5 +1,5 @@
 diff --git a/config.def.h b/config.def.h
-index 3e98437..270d52b 100644
+index 779308a..c9302f8 100644
 --- a/config.def.h
 +++ b/config.def.h
 @@ -130,8 +130,7 @@ static const char *colorname[] = {
@@ -12,7 +12,7 @@ index 3e98437..270d52b 100644
    // <<<<<<<<<<<<<<<<<<<< alpha
  };
  
-@@ -510,8 +509,8 @@ static char ascii_printable[] =
+@@ -514,8 +513,8 @@ static char ascii_printable[] =
    "`abcdefghijklmnopqrstuvwxyz{|}~";
  
  // >>>>>>>>>>>>>>>>>>>> alpha
@@ -39,7 +39,7 @@ index 64e00fb..39a72a1 100644
  
  
 diff --git a/st.1 b/st.1
-index 56785f5..0c4d8fe 100644
+index 53c4445..8580d00 100644
 --- a/st.1
 +++ b/st.1
 @@ -23,8 +23,8 @@ st \- simple terminal
@@ -51,9 +51,9 @@ index 56785f5..0c4d8fe 100644
 +.RB [ \-A
 +.IR opacity ]
  \" <<<<<<<<<<<<<<<<<<<< alpha
- .RB [[ \-e ]
- .IR command
-@@ -49,8 +49,8 @@ st \- simple terminal
+ \" >>>>>>>>>>>>>>>>>>>> working-dir
+ \" ==================== working-dir
+@@ -53,8 +53,8 @@ st \- simple terminal
  .RB [ \-w
  .IR windowid ]
  \" >>>>>>>>>>>>>>>>>>>> alpha
@@ -62,9 +62,9 @@ index 56785f5..0c4d8fe 100644
 +.RB [ \-A
 +.IR opacity ]
  \" <<<<<<<<<<<<<<<<<<<< alpha
- .RB \-l
- .IR line
-@@ -132,8 +132,9 @@ This option is only intended for compatibility,
+ \" >>>>>>>>>>>>>>>>>>>> working-dir
+ \" ==================== working-dir
+@@ -140,8 +140,9 @@ This option is only intended for compatibility,
  and all the remaining arguments are used as a command
  even without it.
  \" >>>>>>>>>>>>>>>>>>>> alpha
@@ -74,10 +74,10 @@ index 56785f5..0c4d8fe 100644
 +allows users to change the opacity of the background
 +.TP
  \" <<<<<<<<<<<<<<<<<<<< alpha
- .SH SHORTCUTS
- .TP
+ \" >>>>>>>>>>>>>>>>>>>> working-dir
+ \" ==================== working-dir
 diff --git a/st.h b/st.h
-index e9456b1..c34df6e 100644
+index adbc7af..b8b18a7 100644
 --- a/st.h
 +++ b/st.h
 @@ -137,8 +137,7 @@ extern unsigned int defaultfg;
@@ -91,10 +91,10 @@ index e9456b1..c34df6e 100644
  
  // >>>>>>>>>>>>>>>>>>>> focus
 diff --git a/x.c b/x.c
-index 8716b6a..094411f 100644
+index a9fa781..4209276 100644
 --- a/x.c
 +++ b/x.c
-@@ -116,8 +116,7 @@ typedef struct {
+@@ -125,8 +125,7 @@ typedef struct {
    int l, t;    /* left and top offset */
    int gm;      /* geometry mask */
    // >>>>>>>>>>>>>>>>>>>> alpha
@@ -104,7 +104,7 @@ index 8716b6a..094411f 100644
    // <<<<<<<<<<<<<<<<<<<< alpha
  } XWindow;
  
-@@ -260,8 +259,7 @@ static char *opt_line = NULL;
+@@ -269,8 +268,7 @@ static char *opt_line = NULL;
  static char *opt_name = NULL;
  static char *opt_title = NULL;
  // >>>>>>>>>>>>>>>>>>>> alpha
@@ -114,7 +114,7 @@ index 8716b6a..094411f 100644
  // <<<<<<<<<<<<<<<<<<<< alpha
  // >>>>>>>>>>>>>>>>>>>> focus
  // ==================== focus
-@@ -712,9 +710,7 @@ void xresize(int col, int row) {
+@@ -734,9 +732,7 @@ void xresize(int col, int row) {
        win.w,
        win.h,
        // >>>>>>>>>>>>>>>>>>>> alpha
@@ -125,7 +125,7 @@ index 8716b6a..094411f 100644
        // <<<<<<<<<<<<<<<<<<<< alpha
      );
    XftDrawChange(xw.draw, xw.buf);
-@@ -783,8 +779,12 @@ void xloadcols(void) {
+@@ -805,8 +801,12 @@ void xloadcols(void) {
      }
  
    // >>>>>>>>>>>>>>>>>>>> alpha
@@ -140,8 +140,8 @@ index 8716b6a..094411f 100644
    // <<<<<<<<<<<<<<<<<<<< alpha
  
    // >>>>>>>>>>>>>>>>>>>> focus
-@@ -1081,17 +1081,24 @@ void xinit(int cols, int rows) {
-   XColor xmousefg, xmousebg;
+@@ -1111,8 +1111,8 @@ void xinit(int cols, int rows) {
+   // <<<<<<<<<<<<<<<<<<<< swap-mouse
  
    // >>>>>>>>>>>>>>>>>>>> alpha
 -  // ==================== alpha
@@ -150,8 +150,9 @@ index 8716b6a..094411f 100644
 +  XVisualInfo vis;
    // <<<<<<<<<<<<<<<<<<<< alpha
  
-   if (!(xw.dpy = XOpenDisplay(NULL)))
-     die("can't open display\n");
+   // >>>>>>>>>>>>>>>>>>>> xresources
+@@ -1123,9 +1123,16 @@ void xinit(int cols, int rows) {
+   // <<<<<<<<<<<<<<<<<<<< xresources
    xw.scr = XDefaultScreen(xw.dpy);
    // >>>>>>>>>>>>>>>>>>>> alpha
 -  // ==================== alpha
@@ -170,7 +171,7 @@ index 8716b6a..094411f 100644
    // <<<<<<<<<<<<<<<<<<<< alpha
  
    /* font */
-@@ -1103,9 +1110,7 @@ void xinit(int cols, int rows) {
+@@ -1137,9 +1144,7 @@ void xinit(int cols, int rows) {
  
    /* colors */
    // >>>>>>>>>>>>>>>>>>>> alpha
@@ -181,7 +182,7 @@ index 8716b6a..094411f 100644
    // <<<<<<<<<<<<<<<<<<<< alpha
    xloadcols();
  
-@@ -1132,10 +1137,6 @@ void xinit(int cols, int rows) {
+@@ -1166,10 +1171,6 @@ void xinit(int cols, int rows) {
    xw.attrs.colormap = xw.cmap;
  
    // >>>>>>>>>>>>>>>>>>>> alpha
@@ -192,7 +193,7 @@ index 8716b6a..094411f 100644
    // <<<<<<<<<<<<<<<<<<<< alpha
    xw.win = XCreateWindow(
        xw.dpy,
-@@ -1146,9 +1147,7 @@ void xinit(int cols, int rows) {
+@@ -1180,9 +1181,7 @@ void xinit(int cols, int rows) {
        win.h,
        0,
        // >>>>>>>>>>>>>>>>>>>> alpha
@@ -203,7 +204,7 @@ index 8716b6a..094411f 100644
        // <<<<<<<<<<<<<<<<<<<< alpha
        InputOutput,
        xw.vis,
-@@ -1159,11 +1158,8 @@ void xinit(int cols, int rows) {
+@@ -1193,11 +1192,8 @@ void xinit(int cols, int rows) {
    memset(&gcvalues, 0, sizeof(gcvalues));
    gcvalues.graphics_exposures = False;
    // >>>>>>>>>>>>>>>>>>>> alpha
@@ -217,7 +218,7 @@ index 8716b6a..094411f 100644
    // <<<<<<<<<<<<<<<<<<<< alpha
    XSetForeground(xw.dpy, dc.gc, dc.col[defaultbg].pixel);
    XFillRectangle(xw.dpy, xw.buf, dc.gc, 0, 0, win.w, win.h);
-@@ -2143,8 +2139,9 @@ int main(int argc, char *argv[]) {
+@@ -2227,8 +2223,9 @@ int main(int argc, char *argv[]) {
      die("%s " VERSION "\n", argv0);
      break;
    // >>>>>>>>>>>>>>>>>>>> alpha
@@ -227,5 +228,5 @@ index 8716b6a..094411f 100644
 +    opt_alpha = EARGF(usage());
 +    break;
    // <<<<<<<<<<<<<<<<<<<< alpha
-   default:
-     usage();
+   // >>>>>>>>>>>>>>>>>>>> working-dir
+   // ==================== working-dir

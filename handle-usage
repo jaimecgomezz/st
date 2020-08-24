@@ -46,3 +46,5 @@ Patches:
   working-dir           Allows user to specify the initial path st should use as working directory
   new-term              allows you to spawn a new st terminal using Ctrl-Shift-Return. It will have the
                         same CWD (current working directory) as the original st instance
+  xresources            This patch adds the ability to configure st via Xresources. At startup, st will read
+                        and apply the resources named in the resources[] array in config.h
