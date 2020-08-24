@@ -288,6 +288,10 @@ static char *opt_title = NULL;
 // ==================== working-dir
 // ==================== working-dir
 // <<<<<<<<<<<<<<<<<<<< working-dir
+// >>>>>>>>>>>>>>>>>>>> disable-bold-italic-fonts
+// ==================== disable-bold-italic-fonts
+// ==================== disable-bold-italic-fonts
+// <<<<<<<<<<<<<<<<<<<< disable-bold-italic-fonts
 
 static int oldbutton = 3; /* button event on startup: 3 = release */
 
@@ -1016,7 +1020,11 @@ void xloadfonts(char *fontstr, double fontsize) {
   win.ch = ceilf(dc.font.height * chscale);
 
   FcPatternDel(pattern, FC_SLANT);
+  // >>>>>>>>>>>>>>>>>>>> disable-bold-italic-fonts
+  // ==================== disable-bold-italic-fonts
   FcPatternAddInteger(pattern, FC_SLANT, FC_SLANT_ITALIC);
+  // ==================== disable-bold-italic-fonts
+  // <<<<<<<<<<<<<<<<<<<< disable-bold-italic-fonts
   if (xloadfont(&dc.ifont, pattern))
     die("can't open font %s\n", fontstr);
 

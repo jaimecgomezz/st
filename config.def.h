@@ -527,3 +527,8 @@ static char ascii_printable[] =
 // ==================== xresources
 // ==================== xresources
 // <<<<<<<<<<<<<<<<<<<< xresources
+
+// >>>>>>>>>>>>>>>>>>>> disable-bold-italic-fonts
+// ==================== disable-bold-italic-fonts
+// ==================== disable-bold-italic-fonts
+// <<<<<<<<<<<<<<<<<<<< disable-bold-italic-fonts
