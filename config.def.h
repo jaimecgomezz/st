@@ -522,3 +522,8 @@ static char ascii_printable[] =
 // ==================== focus
 // ==================== focus
 // <<<<<<<<<<<<<<<<<<<< focus
+
+// >>>>>>>>>>>>>>>>>>>> xresources
+// ==================== xresources
+// ==================== xresources
+// <<<<<<<<<<<<<<<<<<<< xresources
