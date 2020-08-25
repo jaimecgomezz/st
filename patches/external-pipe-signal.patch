@@ -1,0 +1,63 @@
+diff --git a/config.def.h b/config.def.h
+index ca9ca32..d7c0bf7 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -537,6 +537,5 @@ static char ascii_printable[] =
+ // <<<<<<<<<<<<<<<<<<<< dracula
+ 
+ // >>>>>>>>>>>>>>>>>>>> external-pipe-signal
+-// ==================== external-pipe-signal
+-// ==================== external-pipe-signal
++char *externalpipe_sigusr1[] = {"/bin/sh", "-c", "externalpipe_buffer.sh st_strings_read"};
+ // <<<<<<<<<<<<<<<<<<<< external-pipe-signal
+diff --git a/st.c b/st.c
+index a78d231..abbc524 100644
+--- a/st.c
++++ b/st.c
+@@ -213,8 +213,7 @@ static void tfulldirt(void);
+ // ==================== new-term
+ // <<<<<<<<<<<<<<<<<<<< new-term
+ // >>>>>>>>>>>>>>>>>>>> external-pipe-signal
+-// ==================== external-pipe-signal
+-// ==================== external-pipe-signal
++static void sigusr1(int);
+ // <<<<<<<<<<<<<<<<<<<< external-pipe-signal
+ 
+ static void drawregion(int, int, int, int);
+@@ -725,8 +724,11 @@ int ttynew(char *line, char *cmd, char *out, char **args) {
+   int m, s;
+ 
+   // >>>>>>>>>>>>>>>>>>>> external-pipe-signal
+-  // ==================== external-pipe-signal
+-  // ==================== external-pipe-signal
++  static struct sigaction sa;
++  sa.sa_handler = sigusr1;
++  sigemptyset(&sa.sa_mask);
++  sa.sa_flags = SA_RESTART;
++  sigaction(SIGUSR1, &sa, NULL);
+   // <<<<<<<<<<<<<<<<<<<< external-pipe-signal
+ 
+   if (out) {
+@@ -2434,6 +2436,8 @@ void redraw(void) {
+ // <<<<<<<<<<<<<<<<<<<< external-pipe
+ 
+ // >>>>>>>>>>>>>>>>>>>> external-pipe-signal
+-// ==================== external-pipe-signal
+-// ==================== external-pipe-signal
++void sigusr1(int unused) {
++  static Arg a = {.v = externalpipe_sigusr1};
++  externalpipe(&a);
++}
+ // <<<<<<<<<<<<<<<<<<<< external-pipe-signal
+diff --git a/st.h b/st.h
+index b2abc2d..76aea27 100644
+--- a/st.h
++++ b/st.h
+@@ -162,6 +162,5 @@ extern unsigned int defaultbg;
+ // <<<<<<<<<<<<<<<<<<<< external-pipe
+ 
+ // >>>>>>>>>>>>>>>>>>>> external-pipe-signal
+-// ==================== external-pipe-signal
+-// ==================== external-pipe-signal
++extern char *externalpipe_sigusr1[];
+ // <<<<<<<<<<<<<<<<<<<< external-pipe-signal

@@ -535,3 +535,8 @@ static char ascii_printable[] =
 // ==================== dracula
 // ==================== dracula
 // <<<<<<<<<<<<<<<<<<<< dracula
+
+// >>>>>>>>>>>>>>>>>>>> external-pipe-signal
+// ==================== external-pipe-signal
+// ==================== external-pipe-signal
+// <<<<<<<<<<<<<<<<<<<< external-pipe-signal

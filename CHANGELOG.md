@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.24.0] - 2020-08-24
+
+### Changed
+
+- Prepare the external-pipe-signal patch integration
+
+### Added
+
+- Add support for the external-pipe-signal patch
+
 ## [0.23.0] - 2020-08-24
 
 ### Changed

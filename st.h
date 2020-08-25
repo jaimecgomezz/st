@@ -160,3 +160,8 @@ extern unsigned int defaultbg;
 // ==================== external-pipe
 // ==================== external-pipe
 // <<<<<<<<<<<<<<<<<<<< external-pipe
+
+// >>>>>>>>>>>>>>>>>>>> external-pipe-signal
+// ==================== external-pipe-signal
+// ==================== external-pipe-signal
+// <<<<<<<<<<<<<<<<<<<< external-pipe-signal
