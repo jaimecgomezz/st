@@ -2418,3 +2418,8 @@ void redraw(void) {
 // ==================== new-term
 // ==================== new-term
 // <<<<<<<<<<<<<<<<<<<< new-term
+
+// >>>>>>>>>>>>>>>>>>>> external-pipe
+// ==================== external-pipe
+// ==================== external-pipe
+// <<<<<<<<<<<<<<<<<<<< external-pipe
