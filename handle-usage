@@ -13,19 +13,11 @@ Patches:
                             size dynamic, and centers the content of the terminal so that the
                             left/right and top/bottom borders are balanced. With this patch, st on a
                             tiling WM will always fill the entire space allocated to it
-  blinking-cursor           This patch allows the use of a blinking cursor, you can test them with:
-                              - echo -e -n "\x1b[\x30 q" # Blinking block
-                              - echo -e -n "\x1b[\x31 q" # Blinking block (default)
-                              - echo -e -n "\x1b[\x32 q" # Steady block
-                              - echo -e -n "\x1b[\x33 q" # Blinking underline
-                              - echo -e -n "\x1b[\x34 q" # Steady underline
-                              - echo -e -n "\x1b[\x35 q" # Blinking bar
-                              - echo -e -n "\x1b[\x36 q" # Steady bar
-                              - echo -e -n "\x1b[\x37 q" # Blinking st cursor
-                              - echo -e -n "\x1b[\x38 q" # Steady st cursor
+  blinking-cursor           This patch allows the use of a blinking cursor
   bold-is-not-bright        This patch makes bold text rendered simply as bold, leaving the color
                             unaffected
   iceberg-theme             This patch applies the iceberg theme to st
+                              - Not comaptible with: dracula-theme
   clipboard                 This trivial patch sets CLIPBOARD on selection, the same as your browser
   ligatures                 This patch adds proper drawing of ligatures
                               - It is not 100% compatible with Scrollback and Alpha patches
@@ -51,6 +43,7 @@ Patches:
   disable-bold-italic-fonts Some terminals allow disabling bold/italic fonts globally. So this patch adds such
                             option as well.
   dracula-theme             This patch make the Dracula color scheme available for st
+                              - Not comaptible with: iceberg-theme
   external-pipe             Allows reading and writing st's screen through a pipe
   external-pipe-signal      Run an externalpipe command upon receiving the SIGUSR1 signal. This is helpful for
                             supporting externalpipe scripts which work across multiple st instances
