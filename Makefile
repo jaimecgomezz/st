@@ -73,3 +73,4 @@ uninstall:
 	$(UNINSTALL_DESKTOP)
 
 .PHONY: all options clean dist install uninstall
+

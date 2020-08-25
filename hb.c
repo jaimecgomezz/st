@@ -131,3 +131,4 @@ void hbtransformsegment(XftFont *xfont, const Glyph *string,
   /* Cleanup. */
   hb_buffer_destroy(buffer);
 }
+

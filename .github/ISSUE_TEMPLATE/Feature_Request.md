@@ -11,7 +11,7 @@ about: "If some feature would be nice to have."
 
 ### Description
 
-<!-- Describe this new ferature in depth, as clear and concise as needed  -->
+<!-- Describe this new feature in depth, as clear and concise as needed  -->
 
 
 
