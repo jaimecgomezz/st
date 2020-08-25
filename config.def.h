@@ -95,8 +95,8 @@ unsigned int tabspaces = 8;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-  // >>>>>>>>>>>>>>>>>>>> iceberg-theme
-  // ==================== iceberg-theme
+  // >>>>>>>>>>>>>>>>>>>> iceberg-theme-dracula
+  // ==================== iceberg-theme-dracula
   /* 8 normal colors */
   "black",
   "red3",
@@ -116,10 +116,8 @@ static const char *colorname[] = {
   "magenta",
   "cyan",
   "white",
-  // ==================== iceberg-theme
-  // <<<<<<<<<<<<<<<<<<<< iceberg-theme
-
-  [255] = 0,
+  // ==================== iceberg-theme-dracula
+  // <<<<<<<<<<<<<<<<<<<< iceberg-theme-dracula
 
   /* more colors can be added after 255 to use with DefaultXX */
   "#cccccc",
@@ -136,8 +134,8 @@ static const char *colorname[] = {
 };
 
 
-// >>>>>>>>>>>>>>>>>>>> iceberg-theme
-// ==================== iceberg-theme
+// >>>>>>>>>>>>>>>>>>>> iceberg-theme-dracula
+// ==================== iceberg-theme-dracula
 /*
  * Default colors (colorname index)
  * foreground, background, cursor, reverse cursor
@@ -146,8 +144,8 @@ unsigned int defaultfg = 7;
 unsigned int defaultbg = 0;
 static unsigned int defaultcs = 256;
 static unsigned int defaultrcs = 257;
-// ==================== iceberg-theme
-// <<<<<<<<<<<<<<<<<<<< iceberg-theme
+// ==================== iceberg-theme-dracula
+// <<<<<<<<<<<<<<<<<<<< iceberg-theme-dracula
 
 // >>>>>>>>>>>>>>>>>>>> selection-colors
 // ==================== selection-colors
@@ -532,3 +530,8 @@ static char ascii_printable[] =
 // ==================== disable-bold-italic-fonts
 // ==================== disable-bold-italic-fonts
 // <<<<<<<<<<<<<<<<<<<< disable-bold-italic-fonts
+
+// >>>>>>>>>>>>>>>>>>>> dracula
+// ==================== dracula
+// ==================== dracula
+// <<<<<<<<<<<<<<<<<<<< dracula

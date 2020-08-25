@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.22.0] - 2020-08-24
+
+### Changed
+
+- Prepare the dracula patch integration
+- Remove unnecesary assignment in colorname
+
+### Added
+
+- Add support for the dracula patch
+
 ## [0.21.0] - 2020-08-24
 
 ### Changed
