@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.24.2] - 2020-08-25
+
+### Changed
+
+- Warn about iceberg-theme and dracula-theme incompatibility
+
 ## [0.24.1] - 2020-08-25
 
 ### Changed
