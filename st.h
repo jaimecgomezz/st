@@ -155,3 +155,8 @@ extern unsigned int defaultbg;
 // ==================== new-term
 // ==================== new-term
 // <<<<<<<<<<<<<<<<<<<< new-term
+
+// >>>>>>>>>>>>>>>>>>>> external-pipe
+// ==================== external-pipe
+// ==================== external-pipe
+// <<<<<<<<<<<<<<<<<<<< external-pipe

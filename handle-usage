@@ -51,3 +51,4 @@ Patches:
   disable-bold-italic-fonts Some terminals allow disabling bold/italic fonts globally. So this patch adds such
                             option as well.
   dracula                   This patch make the Dracula color scheme available for st
+  external-pipe             Allows reading and writing st's screen through a pipe
