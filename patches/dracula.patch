@@ -1,8 +1,8 @@
 diff --git a/config.def.h b/config.def.h
-index 590850f..8789be7 100644
+index 8f8b9c9..3657cf3 100644
 --- a/config.def.h
 +++ b/config.def.h
-@@ -96,27 +96,29 @@ unsigned int tabspaces = 8;
+@@ -96,29 +96,29 @@ unsigned int tabspaces = 8;
  /* Terminal colors (16 first used in escape sequence) */
  static const char *colorname[] = {
    // >>>>>>>>>>>>>>>>>>>> iceberg-theme-dracula-theme
@@ -34,6 +34,8 @@ index 590850f..8789be7 100644
 -  "magenta",
 -  "cyan",
 -  "white",
+-
+-  [255] = 0,
 -  // ==================== iceberg-theme-dracula-theme
 +  [8]  = "#44475a", /* black   */
 +  [9]  = "#ff5555", /* red     */
@@ -49,8 +51,8 @@ index 590850f..8789be7 100644
 +  [257] = "#f8f8f2", /* foreground */
    // <<<<<<<<<<<<<<<<<<<< iceberg-theme-dracula-theme
  
-   [255] = 0,
-@@ -137,16 +139,14 @@ static const char *colorname[] = {
+   /* more colors can be added after 255 to use with DefaultXX */
+@@ -137,16 +137,14 @@ static const char *colorname[] = {
  
  
  // >>>>>>>>>>>>>>>>>>>> iceberg-theme-dracula-theme
@@ -74,7 +76,7 @@ index 590850f..8789be7 100644
  // <<<<<<<<<<<<<<<<<<<< iceberg-theme-dracula-theme
  
  // >>>>>>>>>>>>>>>>>>>> selection-colors
-@@ -534,6 +534,11 @@ static char ascii_printable[] =
+@@ -534,8 +532,13 @@ static char ascii_printable[] =
  // <<<<<<<<<<<<<<<<<<<< disable-bold-italic-fonts
  
  // >>>>>>>>>>>>>>>>>>>> dracula-theme
@@ -88,3 +90,5 @@ index 590850f..8789be7 100644
 +unsigned int defaultitalic = 7;
 +unsigned int defaultunderline = 7;
  // <<<<<<<<<<<<<<<<<<<< dracula-theme
+ 
+ // >>>>>>>>>>>>>>>>>>>> external-pipe-signal
