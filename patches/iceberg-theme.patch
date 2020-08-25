@@ -1,8 +1,8 @@
 diff --git a/config.def.h b/config.def.h
-index 898e20e..e649a08 100644
+index bed130f..7a28fff 100644
 --- a/config.def.h
 +++ b/config.def.h
-@@ -96,27 +96,25 @@ unsigned int tabspaces = 8;
+@@ -96,29 +96,27 @@ unsigned int tabspaces = 8;
  /* Terminal colors (16 first used in escape sequence) */
  static const char *colorname[] = {
    // >>>>>>>>>>>>>>>>>>>> iceberg-theme-dracula
@@ -34,7 +34,6 @@ index 898e20e..e649a08 100644
 -  "magenta",
 -  "cyan",
 -  "white",
--  // ==================== iceberg-theme-dracula
 +  "#6b7089", /* black   */
 +  "#e98989", /* red     */
 +  "#c0ca8e", /* green   */
@@ -43,10 +42,13 @@ index 898e20e..e649a08 100644
 +  "#ada0d3", /* magenta */
 +  "#95c4ce", /* cyan    */
 +  "#d2d4de", /* white   */
-   // <<<<<<<<<<<<<<<<<<<< iceberg-theme-dracula
  
    [255] = 0,
-@@ -133,16 +131,14 @@ static const char *colorname[] = {
+-  // ==================== iceberg-theme-dracula
+   // <<<<<<<<<<<<<<<<<<<< iceberg-theme-dracula
+ 
+   /* more colors can be added after 255 to use with DefaultXX */
+@@ -137,16 +135,14 @@ static const char *colorname[] = {
  
  
  // >>>>>>>>>>>>>>>>>>>> iceberg-theme-dracula
@@ -64,4 +66,4 @@ index 898e20e..e649a08 100644
 +static unsigned int defaultrcs = 0;
  // <<<<<<<<<<<<<<<<<<<< iceberg-theme-dracula
  
- // >>>>>>>>>>>>>>>>>>>> blinking-cursor
+ // >>>>>>>>>>>>>>>>>>>> selection-colors
