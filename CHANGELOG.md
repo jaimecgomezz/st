@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.24.1] - 2020-08-25
+
+### Changed
+
+- Add color assignment in the right place
+- Update iceberg-theme patch
+- Rename dracula to dracula-theme
+
 ## [0.24.0] - 2020-08-24
 
 ### Changed
