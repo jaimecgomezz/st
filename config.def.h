@@ -116,6 +116,8 @@ static const char *colorname[] = {
   "magenta",
   "cyan",
   "white",
+
+  [255] = 0,
   // ==================== iceberg-theme-dracula
   // <<<<<<<<<<<<<<<<<<<< iceberg-theme-dracula
 
