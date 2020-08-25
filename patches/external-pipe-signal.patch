@@ -3,7 +3,7 @@ index ca9ca32..d7c0bf7 100644
 --- a/config.def.h
 +++ b/config.def.h
 @@ -537,6 +537,5 @@ static char ascii_printable[] =
- // <<<<<<<<<<<<<<<<<<<< dracula
+ // <<<<<<<<<<<<<<<<<<<< dracula-theme
  
  // >>>>>>>>>>>>>>>>>>>> external-pipe-signal
 -// ==================== external-pipe-signal

@@ -50,7 +50,7 @@ Patches:
                             and apply the resources named in the resources[] array in config.h
   disable-bold-italic-fonts Some terminals allow disabling bold/italic fonts globally. So this patch adds such
                             option as well.
-  dracula                   This patch make the Dracula color scheme available for st
+  dracula-theme             This patch make the Dracula color scheme available for st
   external-pipe             Allows reading and writing st's screen through a pipe
   external-pipe-signal      Run an externalpipe command upon receiving the SIGUSR1 signal. This is helpful for
                             supporting externalpipe scripts which work across multiple st instances
