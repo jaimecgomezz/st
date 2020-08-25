@@ -52,3 +52,6 @@ Patches:
                             option as well.
   dracula                   This patch make the Dracula color scheme available for st
   external-pipe             Allows reading and writing st's screen through a pipe
+  external-pipe-signal      Run an externalpipe command upon receiving the SIGUSR1 signal. This is helpful for
+                            supporting externalpipe scripts which work across multiple st instances
+                              - Depends on external-pipe
