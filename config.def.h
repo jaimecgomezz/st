@@ -119,8 +119,6 @@ static const char *colorname[] = {
   // ==================== iceberg-theme-dracula
   // <<<<<<<<<<<<<<<<<<<< iceberg-theme-dracula
 
-  [255] = 0,
-
   /* more colors can be added after 255 to use with DefaultXX */
   "#cccccc",
   // >>>>>>>>>>>>>>>>>>>> selection-colors
