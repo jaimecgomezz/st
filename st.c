@@ -212,6 +212,10 @@ static void tfulldirt(void);
 // ==================== new-term
 // ==================== new-term
 // <<<<<<<<<<<<<<<<<<<< new-term
+// >>>>>>>>>>>>>>>>>>>> external-pipe-signal
+// ==================== external-pipe-signal
+// ==================== external-pipe-signal
+// <<<<<<<<<<<<<<<<<<<< external-pipe-signal
 
 static void drawregion(int, int, int, int);
 
@@ -719,6 +723,11 @@ void stty(char **args) {
 
 int ttynew(char *line, char *cmd, char *out, char **args) {
   int m, s;
+
+  // >>>>>>>>>>>>>>>>>>>> external-pipe-signal
+  // ==================== external-pipe-signal
+  // ==================== external-pipe-signal
+  // <<<<<<<<<<<<<<<<<<<< external-pipe-signal
 
   if (out) {
     term.mode |= MODE_PRINT;
@@ -2423,3 +2432,8 @@ void redraw(void) {
 // ==================== external-pipe
 // ==================== external-pipe
 // <<<<<<<<<<<<<<<<<<<< external-pipe
+
+// >>>>>>>>>>>>>>>>>>>> external-pipe-signal
+// ==================== external-pipe-signal
+// ==================== external-pipe-signal
+// <<<<<<<<<<<<<<<<<<<< external-pipe-signal
