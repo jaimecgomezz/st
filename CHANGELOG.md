@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.25.0] - 2020-08-27
+
+### Changed
+
+- Prepare the font-2 patch integration
+- Improve the handle-usage doc
+
+### Added
+
+- Add support for the font-2 patch
+
 ## [0.24.2] - 2020-08-25
 
 ### Changed
