@@ -185,6 +185,10 @@ static void xsetenv(void);
 static void xseturgency(int);
 static int evcol(XEvent *);
 static int evrow(XEvent *);
+// >>>>>>>>>>>>>>>>>>>> font-2
+// ==================== font-2
+// ==================== font-2
+// <<<<<<<<<<<<<<<<<<<< font-2
 
 static void expose(XEvent *);
 static void visibility(XEvent *);
@@ -338,6 +342,10 @@ void zoom(const Arg *arg) {
 void zoomabs(const Arg *arg) {
   xunloadfonts();
   xloadfonts(usedfont, arg->f);
+  // >>>>>>>>>>>>>>>>>>>> font-2
+  // ==================== font-2
+  // ==================== font-2
+  // <<<<<<<<<<<<<<<<<<<< font-2
   cresize(0, 0);
   redraw();
   xhints();
@@ -1041,6 +1049,11 @@ void xloadfonts(char *fontstr, double fontsize) {
   FcPatternDestroy(pattern);
 }
 
+// >>>>>>>>>>>>>>>>>>>> font-2
+// ==================== font-2
+// ==================== font-2
+// <<<<<<<<<<<<<<<<<<<< font-2
+
 void xunloadfont(Font *f) {
   XftFontClose(xw.dpy, f->match);
   FcPatternDestroy(f->pattern);
@@ -1142,6 +1155,11 @@ void xinit(int cols, int rows) {
 
   usedfont = (opt_font == NULL) ? font : opt_font;
   xloadfonts(usedfont, 0);
+
+  // >>>>>>>>>>>>>>>>>>>> font-2
+  // ==================== font-2
+  // ==================== font-2
+  // <<<<<<<<<<<<<<<<<<<< font-2
 
   /* colors */
   // >>>>>>>>>>>>>>>>>>>> alpha
