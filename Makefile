@@ -33,7 +33,11 @@ config.h: config.def.h
 .c.o:
 	$(CC) $(STCFLAGS) -c $<
 
+# >>>>>>>>>>>>>>>>>>>> vim-browse
+# ==================== vim-browse
 st.o: config.h st.h win.h
+# ==================== vim-browse
+# <<<<<<<<<<<<<<<<<<<< vim-browse
 # >>>>>>>>>>>>>>>>>>>> ligatures
 # ==================== ligatures
 x.o: arg.h config.h st.h win.h

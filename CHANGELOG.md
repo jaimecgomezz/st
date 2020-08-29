@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.26.0] - 2020-08-28
+
+### Changed
+
+- Prepare the vim-browse patch integration
+
+### Added
+
+- Add support for the vim-browse patch
+
 ## [0.25.0] - 2020-08-27
 
 ### Changed

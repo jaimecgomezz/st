@@ -16,6 +16,10 @@
 #include <termios.h>
 #include <unistd.h>
 #include <wchar.h>
+// >>>>>>>>>>>>>>>>>>>> vim-browse
+// ==================== vim-browse
+// ==================== vim-browse
+// <<<<<<<<<<<<<<<<<<<< vim-browse
 
 #include "st.h"
 #include "win.h"
@@ -42,6 +46,11 @@
 #define ISCONTROLC1(c)    (BETWEEN(c, 0x80, 0x9f))
 #define ISCONTROL(c)    (ISCONTROLC0(c) || ISCONTROLC1(c))
 #define ISDELIM(u)    (u && wcschr(worddelimiters, u))
+
+// >>>>>>>>>>>>>>>>>>>> vim-browse
+// ==================== vim-browse
+// ==================== vim-browse
+// <<<<<<<<<<<<<<<<<<<< vim-browse
 
 enum term_mode {
   MODE_WRAP        = 1 << 0,
@@ -95,6 +104,10 @@ typedef struct {
   int mode;
   int type;
   int snap;
+  // >>>>>>>>>>>>>>>>>>>> vim-browse
+  // ==================== vim-browse
+  // ==================== vim-browse
+  // <<<<<<<<<<<<<<<<<<<< vim-browse
   /*
    * Selection variables:
    * nb – normalized coordinates of the beginning of the selection
@@ -219,9 +232,13 @@ static void tfulldirt(void);
 
 static void drawregion(int, int, int, int);
 
-static void selnormalize(void);
 static void selscroll(int, int);
+// >>>>>>>>>>>>>>>>>>>> vim-browse
+// ==================== vim-browse
 static void selsnap(int *, int *, int);
+static void selnormalize(void);
+// ==================== vim-browse
+// <<<<<<<<<<<<<<<<<<<< vim-browse
 
 static size_t utf8decode(const char *, Rune *, size_t);
 static Rune utf8decodebyte(char, size_t *);
@@ -246,6 +263,11 @@ static uchar utfbyte[UTF_SIZ + 1] = {0x80,    0, 0xC0, 0xE0, 0xF0};
 static uchar utfmask[UTF_SIZ + 1] = {0xC0, 0x80, 0xE0, 0xF0, 0xF8};
 static Rune utfmin[UTF_SIZ + 1] = {       0,    0,  0x80,  0x800,  0x10000};
 static Rune utfmax[UTF_SIZ + 1] = {0x10FFFF, 0x7F, 0x7FF, 0xFFFF, 0x10FFFF};
+
+// >>>>>>>>>>>>>>>>>>>> vim-browse
+// ==================== vim-browse
+// ==================== vim-browse
+// <<<<<<<<<<<<<<<<<<<< vim-browse
 
 ssize_t xwrite(int fd, const char *s, size_t len) {
   size_t aux = len;
@@ -412,6 +434,11 @@ int tlinelen(int y) {
   return i;
 }
 
+// >>>>>>>>>>>>>>>>>>>> vim-browse
+// ==================== vim-browse
+// ==================== vim-browse
+// <<<<<<<<<<<<<<<<<<<< vim-browse
+
 void selstart(int col, int row, int snap) {
   selclear();
   sel.mode = SEL_EMPTY;
@@ -419,16 +446,28 @@ void selstart(int col, int row, int snap) {
   sel.alt = IS_SET(MODE_ALTSCREEN);
   sel.snap = snap;
   sel.oe.x = sel.ob.x = col;
+  // >>>>>>>>>>>>>>>>>>>> vim-browse
+  // ==================== vim-browse
   sel.oe.y = sel.ob.y = row;
+  // ==================== vim-browse
+  // <<<<<<<<<<<<<<<<<<<< vim-browse
   selnormalize();
 
+  // >>>>>>>>>>>>>>>>>>>> vim-browse
+  // ==================== vim-browse
   if (sel.snap != 0)
     sel.mode = SEL_READY;
   tsetdirt(sel.nb.y, sel.ne.y);
+  // ==================== vim-browse
+  // <<<<<<<<<<<<<<<<<<<< vim-browse
 }
 
 void selextend(int col, int row, int type, int done) {
+  // >>>>>>>>>>>>>>>>>>>> vim-browse
+  // ==================== vim-browse
   int oldey, oldex, oldsby, oldsey, oldtype;
+  // ==================== vim-browse
+  // <<<<<<<<<<<<<<<<<<<< vim-browse
 
   if (sel.mode == SEL_IDLE)
     return;
@@ -437,24 +476,38 @@ void selextend(int col, int row, int type, int done) {
     return;
   }
 
+  // >>>>>>>>>>>>>>>>>>>> vim-browse
+  // ==================== vim-browse
   oldey = sel.oe.y;
   oldex = sel.oe.x;
   oldsby = sel.nb.y;
   oldsey = sel.ne.y;
   oldtype = sel.type;
+  // ==================== vim-browse
+  // <<<<<<<<<<<<<<<<<<<< vim-browse
 
   sel.oe.x = col;
+  // >>>>>>>>>>>>>>>>>>>> vim-browse
+  // ==================== vim-browse
   sel.oe.y = row;
+  // ==================== vim-browse
+  // <<<<<<<<<<<<<<<<<<<< vim-browse
   selnormalize();
   sel.type = type;
 
+  // >>>>>>>>>>>>>>>>>>>> vim-browse
+  // ==================== vim-browse
   if (oldey != sel.oe.y || oldex != sel.oe.x || oldtype != sel.type ||
       sel.mode == SEL_EMPTY)
     tsetdirt(MIN(sel.nb.y, oldsby), MAX(sel.ne.y, oldsey));
+  // ==================== vim-browse
+  // <<<<<<<<<<<<<<<<<<<< vim-browse
 
   sel.mode = done ? SEL_IDLE : SEL_READY;
 }
 
+// >>>>>>>>>>>>>>>>>>>> vim-browse
+// ==================== vim-browse
 void selnormalize(void) {
   int i;
 
@@ -480,6 +533,8 @@ void selnormalize(void) {
   if (tlinelen(sel.ne.y) <= sel.ne.x)
     sel.ne.x = term.col - 1;
 }
+// ==================== vim-browse
+// <<<<<<<<<<<<<<<<<<<< vim-browse
 
 int selected(int x, int y) {
   if (sel.mode == SEL_EMPTY || sel.ob.x == -1 ||
@@ -489,10 +544,16 @@ int selected(int x, int y) {
   if (sel.type == SEL_RECTANGULAR)
     return BETWEEN(y, sel.nb.y, sel.ne.y) && BETWEEN(x, sel.nb.x, sel.ne.x);
 
+  // >>>>>>>>>>>>>>>>>>>> vim-browse
+  // ==================== vim-browse
   return BETWEEN(y, sel.nb.y, sel.ne.y) && (y != sel.nb.y || x >= sel.nb.x) &&
-         (y != sel.ne.y || x <= sel.ne.x);
+    (y != sel.ne.y || x <= sel.ne.x);
+  // ==================== vim-browse
+  // <<<<<<<<<<<<<<<<<<<< vim-browse
 }
 
+// >>>>>>>>>>>>>>>>>>>> vim-browse
+// ==================== vim-browse
 void selsnap(int *x, int *y, int direction) {
   int newx, newy, xt, yt;
   int delim, prevdelim;
@@ -561,39 +622,69 @@ void selsnap(int *x, int *y, int direction) {
     break;
   }
 }
+// ==================== vim-browse
+// <<<<<<<<<<<<<<<<<<<< vim-browse
 
 char *getsel(void) {
   char *str, *ptr;
+  // >>>>>>>>>>>>>>>>>>>> vim-browse
+  // ==================== vim-browse
   int y, bufsize, lastx, linelen;
+  // ==================== vim-browse
+  // <<<<<<<<<<<<<<<<<<<< vim-browse
   Glyph *gp, *last;
 
   if (sel.ob.x == -1)
     return NULL;
 
+  // >>>>>>>>>>>>>>>>>>>> vim-browse
+  // ==================== vim-browse
   bufsize = (term.col + 1) * (sel.ne.y - sel.nb.y + 1) * UTF_SIZ;
+  // ==================== vim-browse
+  // <<<<<<<<<<<<<<<<<<<< vim-browse
   ptr = str = xmalloc(bufsize);
 
   /* append every set & selected glyph to the selection */
+  // >>>>>>>>>>>>>>>>>>>> vim-browse
+  // ==================== vim-browse
   for (y = sel.nb.y; y <= sel.ne.y; y++) {
     if ((linelen = tlinelen(y)) == 0) {
       *ptr++ = '\n';
       continue;
     }
+  // ==================== vim-browse
+  // <<<<<<<<<<<<<<<<<<<< vim-browse
 
     if (sel.type == SEL_RECTANGULAR) {
+      // >>>>>>>>>>>>>>>>>>>> vim-browse
+      // ==================== vim-browse
       gp = &term.line[y][sel.nb.x];
+      // ==================== vim-browse
+      // <<<<<<<<<<<<<<<<<<<< vim-browse
       lastx = sel.ne.x;
     } else {
+      // >>>>>>>>>>>>>>>>>>>> vim-browse
+      // ==================== vim-browse
       gp = &term.line[y][sel.nb.y == y ? sel.nb.x : 0];
       lastx = (sel.ne.y == y) ? sel.ne.x : term.col - 1;
+      // ==================== vim-browse
+      // <<<<<<<<<<<<<<<<<<<< vim-browse
     }
+    // >>>>>>>>>>>>>>>>>>>> vim-browse
+    // ==================== vim-browse
     last = &term.line[y][MIN(lastx, linelen - 1)];
     while (last >= gp && last->u == ' ')
       --last;
+    // ==================== vim-browse
+    // <<<<<<<<<<<<<<<<<<<< vim-browse
 
     for (; gp <= last; ++gp) {
+      // >>>>>>>>>>>>>>>>>>>> vim-browse
+      // ==================== vim-browse
       if (gp->mode & ATTR_WDUMMY)
         continue;
+      // ==================== vim-browse
+      // <<<<<<<<<<<<<<<<<<<< vim-browse
 
       ptr += utf8encode(gp->u, ptr);
     }
@@ -607,7 +698,11 @@ char *getsel(void) {
      * st.
      * FIXME: Fix the computer world.
      */
+    // >>>>>>>>>>>>>>>>>>>> vim-browse
+    // ==================== vim-browse
     if ((y < sel.ne.y || lastx >= linelen) &&
+    // ==================== vim-browse
+    // <<<<<<<<<<<<<<<<<<<< vim-browse
         (!(last->mode & ATTR_WRAP) || sel.type == SEL_RECTANGULAR))
       *ptr++ = '\n';
   }
@@ -620,7 +715,11 @@ void selclear(void) {
     return;
   sel.mode = SEL_IDLE;
   sel.ob.x = -1;
+  // >>>>>>>>>>>>>>>>>>>> vim-browse
+  // ==================== vim-browse
   tsetdirt(sel.nb.y, sel.ne.y);
+  // ==================== vim-browse
+  // <<<<<<<<<<<<<<<<<<<< vim-browse
 }
 
 void die(const char *errstr, ...) {
@@ -942,8 +1041,12 @@ void tsetdirtattr(int attr) {
 void tfulldirt(void) { tsetdirt(0, term.row - 1); }
 
 void tcursor(int mode) {
+  // >>>>>>>>>>>>>>>>>>>> vim-browse
+  // ==================== vim-browse
   static TCursor c[2];
   int alt = IS_SET(MODE_ALTSCREEN);
+  // ==================== vim-browse
+  // <<<<<<<<<<<<<<<<<<<< vim-browse
 
   if (mode == CURSOR_SAVE) {
     c[alt] = term.c;
@@ -994,6 +1097,10 @@ void tswapscreen(void) {
 }
 
 void tscrolldown(int orig, int n) {
+  // >>>>>>>>>>>>>>>>>>>> vim-browse
+  // ==================== vim-browse
+  // ==================== vim-browse
+  // <<<<<<<<<<<<<<<<<<<< vim-browse
   int i;
   Line temp;
 
@@ -1012,6 +1119,10 @@ void tscrolldown(int orig, int n) {
 }
 
 void tscrollup(int orig, int n) {
+  // >>>>>>>>>>>>>>>>>>>> vim-browse
+  // ==================== vim-browse
+  // ==================== vim-browse
+  // <<<<<<<<<<<<<<<<<<<< vim-browse
   int i;
   Line temp;
 
@@ -1150,8 +1261,12 @@ void tclearregion(int x1, int y1, int x2, int y2) {
   if (y1 > y2)
     temp = y1, y1 = y2, y2 = temp;
 
+  // >>>>>>>>>>>>>>>>>>>> vim-browse
+  // ==================== vim-browse
   LIMIT(x1, 0, term.col - 1);
   LIMIT(x2, 0, term.col - 1);
+  // ==================== vim-browse
+  // <<<<<<<<<<<<<<<<<<<< vim-browse
   LIMIT(y1, 0, term.row - 1);
   LIMIT(y2, 0, term.row - 1);
 
@@ -1159,8 +1274,12 @@ void tclearregion(int x1, int y1, int x2, int y2) {
     term.dirty[y] = 1;
     for (x = x1; x <= x2; x++) {
       gp = &term.line[y][x];
+      // >>>>>>>>>>>>>>>>>>>> vim-browse
+      // ==================== vim-browse
       if (selected(x, y))
         selclear();
+      // ==================== vim-browse
+      // <<<<<<<<<<<<<<<<<<<< vim-browse
       gp->fg = term.c.attr.fg;
       gp->bg = term.c.attr.bg;
       gp->mode = 0;
@@ -2220,8 +2339,12 @@ check_control_code:
      */
     return;
   }
+  // >>>>>>>>>>>>>>>>>>>> vim-browse
+  // ==================== vim-browse
   if (selected(term.c.x, term.c.y))
     selclear();
+  // ==================== vim-browse
+  // <<<<<<<<<<<<<<<<<<<< vim-browse
 
   gp = &term.line[term.c.y][term.c.x];
   if (IS_SET(MODE_WRAP) && (term.c.state & CURSOR_WRAPNEXT)) {
@@ -2287,8 +2410,12 @@ int twrite(const char *buf, int buflen, int show_ctrl) {
 
 void tresize(int col, int row) {
   int i;
+  // >>>>>>>>>>>>>>>>>>>> vim-browse
+  // ==================== vim-browse
   int minrow = MIN(row, term.row);
   int mincol = MIN(col, term.col);
+  // ==================== vim-browse
+  // <<<<<<<<<<<<<<<<<<<< vim-browse
   int *bp;
   TCursor c;
 
@@ -2297,54 +2424,102 @@ void tresize(int col, int row) {
     return;
   }
 
+  // >>>>>>>>>>>>>>>>>>>> vim-browse
+  // ==================== vim-browse
+  // ==================== vim-browse
+  // <<<<<<<<<<<<<<<<<<<< vim-browse
+
   /*
    * slide screen to keep cursor where we expect it -
    * tscrollup would work here, but we can optimize to
    * memmove because we're freeing the earlier lines
    */
   for (i = 0; i <= term.c.y - row; i++) {
+    // >>>>>>>>>>>>>>>>>>>> vim-browse
+    // ==================== vim-browse
     free(term.line[i]);
+    // ==================== vim-browse
+    // <<<<<<<<<<<<<<<<<<<< vim-browse
     free(term.alt[i]);
   }
   /* ensure that both src and dst are not NULL */
   if (i > 0) {
+    // >>>>>>>>>>>>>>>>>>>> vim-browse
+    // ==================== vim-browse
     memmove(term.line, term.line + i, row * sizeof(Line));
+    // ==================== vim-browse
+    // <<<<<<<<<<<<<<<<<<<< vim-browse
     memmove(term.alt, term.alt + i, row * sizeof(Line));
   }
   for (i += row; i < term.row; i++) {
+    // >>>>>>>>>>>>>>>>>>>> vim-browse
+    // ==================== vim-browse
     free(term.line[i]);
+    // ==================== vim-browse
+    // <<<<<<<<<<<<<<<<<<<< vim-browse
     free(term.alt[i]);
   }
 
   /* resize to new height */
+  // >>>>>>>>>>>>>>>>>>>> vim-browse
+  // ==================== vim-browse
   term.line = xrealloc(term.line, row * sizeof(Line));
+  // ==================== vim-browse
+  // <<<<<<<<<<<<<<<<<<<< vim-browse
   term.alt = xrealloc(term.alt, row * sizeof(Line));
   term.dirty = xrealloc(term.dirty, row * sizeof(*term.dirty));
   term.tabs = xrealloc(term.tabs, col * sizeof(*term.tabs));
 
   /* resize each row to new width, zero-pad if needed */
   for (i = 0; i < minrow; i++) {
+    // >>>>>>>>>>>>>>>>>>>> vim-browse
+    // ==================== vim-browse
     term.line[i] = xrealloc(term.line[i], col * sizeof(Glyph));
+    // ==================== vim-browse
+    // <<<<<<<<<<<<<<<<<<<< vim-browse
     term.alt[i] = xrealloc(term.alt[i], col * sizeof(Glyph));
   }
 
   /* allocate any new rows */
   for (/* i = minrow */; i < row; i++) {
+    // >>>>>>>>>>>>>>>>>>>> vim-browse
+    // ==================== vim-browse
     term.line[i] = xmalloc(col * sizeof(Glyph));
+    // ==================== vim-browse
+    // <<<<<<<<<<<<<<<<<<<< vim-browse
     term.alt[i] = xmalloc(col * sizeof(Glyph));
   }
+
+  // >>>>>>>>>>>>>>>>>>>> vim-browse
+  // ==================== vim-browse
   if (col > term.col) {
     bp = term.tabs + term.col;
+  // ==================== vim-browse
+  // <<<<<<<<<<<<<<<<<<<< vim-browse
 
+    // >>>>>>>>>>>>>>>>>>>> vim-browse
+    // ==================== vim-browse
     memset(bp, 0, sizeof(*term.tabs) * (col - term.col));
+    // ==================== vim-browse
+    // <<<<<<<<<<<<<<<<<<<< vim-browse
     while (--bp > term.tabs && !*bp)
       /* nothing */;
     for (bp += tabspaces; bp < term.tabs + col; bp += tabspaces)
       *bp = 1;
   }
+
+  // >>>>>>>>>>>>>>>>>>>> vim-browse
+  // ==================== vim-browse
+  // ==================== vim-browse
+  // <<<<<<<<<<<<<<<<<<<< vim-browse
+
   /* update terminal size */
+  // >>>>>>>>>>>>>>>>>>>> vim-browse
+  // ==================== vim-browse
   term.col = col;
   term.row = row;
+  // ==================== vim-browse
+  // <<<<<<<<<<<<<<<<<<<< vim-browse
   /* reset scrolling region */
   tsetscroll(0, row - 1);
   /* make use of the LIMIT in tmoveto */
@@ -2367,15 +2542,29 @@ void tresize(int col, int row) {
 void resettitle(void) { xsettitle(NULL); }
 
 void drawregion(int x1, int y1, int x2, int y2) {
+  // >>>>>>>>>>>>>>>>>>>> vim-browse
+  // ==================== vim-browse
+  // ==================== vim-browse
+  // <<<<<<<<<<<<<<<<<<<< vim-browse
+
   int y;
 
   for (y = y1; y < y2; y++) {
+    // >>>>>>>>>>>>>>>>>>>> vim-browse
+    // ==================== vim-browse
     if (!term.dirty[y])
       continue;
 
     term.dirty[y] = 0;
     xdrawline(term.line[y], x1, y, x2);
+    // ==================== vim-browse
+    // <<<<<<<<<<<<<<<<<<<< vim-browse
   }
+
+  // >>>>>>>>>>>>>>>>>>>> vim-browse
+  // ==================== vim-browse
+  // ==================== vim-browse
+  // <<<<<<<<<<<<<<<<<<<< vim-browse
 }
 
 void draw(void) {
@@ -2392,7 +2581,11 @@ void draw(void) {
   if (term.line[term.c.y][cx].mode & ATTR_WDUMMY)
     cx--;
 
+  // >>>>>>>>>>>>>>>>>>>> vim-browse
+  // ==================== vim-browse
   drawregion(0, 0, term.col, term.row);
+  // ==================== vim-browse
+  // <<<<<<<<<<<<<<<<<<<< vim-browse
   xdrawcursor(
     cx,
     term.c.y,

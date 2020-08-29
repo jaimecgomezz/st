@@ -50,3 +50,6 @@ Patches:
   font-2                    This patch append fonts defined in font2 variable to the beginning of
                             font cache. So they will be used first for glyphs that absent in default
                             font.
+  vim-browse                The vim-browse patch offers the possibility to move through the terminal
+                            history-buffer, search for strings using VIM-like motions, operations
+                            and quantifiers.
