@@ -55,3 +55,5 @@ Patches:
                             and quantifiers.
   relative-border           This patch allows you to specify a border that is relative in size to
                             the width of a cell in the terminal.
+  gruvbox-dark-theme        This patch makes the gruvbox (dark) color scheme available for st.
+  gruvbox-light-theme       This patch makes the gruvbox (light) color scheme available for st.
