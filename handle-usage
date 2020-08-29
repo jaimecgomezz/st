@@ -53,3 +53,5 @@ Patches:
   vim-browse                The vim-browse patch offers the possibility to move through the terminal
                             history-buffer, search for strings using VIM-like motions, operations
                             and quantifiers.
+  relative-border           This patch allows you to specify a border that is relative in size to
+                            the width of a cell in the terminal.
