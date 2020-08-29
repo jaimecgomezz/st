@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.27.0] - 2020-08-29
+
+### Changed
+
+- Prepare the relative-border patch integration
+
+### Added
+
+- Add support for the relative-border patch
+
 ## [0.26.0] - 2020-08-28
 
 ### Changed

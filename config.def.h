@@ -11,6 +11,10 @@ static int borderpx = 2;
 // ==================== font-2
 // ==================== font-2
 // <<<<<<<<<<<<<<<<<<<< font-2
+// >>>>>>>>>>>>>>>>>>>> relative-border
+// ==================== relative-border
+// ==================== relative-border
+// <<<<<<<<<<<<<<<<<<<< relative-border
 
 /*
  * What program is execed by st depends of these precedence rules:
