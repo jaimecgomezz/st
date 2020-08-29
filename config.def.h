@@ -237,6 +237,10 @@ static Shortcut shortcuts[] = {
   // ==================== new-term
   // ==================== new-term
   // <<<<<<<<<<<<<<<<<<<< new-term
+  // >>>>>>>>>>>>>>>>>>>> vim-browse
+  // ==================== vim-browse
+  // ==================== vim-browse
+  // <<<<<<<<<<<<<<<<<<<< vim-browse
 };
 
 /*
@@ -546,3 +550,8 @@ static char ascii_printable[] =
 // ==================== external-pipe-signal
 // ==================== external-pipe-signal
 // <<<<<<<<<<<<<<<<<<<< external-pipe-signal
+
+// >>>>>>>>>>>>>>>>>>>> vim-browse
+// ==================== vim-browse
+// ==================== vim-browse
+// <<<<<<<<<<<<<<<<<<<< vim-browse

@@ -27,6 +27,10 @@ char *argv0;
 // ==================== xresources
 // ==================== xresources
 // <<<<<<<<<<<<<<<<<<<< xresources
+// >>>>>>>>>>>>>>>>>>>> vim-browse
+// ==================== vim-browse
+// ==================== vim-browse
+// <<<<<<<<<<<<<<<<<<<< vim-browse
 
 /* types used in config.h */
 typedef struct {
@@ -309,6 +313,10 @@ void clipcopy(const Arg *dummy) {
 
   free(xsel.clipboard);
   xsel.clipboard = NULL;
+  // >>>>>>>>>>>>>>>>>>>> vim-browse
+  // ==================== vim-browse
+  // ==================== vim-browse
+  // <<<<<<<<<<<<<<<<<<<< vim-browse
 
   if (xsel.primary != NULL) {
     xsel.clipboard = xstrdup(xsel.primary);
@@ -785,6 +793,11 @@ int xloadcolor(int i, const char *name, Color *ncolor) {
 // ==================== focus
 // ==================== focus
 // <<<<<<<<<<<<<<<<<<<< focus
+
+// >>>>>>>>>>>>>>>>>>>> vim-browse
+// ==================== vim-browse
+// ==================== vim-browse
+// <<<<<<<<<<<<<<<<<<<< vim-browse
 
 void xloadcols(void) {
   int i;
@@ -1303,8 +1316,12 @@ int xmakeglyphfontspecs(XftGlyphFontSpec *specs, const Glyph *glyphs, int len,
 
   for (i = 0, xp = winx, yp = winy + font->ascent; i < len; ++i) {
     /* Fetch rune and mode for current glyph. */
+    // >>>>>>>>>>>>>>>>>>>> vim-browse
+    // ==================== vim-browse
     rune = glyphs[i].u;
     mode = glyphs[i].mode;
+    // ==================== vim-browse
+    // <<<<<<<<<<<<<<<<<<<< vim-browse
 
     /* Skip dummy wide-character spacing. */
     // >>>>>>>>>>>>>>>>>>>> ligatures
@@ -1796,6 +1813,10 @@ void xdrawline(Line line, int x1, int y1, int x2) {
   i = ox = 0;
   for (x = x1; x < x2 && i < numspecs; x++) {
     new = line[x];
+    // >>>>>>>>>>>>>>>>>>>> vim-browse
+    // ==================== vim-browse
+    // ==================== vim-browse
+    // <<<<<<<<<<<<<<<<<<<< vim-browse
     if (new.mode == ATTR_WDUMMY)
       continue;
     if (selected(x, y1))
@@ -1985,6 +2006,10 @@ void kpress(XEvent *ev) {
     len = XmbLookupString(xw.ime.xic, e, buf, sizeof buf, &ksym, &status);
   else
     len = XLookupString(e, buf, sizeof buf, &ksym, NULL);
+  // >>>>>>>>>>>>>>>>>>>> vim-browse
+  // ==================== vim-browse
+  // ==================== vim-browse
+  // <<<<<<<<<<<<<<<<<<<< vim-browse
   /* 1. shortcuts */
   for (bp = shortcuts; bp < shortcuts + LEN(shortcuts); bp++) {
     if (ksym == bp->keysym && match(bp->mod, e->state)) {
