@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.28.0] - 2020-08-29
+
+### Changed
+
+- Make iceberg and dracula theme compatible with gruvbox
+
+### Added
+
+- Add the gruvbox-dark-theme patch
+- Add the gruvbox-light-theme patch
+
 ## [0.27.0] - 2020-08-29
 
 ### Changed
