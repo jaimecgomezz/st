@@ -1040,6 +1040,11 @@ void xloadfonts(char *fontstr, double fontsize) {
   win.cw = ceilf(dc.font.width * cwscale);
   win.ch = ceilf(dc.font.height * chscale);
 
+  // >>>>>>>>>>>>>>>>>>>> relative-border
+  // ==================== relative-border
+  // ==================== relative-border
+  // <<<<<<<<<<<<<<<<<<<< relative-border
+
   FcPatternDel(pattern, FC_SLANT);
   // >>>>>>>>>>>>>>>>>>>> disable-bold-italic-fonts
   // ==================== disable-bold-italic-fonts
