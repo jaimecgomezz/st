@@ -1,0 +1,32 @@
+diff --git a/config.def.h b/config.def.h
+index d9bd355..8edc54c 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -12,8 +12,11 @@ static int borderpx = 2;
+ // ==================== font-2
+ // <<<<<<<<<<<<<<<<<<<< font-2
+ // >>>>>>>>>>>>>>>>>>>> relative-border
+-// ==================== relative-border
+-// ==================== relative-border
++/*
++ * borderperc: percentage of cell width to use as a border
++ *		0 = no border, 100 = border width is same as cell width
++ */
++static int borderperc = 20;
+ // <<<<<<<<<<<<<<<<<<<< relative-border
+ 
+ /*
+diff --git a/x.c b/x.c
+index 41a935d..16bb769 100644
+--- a/x.c
++++ b/x.c
+@@ -1041,8 +1041,7 @@ void xloadfonts(char *fontstr, double fontsize) {
+   win.ch = ceilf(dc.font.height * chscale);
+ 
+   // >>>>>>>>>>>>>>>>>>>> relative-border
+-  // ==================== relative-border
+-  // ==================== relative-border
++  borderpx = ceilf(((float)borderperc / 100) * win.cw);
+   // <<<<<<<<<<<<<<<<<<<< relative-border
+ 
+   FcPatternDel(pattern, FC_SLANT);
