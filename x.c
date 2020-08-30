@@ -76,6 +76,10 @@ static void zoom(const Arg *);
 static void zoomabs(const Arg *);
 static void zoomreset(const Arg *);
 static void ttysend(const Arg *);
+// >>>>>>>>>>>>>>>>>>>> invert
+// ==================== invert
+// ==================== invert
+// <<<<<<<<<<<<<<<<<<<< invert
 
 /* config.h for applying patches and the configuration. */
 #include "config.h"
@@ -304,6 +308,10 @@ static char *opt_title = NULL;
 // ==================== disable-bold-italic-fonts
 // ==================== disable-bold-italic-fonts
 // <<<<<<<<<<<<<<<<<<<< disable-bold-italic-fonts
+// >>>>>>>>>>>>>>>>>>>> invert
+// ==================== invert
+// ==================== invert
+// <<<<<<<<<<<<<<<<<<<< invert
 
 static int oldbutton = 3; /* button event on startup: 3 = release */
 
@@ -311,6 +319,11 @@ static int oldbutton = 3; /* button event on startup: 3 = release */
 // ==================== swap-mouse
 // ==================== swap-mouse
 // <<<<<<<<<<<<<<<<<<<< swap-mouse
+
+// >>>>>>>>>>>>>>>>>>>> invert
+// ==================== invert
+// ==================== invert
+// <<<<<<<<<<<<<<<<<<<< invert
 
 void clipcopy(const Arg *dummy) {
   Atom clipboard;
@@ -870,8 +883,12 @@ int xsetcolorname(int x, const char *name) {
  * Absolute coordinates.
  */
 void xclear(int x1, int y1, int x2, int y2) {
+  // >>>>>>>>>>>>>>>>>>>> invert
+  // ==================== invert
   XftDrawRect(xw.draw, &dc.col[IS_SET(MODE_REVERSE) ? defaultfg : defaultbg],
-              x1, y1, x2 - x1, y2 - y1);
+      x1, y1, x2 - x1, y2 - y1);
+  // ==================== invert
+  // <<<<<<<<<<<<<<<<<<<< invert
 }
 
 void xhints(void) {
@@ -1560,6 +1577,11 @@ void xdrawglyphfontspecs(const XftGlyphFontSpec *specs, Glyph base, int len,
 
   if (base.mode & ATTR_INVISIBLE)
     fg = bg;
+
+  // >>>>>>>>>>>>>>>>>>>> invert
+  // ==================== invert
+  // ==================== invert
+  // <<<<<<<<<<<<<<<<<<<< invert
 
   /* Intelligent cleaning up of the borders. */
   if (x == 0) {
