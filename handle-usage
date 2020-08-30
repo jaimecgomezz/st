@@ -67,3 +67,5 @@ Patches:
   hide-cursor               Hide the X cursor whenever a key is pressed and show it back when the
                             mouse is moved in the terminal window.
                               - Not compatible with: swap-mouse
+  invert                    This patch adds a keybinding (Ctrl+Shift+x) that lets you invert the
+                            current colorscheme of st
