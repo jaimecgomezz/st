@@ -1,0 +1,96 @@
+diff --git a/config.def.h b/config.def.h
+index b0cc8c5..5e89da5 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -246,8 +246,7 @@ static Shortcut shortcuts[] = {
+   // ==================== vim-browse
+   // <<<<<<<<<<<<<<<<<<<< vim-browse
+   // >>>>>>>>>>>>>>>>>>>> invert
+-  // ==================== invert
+-  // ==================== invert
++  { TERMMOD,              XK_X,           invert,         { }       },
+   // <<<<<<<<<<<<<<<<<<<< invert
+ };
+ 
+diff --git a/x.c b/x.c
+index 018925a..4c57088 100644
+--- a/x.c
++++ b/x.c
+@@ -77,8 +77,7 @@ static void zoomabs(const Arg *);
+ static void zoomreset(const Arg *);
+ static void ttysend(const Arg *);
+ // >>>>>>>>>>>>>>>>>>>> invert
+-// ==================== invert
+-// ==================== invert
++static void invert(const Arg *);
+ // <<<<<<<<<<<<<<<<<<<< invert
+ 
+ /* config.h for applying patches and the configuration. */
+@@ -309,8 +308,7 @@ static char *opt_title = NULL;
+ // ==================== disable-bold-italic-fonts
+ // <<<<<<<<<<<<<<<<<<<< disable-bold-italic-fonts
+ // >>>>>>>>>>>>>>>>>>>> invert
+-// ==================== invert
+-// ==================== invert
++static int invertcolors = 0;
+ // <<<<<<<<<<<<<<<<<<<< invert
+ 
+ static int oldbutton = 3; /* button event on startup: 3 = release */
+@@ -321,8 +319,21 @@ static int oldbutton = 3; /* button event on startup: 3 = release */
+ // <<<<<<<<<<<<<<<<<<<< swap-mouse
+ 
+ // >>>>>>>>>>>>>>>>>>>> invert
+-// ==================== invert
+-// ==================== invert
++void invert(const Arg *dummy) {
++  invertcolors = !invertcolors;
++  redraw();
++}
++
++Color invertedcolor(Color *clr) {
++  XRenderColor rc;
++  Color inverted;
++  rc.red = ~clr->color.red;
++  rc.green = ~clr->color.green;
++  rc.blue = ~clr->color.blue;
++  rc.alpha = clr->color.alpha;
++  XftColorAllocValue(xw.dpy, xw.vis, xw.cmap, &rc, &inverted);
++  return inverted;
++}
+ // <<<<<<<<<<<<<<<<<<<< invert
+ 
+ void clipcopy(const Arg *dummy) {
+@@ -884,10 +895,14 @@ int xsetcolorname(int x, const char *name) {
+  */
+ void xclear(int x1, int y1, int x2, int y2) {
+   // >>>>>>>>>>>>>>>>>>>> invert
+-  // ==================== invert
+-  XftDrawRect(xw.draw, &dc.col[IS_SET(MODE_REVERSE) ? defaultfg : defaultbg],
+-      x1, y1, x2 - x1, y2 - y1);
+-  // ==================== invert
++  Color c;
++  c = dc.col[IS_SET(MODE_REVERSE) ? defaultfg : defaultbg];
++
++  if (invertcolors) {
++    c = invertedcolor(&c);
++  }
++
++  XftDrawRect(xw.draw, &c, x1, y1, x2 - x1, y2 - y1);
+   // <<<<<<<<<<<<<<<<<<<< invert
+ }
+ 
+@@ -1579,8 +1594,12 @@ void xdrawglyphfontspecs(const XftGlyphFontSpec *specs, Glyph base, int len,
+     fg = bg;
+ 
+   // >>>>>>>>>>>>>>>>>>>> invert
+-  // ==================== invert
+-  // ==================== invert
++  if (invertcolors) {
++    revfg = invertedcolor(fg);
++    revbg = invertedcolor(bg);
++    fg = &revfg;
++    bg = &revbg;
++  }
+   // <<<<<<<<<<<<<<<<<<<< invert
+ 
+   /* Intelligent cleaning up of the borders. */

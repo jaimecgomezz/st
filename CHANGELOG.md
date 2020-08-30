@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.30.0] - 2020-08-30
+
+### Changed
+
+- Prepare the invert patch integration
+
+### Add
+
+- Add support for the invert patch
+
 ## [0.29.1] - 2020-08-29
 
 - Update README file
