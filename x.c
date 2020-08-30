@@ -124,6 +124,10 @@ typedef struct {
   Draw draw;
   Visual *vis;
   XSetWindowAttributes attrs;
+  // >>>>>>>>>>>>>>>>>>>> hide-cursor
+  // ==================== hide-cursor
+  // ==================== hide-cursor
+  // <<<<<<<<<<<<<<<<<<<< hide-cursor
   int scr;
   int isfixed; /* is fixed geometry? */
   int l, t;    /* left and top offset */
@@ -712,6 +716,11 @@ void brelease(XEvent *e) {
 }
 
 void bmotion(XEvent *e) {
+  // >>>>>>>>>>>>>>>>>>>> hide-cursor
+  // ==================== hide-cursor
+  // ==================== hide-cursor
+  // <<<<<<<<<<<<<<<<<<<< hide-cursor
+
   if (IS_SET(MODE_MOUSE) && !(e->xbutton.state & forcemousemod)) {
     mousereport(e);
     return;
@@ -1142,12 +1151,12 @@ void xinit(int cols, int rows) {
   XGCValues gcvalues;
   Window parent;
   pid_t thispid = getpid();
-  // >>>>>>>>>>>>>>>>>>>> swap-mouse
-  // ==================== swap-mouse
+  // >>>>>>>>>>>>>>>>>>>> swap-mouse-hide-cursor
+  // ==================== swap-mouse-hide-cursor
   Cursor cursor;
   XColor xmousefg, xmousebg;
-  // ==================== swap-mouse
-  // <<<<<<<<<<<<<<<<<<<< swap-mouse
+  // ==================== swap-mouse-hide-cursor
+  // <<<<<<<<<<<<<<<<<<<< swap-mouse-hide-cursor
 
   // >>>>>>>>>>>>>>>>>>>> alpha
   // ==================== alpha
@@ -1259,8 +1268,12 @@ void xinit(int cols, int rows) {
   }
 
   /* white cursor, black outline */
+  // >>>>>>>>>>>>>>>>>>>> hide-cursor
+  // ==================== hide-cursor
   cursor = XCreateFontCursor(xw.dpy, mouseshape);
   XDefineCursor(xw.dpy, xw.win, cursor);
+  // ==================== hide-cursor
+  // <<<<<<<<<<<<<<<<<<<< hide-cursor
 
   if (XParseColor(xw.dpy, xw.cmap, colorname[mousefg], &xmousefg) == 0) {
     xmousefg.red = 0xffff;
@@ -1274,7 +1287,11 @@ void xinit(int cols, int rows) {
     xmousebg.blue = 0x0000;
   }
 
+  // >>>>>>>>>>>>>>>>>>>> hide-cursor
+  // ==================== hide-cursor
   XRecolorCursor(xw.dpy, cursor, &xmousefg, &xmousebg);
+  // ==================== hide-cursor
+  // <<<<<<<<<<<<<<<<<<<< hide-cursor
 
   xw.xembed = XInternAtom(xw.dpy, "_XEMBED", False);
   xw.wmdeletewin = XInternAtom(xw.dpy, "WM_DELETE_WINDOW", False);
@@ -1873,6 +1890,11 @@ void visibility(XEvent *ev) {
 void unmap(XEvent *ev) { win.mode &= ~MODE_VISIBLE; }
 
 void xsetpointermotion(int set) {
+  // >>>>>>>>>>>>>>>>>>>> hide-cursor
+  // ==================== hide-cursor
+  // ==================== hide-cursor
+  // <<<<<<<<<<<<<<<<<<<< hide-cursor
+
   MODBIT(xw.attrs.event_mask, set, PointerMotionMask);
   XChangeWindowAttributes(xw.dpy, xw.win, CWEventMask, &xw.attrs);
 }
@@ -2003,6 +2025,11 @@ void kpress(XEvent *ev) {
   Rune c;
   Status status;
   Shortcut *bp;
+
+  // >>>>>>>>>>>>>>>>>>>> hide-cursor
+  // ==================== hide-cursor
+  // ==================== hide-cursor
+  // <<<<<<<<<<<<<<<<<<<< hide-cursor
 
   if (IS_SET(MODE_KBDLOCK))
     return;
