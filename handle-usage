@@ -11,7 +11,8 @@ Patches:
   bold-is-not-bright        This patch makes bold text rendered simply as bold, leaving the color
                             unaffected.
   iceberg-theme             This patch applies the iceberg theme to st.
-                              - Not comaptible with: dracula-theme
+                              - Not comaptible with: dracula-theme, gruvbox-light-theme,
+                                gruvbox-dark-theme
   clipboard                 This trivial patch sets CLIPBOARD on selection, the same as your browser.
   ligatures                 This patch adds proper drawing of ligatures.
                               - It is not 100% compatible with Scrollback and Alpha patches
@@ -41,7 +42,8 @@ Patches:
   disable-bold-italic-fonts Some terminals allow disabling bold/italic fonts globally. So this patch
                             adds such option as well.
   dracula-theme             This patch make the Dracula color scheme available for st.
-                              - Not comaptible with: iceberg-theme
+                              - Not comaptible with: iceberg-theme, gruvbox-light-theme,
+                                gruvbox-dark-theme
   external-pipe             Allows reading and writing st's screen through a pipe.
   external-pipe-signal      Run an externalpipe command upon receiving the SIGUSR1 signal. This is
                             helpful for supporting externalpipe scripts which work across multiple
@@ -56,4 +58,8 @@ Patches:
   relative-border           This patch allows you to specify a border that is relative in size to
                             the width of a cell in the terminal.
   gruvbox-dark-theme        This patch makes the gruvbox (dark) color scheme available for st.
+                              Not compatible with: iceberg-theme, gruvbox-light-theme,
+                                dracula-theme
   gruvbox-light-theme       This patch makes the gruvbox (light) color scheme available for st.
+                              Not compatible with: iceberg-theme, gruvbox-dark-theme,
+                                dracula-theme
