@@ -1142,12 +1142,12 @@ void xinit(int cols, int rows) {
   XGCValues gcvalues;
   Window parent;
   pid_t thispid = getpid();
-  // >>>>>>>>>>>>>>>>>>>> swap-mouse
-  // ==================== swap-mouse
+  // >>>>>>>>>>>>>>>>>>>> swap-mouse-hide-cursor
+  // ==================== swap-mouse-hide-cursor
   Cursor cursor;
   XColor xmousefg, xmousebg;
-  // ==================== swap-mouse
-  // <<<<<<<<<<<<<<<<<<<< swap-mouse
+  // ==================== swap-mouse-hide-cursor
+  // <<<<<<<<<<<<<<<<<<<< swap-mouse-hide-cursor
 
   // >>>>>>>>>>>>>>>>>>>> alpha
   // ==================== alpha

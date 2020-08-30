@@ -16,12 +16,12 @@ index cfc0525..145b8ba 100644
 @@ -1083,10 +1083,6 @@ void xinit(int cols, int rows) {
    Window parent;
    pid_t thispid = getpid();
-   // >>>>>>>>>>>>>>>>>>>> swap-mouse
--  // ==================== swap-mouse
+   // >>>>>>>>>>>>>>>>>>>> swap-mouse-hide-cursor
+-  // ==================== swap-mouse-hide-cursor
 -  Cursor cursor;
 -  XColor xmousefg, xmousebg;
--  // ==================== swap-mouse
-   // <<<<<<<<<<<<<<<<<<<< swap-mouse
+-  // ==================== swap-mouse-hide-cursor
+   // <<<<<<<<<<<<<<<<<<<< swap-mouse-hide-cursor
  
    // >>>>>>>>>>>>>>>>>>>> alpha
 @@ -1805,8 +1801,12 @@ void xsetmode(int set, unsigned int flags) {
