@@ -63,3 +63,5 @@ Patches:
   gruvbox-light-theme       This patch makes the gruvbox (light) color scheme available for st.
                               Not compatible with: iceberg-theme, gruvbox-dark-theme,
                                 dracula-theme
+  hide-cursor               Hide the X cursor whenever a key is pressed and show it back when the
+                            mouse is moved in the terminal window.
