@@ -1,8 +1,8 @@
 diff --git a/config.def.h b/config.def.h
-index bed130f..7a28fff 100644
+index efa7d8a..f23c479 100644
 --- a/config.def.h
 +++ b/config.def.h
-@@ -96,29 +96,27 @@ unsigned int tabspaces = 8;
+@@ -104,29 +104,25 @@ unsigned int tabspaces = 8;
  /* Terminal colors (16 first used in escape sequence) */
  static const char *colorname[] = {
    // >>>>>>>>>>>>>>>>>>>> iceberg-theme-dracula-theme-gruvbox-theme
@@ -16,14 +16,14 @@ index bed130f..7a28fff 100644
 -  "magenta3",
 -  "cyan3",
 -  "gray90",
-+  "#161821", /* black   */
-+  "#e27878", /* red     */
-+  "#b4be82", /* green   */
-+  "#e2a478", /* yellow  */
-+  "#84a0c6", /* blue    */
-+  "#a093c7", /* magenta */
-+  "#89b8c2", /* cyan    */
-+  "#c6c8d1", /* white   */
++  [0] = "#282828", /* hard contrast: #1d2021 / soft contrast: #32302f */
++  [1] = "#cc241d", /* red     */
++  [2] = "#98971a", /* green   */
++  [3] = "#d79921", /* yellow  */
++  [4] = "#458588", /* blue    */
++  [5] = "#b16286", /* magenta */
++  [6] = "#689d6a", /* cyan    */
++  [7] = "#a89984", /* white   */
  
    /* 8 bright colors */
 -  "gray50",
@@ -34,36 +34,37 @@ index bed130f..7a28fff 100644
 -  "magenta",
 -  "cyan",
 -  "white",
-+  "#6b7089", /* black   */
-+  "#e98989", /* red     */
-+  "#c0ca8e", /* green   */
-+  "#e9b189", /* yellow  */
-+  "#91acd1", /* blue    */
-+  "#ada0d3", /* magenta */
-+  "#95c4ce", /* cyan    */
-+  "#d2d4de", /* white   */
- 
-   [255] = 0,
+-
+-  [255] = 0,
 -  // ==================== iceberg-theme-dracula-theme-gruvbox-theme
++  [8]  = "#928374", /* black   */
++  [9]  = "#fb4934", /* red     */
++  [10] = "#b8bb26", /* green   */
++  [11] = "#fabd2f", /* yellow  */
++  [12] = "#83a598", /* blue    */
++  [13] = "#d3869b", /* magenta */
++  [14] = "#8ec07c", /* cyan    */
++  [15] = "#ebdbb2", /* white   */
    // <<<<<<<<<<<<<<<<<<<< iceberg-theme-dracula-theme-gruvbox-theme
  
    /* more colors can be added after 255 to use with DefaultXX */
-@@ -137,16 +135,14 @@ static const char *colorname[] = {
+@@ -145,16 +141,14 @@ static const char *colorname[] = {
  
  
  // >>>>>>>>>>>>>>>>>>>> iceberg-theme-dracula-theme-gruvbox-theme
 -// ==================== iceberg-theme-dracula-theme-gruvbox-theme
  /*
   * Default colors (colorname index)
-  * foreground, background, cursor, reverse cursor
+- * foreground, background, cursor, reverse cursor
++ * foreground, background, cursor
   */
- unsigned int defaultfg = 7;
+-unsigned int defaultfg = 7;
++unsigned int defaultfg = 15;
  unsigned int defaultbg = 0;
 -static unsigned int defaultcs = 256;
--static unsigned int defaultrcs = 257;
++static unsigned int defaultcs = 15;
+ static unsigned int defaultrcs = 257;
 -// ==================== iceberg-theme-dracula-theme-gruvbox-theme
-+static unsigned int defaultcs = 13;
-+static unsigned int defaultrcs = 0;
  // <<<<<<<<<<<<<<<<<<<< iceberg-theme-dracula-theme-gruvbox-theme
  
  // >>>>>>>>>>>>>>>>>>>> selection-colors

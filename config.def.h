@@ -103,8 +103,8 @@ unsigned int tabspaces = 8;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-  // >>>>>>>>>>>>>>>>>>>> iceberg-theme-dracula-theme
-  // ==================== iceberg-theme-dracula-theme
+  // >>>>>>>>>>>>>>>>>>>> iceberg-theme-dracula-theme-gruvbox-theme
+  // ==================== iceberg-theme-dracula-theme-gruvbox-theme
   /* 8 normal colors */
   "black",
   "red3",
@@ -126,8 +126,8 @@ static const char *colorname[] = {
   "white",
 
   [255] = 0,
-  // ==================== iceberg-theme-dracula-theme
-  // <<<<<<<<<<<<<<<<<<<< iceberg-theme-dracula-theme
+  // ==================== iceberg-theme-dracula-theme-gruvbox-theme
+  // <<<<<<<<<<<<<<<<<<<< iceberg-theme-dracula-theme-gruvbox-theme
 
   /* more colors can be added after 255 to use with DefaultXX */
   "#cccccc",
@@ -144,8 +144,8 @@ static const char *colorname[] = {
 };
 
 
-// >>>>>>>>>>>>>>>>>>>> iceberg-theme-dracula-theme
-// ==================== iceberg-theme-dracula-theme
+// >>>>>>>>>>>>>>>>>>>> iceberg-theme-dracula-theme-gruvbox-theme
+// ==================== iceberg-theme-dracula-theme-gruvbox-theme
 /*
  * Default colors (colorname index)
  * foreground, background, cursor, reverse cursor
@@ -154,8 +154,8 @@ unsigned int defaultfg = 7;
 unsigned int defaultbg = 0;
 static unsigned int defaultcs = 256;
 static unsigned int defaultrcs = 257;
-// ==================== iceberg-theme-dracula-theme
-// <<<<<<<<<<<<<<<<<<<< iceberg-theme-dracula-theme
+// ==================== iceberg-theme-dracula-theme-gruvbox-theme
+// <<<<<<<<<<<<<<<<<<<< iceberg-theme-dracula-theme-gruvbox-theme
 
 // >>>>>>>>>>>>>>>>>>>> selection-colors
 // ==================== selection-colors
