@@ -1,0 +1,86 @@
+diff --git a/config.def.h b/config.def.h
+index 2a7566e..5f0fa66 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -219,8 +219,10 @@ static MouseShortcut mshortcuts[] = {
+ #define MODKEY Mod1Mask
+ #define TERMMOD (ControlMask|ShiftMask)
+ // >>>>>>>>>>>>>>>>>>>> iso14755
+-// ==================== iso14755
+-// ==================== iso14755
++/*
++ * Command used to query unicode glyphs.
++ */
++char *iso14755_cmd = "dmenu -w \"$WINDOWID\" -p codepoint: </dev/null";
+ // <<<<<<<<<<<<<<<<<<<< iso14755
+ 
+ static Shortcut shortcuts[] = {
+@@ -254,8 +256,7 @@ static Shortcut shortcuts[] = {
+   // ==================== invert
+   // <<<<<<<<<<<<<<<<<<<< invert
+   // >>>>>>>>>>>>>>>>>>>> iso14755
+-  // ==================== iso14755
+-  // ==================== iso14755
++  { TERMMOD,              XK_I,           iso14755,       {.i =  0} },
+   // <<<<<<<<<<<<<<<<<<<< iso14755
+ };
+ 
+diff --git a/st.1 b/st.1
+index b1c736e..80ad6c0 100644
+--- a/st.1
++++ b/st.1
+@@ -178,8 +178,10 @@ Reset to default font size.
+ .B Ctrl-Shift-y
+ Paste from primary selection (middle mouse button).
+ \" >>>>>>>>>>>>>>>>>>>> iso14755
+-\" ==================== iso14755
+-\" ==================== iso14755
++.TP
++.B Ctrl-Shift-i
++Launch dmenu to enter a unicode codepoint and send the corresponding glyph
++to st.
+ \" <<<<<<<<<<<<<<<<<<<< iso14755
+ .TP
+ .B Ctrl-Shift-c
+diff --git a/st.c b/st.c
+index 6896af9..929e923 100644
+--- a/st.c
++++ b/st.c
+@@ -2632,6 +2632,22 @@ void redraw(void) {
+ // <<<<<<<<<<<<<<<<<<<< external-pipe-signal
+ 
+ // >>>>>>>>>>>>>>>>>>>> iso14755
+-// ==================== iso14755
+-// ==================== iso14755
++void iso14755(const Arg *arg) {
++  FILE *p;
++  char *us, *e, codepoint[9], uc[UTF_SIZ];
++  unsigned long utf32;
++
++  if (!(p = popen(iso14755_cmd, "r")))
++    return;
++
++  us = fgets(codepoint, sizeof(codepoint), p);
++  pclose(p);
++
++  if (!us || *us == '\0' || *us == '-' || strlen(us) > 7)
++    return;
++  if ((utf32 = strtoul(us, &e, 16)) == ULONG_MAX || (*e != '\n' && *e != '\0'))
++    return;
++
++  ttywrite(uc, utf8encode(utf32, uc), 1);
++}
+ // <<<<<<<<<<<<<<<<<<<< iso14755
+diff --git a/st.h b/st.h
+index 478647b..6f46f95 100644
+--- a/st.h
++++ b/st.h
+@@ -171,6 +171,6 @@ extern unsigned int defaultbg;
+ // <<<<<<<<<<<<<<<<<<<< external-pipe-signal
+ 
+ // >>>>>>>>>>>>>>>>>>>> iso14755
+-// ==================== iso14755
+-// ==================== iso14755
++void iso14755(const Arg *);
++extern char *iso14755_cmd;
+ // <<<<<<<<<<<<<<<<<<<< iso14755
