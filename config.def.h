@@ -218,6 +218,10 @@ static MouseShortcut mshortcuts[] = {
 /* Internal keyboard shortcuts. */
 #define MODKEY Mod1Mask
 #define TERMMOD (ControlMask|ShiftMask)
+// >>>>>>>>>>>>>>>>>>>> iso14755
+// ==================== iso14755
+// ==================== iso14755
+// <<<<<<<<<<<<<<<<<<<< iso14755
 
 static Shortcut shortcuts[] = {
   /* mask                 keysym          function        argument */
@@ -249,6 +253,10 @@ static Shortcut shortcuts[] = {
   // ==================== invert
   // ==================== invert
   // <<<<<<<<<<<<<<<<<<<< invert
+  // >>>>>>>>>>>>>>>>>>>> iso14755
+  // ==================== iso14755
+  // ==================== iso14755
+  // <<<<<<<<<<<<<<<<<<<< iso14755
 };
 
 /*

@@ -169,3 +169,8 @@ extern unsigned int defaultbg;
 // ==================== external-pipe-signal
 // ==================== external-pipe-signal
 // <<<<<<<<<<<<<<<<<<<< external-pipe-signal
+
+// >>>>>>>>>>>>>>>>>>>> iso14755
+// ==================== iso14755
+// ==================== iso14755
+// <<<<<<<<<<<<<<<<<<<< iso14755
