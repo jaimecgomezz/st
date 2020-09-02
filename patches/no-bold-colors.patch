@@ -1,0 +1,17 @@
+diff --git a/x.c b/x.c
+index 203b3fd..8525d0b 100644
+--- a/x.c
++++ b/x.c
+@@ -1521,11 +1521,9 @@ void xdrawglyphfontspecs(const XftGlyphFontSpec *specs, Glyph base, int len,
+   }
+ 
+   // >>>>>>>>>>>>>>>>>>>> bold-is-not-bright-no-bold-colors
+-  // ==================== bold-is-not-bright-no-bold-colors
+   /* Change basic system colors [0-7] to bright system colors [8-15] */
+   if ((base.mode & ATTR_BOLD_FAINT) == ATTR_BOLD && BETWEEN(base.fg, 0, 7))
+-    fg = &dc.col[base.fg + 8];
+-  // ==================== bold-is-not-bright-no-bold-colors
++    fg = &dc.col[base.fg];
+   // <<<<<<<<<<<<<<<<<<<< bold-is-not-bright-no-bold-colors
+ 
+   if (IS_SET(MODE_REVERSE)) {
