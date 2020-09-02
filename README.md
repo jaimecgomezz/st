@@ -56,7 +56,7 @@ Currently there’s no package available, so a manual installation is needed.
 
 ## Patching and testing
 
-For the sake of stability across projects, the [handle](https://github.com/jaimecgomezz/suckless-patchers/blob/master/handle) (patching) and [test-patch](https://github.com/jaimecgomezz/suckless-patchers/blob/master/test-patch) (testing) utilities and its usage instructions can be found [here](https://github.com/jaimecgomezz/suckless-patchers). Believe me, they’re worth it!
+For the sake of stability across projects, the [handle](https://github.com/jaimecgomezz/suckless-patchers/blob/master/handle) (patching) and [test-patch](https://github.com/jaimecgomezz/suckless-patchers/blob/master/test-patch) (testing) utilities and its usage instructions can be found [here](https://github.com/jaimecgomezz/suckless-patchers).
 
 
 
