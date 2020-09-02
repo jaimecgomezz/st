@@ -85,3 +85,5 @@ Patches:
                               - Not comaptible with: bold-is-not-bright
   xclearwin                 This simple patch just clears the window before the redraw of the
                             terminal when the bg color has been changed.
+  vertcenter                This patch vertically center lines in the space available if you have
+                            set a larger chscale in config.h.

@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.35.0] - 2020-09-02
+
+### Changed
+
+- Prepare the vertcenter patch integration
+
+### Added
+
+- Add support for the vertcenter patch
+
 ## [0.34.0] - 2020-09-01
 
 ### Changed
