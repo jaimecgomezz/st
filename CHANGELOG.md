@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.33.0] - 2020-09-01
+
+### Changed
+
+- Make bold-is-not-bright compatible with no-bold-colors
+
+### Added
+
+- Add support for the no-bold-colors patch
+
 ## [0.32.0] - 2020-09-01
 
 ### Changed

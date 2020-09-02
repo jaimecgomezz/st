@@ -10,6 +10,7 @@ Patches:
   blinking-cursor           This patch allows the use of a blinking cursor.
   bold-is-not-bright        This patch makes bold text rendered simply as bold, leaving the color
                             unaffected.
+                              - Not compatible with: no-bright-colors
   iceberg-theme             This patch applies the iceberg theme to st.
                               - Not comaptible with: dracula-theme, gruvbox-light-theme,
                                 gruvbox-dark-theme, solarized-dark-theme, solarized-light-theme
@@ -73,10 +74,12 @@ Patches:
                             to enter a unicode codepoint that will be converted to a glyph and then
                             pushed to st.
   solarized-dark-theme      These patches make the Solarized dark color scheme available for st.
-                              - Requires: no-bold-colors
+                              - Requires: no-bright-colors
                               - Not compatible with: iceberg-theme, dracula-theme,
                                 gruvbox-dark-theme, gruvbox-light-theme, solarized-light-theme
   solarized-light-theme     These patches make the Solarized light color scheme available for st.
-                              - Requires: no-bold-colors
+                              - Requires: no-bright-colors
                               - Not compatible with: iceberg-theme, dracula-theme,
                                 gruvbox-dark-theme, gruvbox-light-theme, solarized-dark-theme
+  no-bright-colors          This patch disables lighting up bold colors.
+                              - Not comaptible with: bold-is-not-bright
