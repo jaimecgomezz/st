@@ -1,0 +1,45 @@
+diff --git a/st.c b/st.c
+index e8050a8..5570243 100644
+--- a/st.c
++++ b/st.c
+@@ -1874,12 +1874,8 @@ void strhandle(void) {
+                 p ? p : "(null)");
+       } else {
+         // >>>>>>>>>>>>>>>>>>>> xclearwin
+-        // ==================== xclearwin
+-        /*
+-         * TODO if defaultbg color is changed, borders
+-         * are dirty
+-         */
+-        // ==================== xclearwin
++        if (j == defaultbg)
++          xclearwin();
+         // <<<<<<<<<<<<<<<<<<<< xclearwin
+         redraw();
+       }
+diff --git a/win.h b/win.h
+index a881c25..946edce 100644
+--- a/win.h
++++ b/win.h
+@@ -46,6 +46,5 @@ void xsetsel(char *);
+ int xstartdraw(void);
+ void xximspot(int, int);
+ // >>>>>>>>>>>>>>>>>>>> xclearwin
+-// ==================== xclearwin
+-// ==================== xclearwin
++void xclearwin(void);
+ // <<<<<<<<<<<<<<<<<<<< xclearwin
+diff --git a/x.c b/x.c
+index f6c03b7..aaea62c 100644
+--- a/x.c
++++ b/x.c
+@@ -892,8 +892,7 @@ void xclear(int x1, int y1, int x2, int y2) {
+ }
+ 
+ // >>>>>>>>>>>>>>>>>>>> xclearwin
+-// ==================== xclearwin
+-// ==================== xclearwin
++void xclearwin(void) { xclear(0, 0, win.w, win.h); }
+ // <<<<<<<<<<<<<<<<<<<< xclearwin
+ 
+ void xhints(void) {
