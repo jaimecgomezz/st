@@ -83,3 +83,5 @@ Patches:
                                 gruvbox-dark-theme, gruvbox-light-theme, solarized-dark-theme
   no-bright-colors          This patch disables lighting up bold colors.
                               - Not comaptible with: bold-is-not-bright
+  xclearwin                 This simple patch just clears the window before the redraw of the
+                            terminal when the bg color has been changed.

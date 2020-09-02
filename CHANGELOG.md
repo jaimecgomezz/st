@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.34.0] - 2020-09-01
+
+### Changed
+
+- Prepare the xclearwin patch integration
+
+### Added
+
+- Add support for the xclearwin patch
+
 ## [0.33.0] - 2020-09-01
 
 ### Changed
