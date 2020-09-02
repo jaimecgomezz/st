@@ -1,0 +1,66 @@
+diff --git a/x.c b/x.c
+index 3017146..878373e 100644
+--- a/x.c
++++ b/x.c
+@@ -111,8 +111,7 @@ typedef struct {
+   // ==================== anysize
+   // <<<<<<<<<<<<<<<<<<<< anysize
+   // >>>>>>>>>>>>>>>>>>>> vertcenter
+-  // ==================== vertcenter
+-  // ==================== vertcenter
++  int cyo; /* char y offset */
+   // <<<<<<<<<<<<<<<<<<<< vertcenter
+ } TermWindow;
+ 
+@@ -1075,8 +1074,7 @@ void xloadfonts(char *fontstr, double fontsize) {
+   win.cw = ceilf(dc.font.width * cwscale);
+   win.ch = ceilf(dc.font.height * chscale);
+   // >>>>>>>>>>>>>>>>>>>> vertcenter
+-  // ==================== vertcenter
+-  // ==================== vertcenter
++  win.cyo = ceilf(dc.font.height * (chscale - 1) / 2);
+   // <<<<<<<<<<<<<<<<<<<< vertcenter
+ 
+   // >>>>>>>>>>>>>>>>>>>> relative-border
+@@ -1367,9 +1365,7 @@ int xmakeglyphfontspecs(XftGlyphFontSpec *specs, const Glyph *glyphs, int len,
+   int i, f, numspecs = 0;
+ 
+   // >>>>>>>>>>>>>>>>>>>> vertcenter
+-  // ==================== vertcenter
+-  for (i = 0, xp = winx, yp = winy + font->ascent; i < len; ++i) {
+-  // ==================== vertcenter
++  for (i = 0, xp = winx, yp = winy + font->ascent + win.cyo; i < len; ++i) {
+   // <<<<<<<<<<<<<<<<<<<< vertcenter
+     /* Fetch rune and mode for current glyph. */
+     // >>>>>>>>>>>>>>>>>>>> vim-browse
+@@ -1404,9 +1400,7 @@ int xmakeglyphfontspecs(XftGlyphFontSpec *specs, const Glyph *glyphs, int len,
+         frcflags = FRC_BOLD;
+       }
+       // >>>>>>>>>>>>>>>>>>>> vertcenter
+-      // ==================== vertcenter
+-      yp = winy + font->ascent;
+-      // ==================== vertcenter
++      yp = winy + font->ascent + win.cyo;
+       // <<<<<<<<<<<<<<<<<<<< vertcenter
+     }
+ 
+@@ -1653,17 +1647,13 @@ void xdrawglyphfontspecs(const XftGlyphFontSpec *specs, Glyph base, int len,
+   /* Render underline and strikethrough. */
+   if (base.mode & ATTR_UNDERLINE) {
+     // >>>>>>>>>>>>>>>>>>>> vertcenter
+-    // ==================== vertcenter
+-    XftDrawRect(xw.draw, fg, winx, winy + dc.font.ascent + 1, width, 1);
+-    // ==================== vertcenter
++    XftDrawRect(xw.draw, fg, winx, winy + win.cyo + dc.font.ascent + 1, width, 1);
+     // <<<<<<<<<<<<<<<<<<<< vertcenter
+   }
+ 
+   if (base.mode & ATTR_STRUCK) {
+     // >>>>>>>>>>>>>>>>>>>> vertcenter
+-    // ==================== vertcenter
+-    XftDrawRect(xw.draw, fg, winx, winy + 2 * dc.font.ascent / 3, width, 1);
+-    // ==================== vertcenter
++    XftDrawRect(xw.draw, fg, winx, winy + win.cyo + 2 * dc.font.ascent / 3, width, 1);
+     // <<<<<<<<<<<<<<<<<<<< vertcenter
+   }
+ 
