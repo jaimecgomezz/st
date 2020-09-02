@@ -891,6 +891,11 @@ void xclear(int x1, int y1, int x2, int y2) {
   // <<<<<<<<<<<<<<<<<<<< invert
 }
 
+// >>>>>>>>>>>>>>>>>>>> xclearwin
+// ==================== xclearwin
+// ==================== xclearwin
+// <<<<<<<<<<<<<<<<<<<< xclearwin
+
 void xhints(void) {
   // >>>>>>>>>>>>>>>>>>>> xresources
   // ==================== xresources

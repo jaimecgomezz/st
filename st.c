@@ -1873,10 +1873,14 @@ void strhandle(void) {
         fprintf(stderr, "erresc: invalid color j=%d, p=%s\n", j,
                 p ? p : "(null)");
       } else {
+        // >>>>>>>>>>>>>>>>>>>> xclearwin
+        // ==================== xclearwin
         /*
          * TODO if defaultbg color is changed, borders
          * are dirty
          */
+        // ==================== xclearwin
+        // <<<<<<<<<<<<<<<<<<<< xclearwin
         redraw();
       }
       return;
