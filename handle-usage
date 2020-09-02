@@ -12,7 +12,7 @@ Patches:
                             unaffected.
   iceberg-theme             This patch applies the iceberg theme to st.
                               - Not comaptible with: dracula-theme, gruvbox-light-theme,
-                                gruvbox-dark-theme
+                                gruvbox-dark-theme, solarized-dark-theme, solarized-light-theme
   clipboard                 This trivial patch sets CLIPBOARD on selection, the same as your browser.
   ligatures                 This patch adds proper drawing of ligatures.
                               - It is not 100% compatible with Scrollback and Alpha patches
@@ -44,7 +44,7 @@ Patches:
                             adds such option as well.
   dracula-theme             This patch make the Dracula color scheme available for st.
                               - Not comaptible with: iceberg-theme, gruvbox-light-theme,
-                                gruvbox-dark-theme
+                                gruvbox-dark-theme, solarized-dark-theme, solarized-light-theme
   external-pipe             Allows reading and writing st's screen through a pipe.
   external-pipe-signal      Run an externalpipe command upon receiving the SIGUSR1 signal. This is
                             helpful for supporting externalpipe scripts which work across multiple
@@ -60,10 +60,10 @@ Patches:
                             the width of a cell in the terminal.
   gruvbox-dark-theme        This patch makes the gruvbox (dark) color scheme available for st.
                               Not compatible with: iceberg-theme, gruvbox-light-theme,
-                                dracula-theme
+                                dracula-theme, solarized-dark-theme, solarized-light-theme
   gruvbox-light-theme       This patch makes the gruvbox (light) color scheme available for st.
                               Not compatible with: iceberg-theme, gruvbox-dark-theme,
-                                dracula-theme
+                                dracula-theme, solarized-dark-theme, solarized-light-theme
   hide-cursor               Hide the X cursor whenever a key is pressed and show it back when the
                             mouse is moved in the terminal window.
                               - Not compatible with: swap-mouse
@@ -72,3 +72,11 @@ Patches:
   iso14755                  Pressing the default binding Ctrl+Shift-i will popup dmenu, asking you
                             to enter a unicode codepoint that will be converted to a glyph and then
                             pushed to st.
+  solarized-dark-theme      These patches make the Solarized dark color scheme available for st.
+                              - Requires: no-bold-colors
+                              - Not compatible with: iceberg-theme, dracula-theme,
+                                gruvbox-dark-theme, gruvbox-light-theme, solarized-light-theme
+  solarized-light-theme     These patches make the Solarized light color scheme available for st.
+                              - Requires: no-bold-colors
+                              - Not compatible with: iceberg-theme, dracula-theme,
+                                gruvbox-dark-theme, gruvbox-light-theme, solarized-dark-theme

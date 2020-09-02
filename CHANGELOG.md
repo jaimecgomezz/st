@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.32.0] - 2020-09-01
+
+### Changed
+
+- Make previous themes compatible with solarized-theme
+- Prepare the solarized-theme patch integration
+
+### Added
+
+- Add the solarized-dark-theme patch
+- Add the solarized-light-theme patch
+
 ## [0.31.0] - 2020-08-31
 
 ### Changed

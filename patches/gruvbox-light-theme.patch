@@ -5,8 +5,8 @@ index efa7d8a..96d0bc7 100644
 @@ -104,29 +104,25 @@ unsigned int tabspaces = 8;
  /* Terminal colors (16 first used in escape sequence) */
  static const char *colorname[] = {
-   // >>>>>>>>>>>>>>>>>>>> iceberg-theme-dracula-theme-gruvbox-theme
--  // ==================== iceberg-theme-dracula-theme-gruvbox-theme
+   // >>>>>>>>>>>>>>>>>>>> iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme
+-  // ==================== iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme
    /* 8 normal colors */
 -  "black",
 -  "red3",
@@ -36,7 +36,7 @@ index efa7d8a..96d0bc7 100644
 -  "white",
 -
 -  [255] = 0,
--  // ==================== iceberg-theme-dracula-theme-gruvbox-theme
+-  // ==================== iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme
 +  [8]  = "#928374", /* black   */
 +  [9]  = "#9d0006", /* red     */
 +  [10] = "#79740e", /* green   */
@@ -45,14 +45,14 @@ index efa7d8a..96d0bc7 100644
 +  [13] = "#8f3f71", /* magenta */
 +  [14] = "#427b58", /* cyan    */
 +  [15] = "#3c3836", /* white   */
-   // <<<<<<<<<<<<<<<<<<<< iceberg-theme-dracula-theme-gruvbox-theme
+   // <<<<<<<<<<<<<<<<<<<< iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme
  
    /* more colors can be added after 255 to use with DefaultXX */
 @@ -145,16 +141,14 @@ static const char *colorname[] = {
  
  
- // >>>>>>>>>>>>>>>>>>>> iceberg-theme-dracula-theme-gruvbox-theme
--// ==================== iceberg-theme-dracula-theme-gruvbox-theme
+ // >>>>>>>>>>>>>>>>>>>> iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme
+-// ==================== iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme
  /*
   * Default colors (colorname index)
 - * foreground, background, cursor, reverse cursor
@@ -64,7 +64,7 @@ index efa7d8a..96d0bc7 100644
 -static unsigned int defaultcs = 256;
 +static unsigned int defaultcs = 15;
  static unsigned int defaultrcs = 257;
--// ==================== iceberg-theme-dracula-theme-gruvbox-theme
- // <<<<<<<<<<<<<<<<<<<< iceberg-theme-dracula-theme-gruvbox-theme
+-// ==================== iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme
+ // <<<<<<<<<<<<<<<<<<<< iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme
  
  // >>>>>>>>>>>>>>>>>>>> selection-colors
