@@ -20,11 +20,11 @@ A patch-friendly [st](https://st.suckless.org/) distribution. Lets make `suckles
 | [delkey](https://st.suckless.org/patches/delkey/)            | ✔️    | [invert](https://st.suckless.org/patches/invert/)            | ✔️    | [fix-ime](https://st.suckless.org/patches/fix_ime/)          |      |
 | [desktop-entry](https://st.suckless.org/patches/desktopentry/) | ✔️    | [iso14755](https://st.suckless.org/patches/iso14755/)        | ✔️    | [right-click-to-plumb](https://st.suckless.org/patches/right_click_to_plumb/) |      |
 | [right-click-paste](https://st.suckless.org/patches/rightclickpaste/) | ✔️    | [solarized-theme](https://st.suckless.org/patches/solarized/) | ✔️    | [selection-bg-alpha](https://st.suckless.org/patches/selectionbg-alpha/) |      |
-| [selection-colors](https://st.suckless.org/patches/selectioncolors/) | ✔️    | [sync](https://st.suckless.org/patches/sync/)                |      | [spoiler](https://st.suckless.org/patches/spoiler/)          |      |
+| [selection-colors](https://st.suckless.org/patches/selectioncolors/) | ✔️    | [no-bright-colors](https://st.suckless.org/patches/solarized/st-no_bold_colors-20170623-b331da5.diff) | ✔️    | [spoiler](https://st.suckless.org/patches/spoiler/)          |      |
 | [swap-mouse](https://st.suckless.org/patches/swapmouse/)     | ✔️    | [xclearwin](https://st.suckless.org/patches/xclearwin/)      |      | [themed-cursor](https://st.suckless.org/patches/themed_cursor/) |      |
 | [visual-bell](https://st.suckless.org/patches/visualbell/)   | ✔️    | [vertcenter](https://st.suckless.org/patches/vertcenter/)    |      | [fix-keyboard-input](https://st.suckless.org/patches/fix_keyboard_input/) |      |
 | [working-dir](https://st.suckless.org/patches/workingdir/)   | ✔️    | [universcroll](https://st.suckless.org/patches/universcroll/) |      | [w3m](https://st.suckless.org/patches/w3m/)                  |      |
-| [new-term](https://st.suckless.org/patches/newterm/)         | ✔️    |                                                              |      | [boxdraw](https://st.suckless.org/patches/boxdraw/)          |      |
+| [new-term](https://st.suckless.org/patches/newterm/)         | ✔️    | [sync](https://st.suckless.org/patches/sync/)                |      | [boxdraw](https://st.suckless.org/patches/boxdraw/)          |      |
 | [xresources](https://st.suckless.org/patches/xresources/)    | ✔️    | [scrollback](https://st.suckless.org/patches/scrollback/)    |      |                                                              |      |
 
 
