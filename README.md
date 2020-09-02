@@ -19,13 +19,13 @@ A patch-friendly [st](https://st.suckless.org/) distribution. Lets make `suckles
 | [copy-url](https://st.suckless.org/patches/copyurl/)         | ✔️    | [hide-cursor](https://st.suckless.org/patches/hidecursor/)   | ✔️    | [palettes](https://st.suckless.org/patches/palettes/)        |      |
 | [delkey](https://st.suckless.org/patches/delkey/)            | ✔️    | [invert](https://st.suckless.org/patches/invert/)            | ✔️    | [fix-ime](https://st.suckless.org/patches/fix_ime/)          |      |
 | [desktop-entry](https://st.suckless.org/patches/desktopentry/) | ✔️    | [iso14755](https://st.suckless.org/patches/iso14755/)        | ✔️    | [right-click-to-plumb](https://st.suckless.org/patches/right_click_to_plumb/) |      |
-| [right-click-paste](https://st.suckless.org/patches/rightclickpaste/) | ✔️    | [scrollback](https://st.suckless.org/patches/scrollback/)    |      | [selection-bg-alpha](https://st.suckless.org/patches/selectionbg-alpha/) |      |
-| [selection-colors](https://st.suckless.org/patches/selectioncolors/) | ✔️    | [solarized-theme](https://st.suckless.org/patches/solarized/) |      | [spoiler](https://st.suckless.org/patches/spoiler/)          |      |
-| [swap-mouse](https://st.suckless.org/patches/swapmouse/)     | ✔️    | [sync](https://st.suckless.org/patches/sync/)                |      | [themed-cursor](https://st.suckless.org/patches/themed_cursor/) |      |
+| [right-click-paste](https://st.suckless.org/patches/rightclickpaste/) | ✔️    | [solarized-theme](https://st.suckless.org/patches/solarized/) | ✔️    | [selection-bg-alpha](https://st.suckless.org/patches/selectionbg-alpha/) |      |
+| [selection-colors](https://st.suckless.org/patches/selectioncolors/) | ✔️    | [sync](https://st.suckless.org/patches/sync/)                |      | [spoiler](https://st.suckless.org/patches/spoiler/)          |      |
+| [swap-mouse](https://st.suckless.org/patches/swapmouse/)     | ✔️    | [xclearwin](https://st.suckless.org/patches/xclearwin/)      |      | [themed-cursor](https://st.suckless.org/patches/themed_cursor/) |      |
 | [visual-bell](https://st.suckless.org/patches/visualbell/)   | ✔️    | [vertcenter](https://st.suckless.org/patches/vertcenter/)    |      | [fix-keyboard-input](https://st.suckless.org/patches/fix_keyboard_input/) |      |
 | [working-dir](https://st.suckless.org/patches/workingdir/)   | ✔️    | [universcroll](https://st.suckless.org/patches/universcroll/) |      | [w3m](https://st.suckless.org/patches/w3m/)                  |      |
-| [new-term](https://st.suckless.org/patches/newterm/)         | ✔️    | [xclearwin](https://st.suckless.org/patches/xclearwin/)      |      | [boxdraw](https://st.suckless.org/patches/boxdraw/)          |      |
-| [xresources](https://st.suckless.org/patches/xresources/)    | ✔️    |                                                              |      |                                                              |      |
+| [new-term](https://st.suckless.org/patches/newterm/)         | ✔️    |                                                              |      | [boxdraw](https://st.suckless.org/patches/boxdraw/)          |      |
+| [xresources](https://st.suckless.org/patches/xresources/)    | ✔️    | [scrollback](https://st.suckless.org/patches/scrollback/)    |      |                                                              |      |
 
 
 
