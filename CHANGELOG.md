@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.36.0] - 2020-09-05
+
+### Changed
+
+- Prepare the keyboard-select patch to docs
+
+### Added
+
+- Add support for the keyboard-select patch
+
 ## [0.35.0] - 2020-09-02
 
 ### Changed

@@ -8,7 +8,7 @@ A patch-friendly [st](https://st.suckless.org/) distribution. Lets make `suckles
 
 |                                                              |      | Patches                                                      |      |                                                              |      |
 | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ | ---- |
-| [alpha](https://st.suckless.org/patches/alpha/)              | ✔️    | [disable-bold-italic-fonts](https://st.suckless.org/patches/disable_bold_italic_fonts/) | ✔️    | [key-board-select](https://st.suckless.org/patches/keyboard_select/) |      |
+| [alpha](https://st.suckless.org/patches/alpha/)              | ✔️    | [disable-bold-italic-fonts](https://st.suckless.org/patches/disable_bold_italic_fonts/) | ✔️    | [fix-keyboard-input](https://st.suckless.org/patches/fix_keyboard_input/) |      |
 | [alpha-focus-highlight](https://st.suckless.org/patches/alpha_focus_highlight/) | ✔️    | [dracula-theme](https://st.suckless.org/patches/dracula/)    | ✔️    | [colors-at-launch](https://st.suckless.org/patches/colors_at_launch/) |      |
 | [anysize](https://st.suckless.org/patches/anysize/)          | ✔️    | [external-pipe](https://st.suckless.org/patches/externalpipe/) | ✔️    | [netwmicon](https://st.suckless.org/patches/netwmicon/)      |      |
 | [blinking-cursor](https://st.suckless.org/patches/blinking_cursor/) | ✔️    | [external-pipe-signal](https://st.suckless.org/patches/externalpipe-signal/) | ✔️    | [visual-bell-2](https://st.suckless.org/patches/visualbell2/) |      |
@@ -22,8 +22,8 @@ A patch-friendly [st](https://st.suckless.org/) distribution. Lets make `suckles
 | [right-click-paste](https://st.suckless.org/patches/rightclickpaste/) | ✔️    | [solarized-theme](https://st.suckless.org/patches/solarized/) | ✔️    | [selection-bg-alpha](https://st.suckless.org/patches/selectionbg-alpha/) |      |
 | [selection-colors](https://st.suckless.org/patches/selectioncolors/) | ✔️    | [no-bright-colors](https://st.suckless.org/patches/solarized/st-no_bold_colors-20170623-b331da5.diff) | ✔️    | [spoiler](https://st.suckless.org/patches/spoiler/)          |      |
 | [swap-mouse](https://st.suckless.org/patches/swapmouse/)     | ✔️    | [xclearwin](https://st.suckless.org/patches/xclearwin/)      | ✔️    | [themed-cursor](https://st.suckless.org/patches/themed_cursor/) |      |
-| [visual-bell](https://st.suckless.org/patches/visualbell/)   | ✔️    | [vertcenter](https://st.suckless.org/patches/vertcenter/)    | ✔️    | [fix-keyboard-input](https://st.suckless.org/patches/fix_keyboard_input/) |      |
-| [working-dir](https://st.suckless.org/patches/workingdir/)   | ✔️    | [universcroll](https://st.suckless.org/patches/universcroll/) |      | [w3m](https://st.suckless.org/patches/w3m/)                  |      |
+| [visual-bell](https://st.suckless.org/patches/visualbell/)   | ✔️    | [vertcenter](https://st.suckless.org/patches/vertcenter/)    | ✔️    | [universcroll](https://st.suckless.org/patches/universcroll/) |      |
+| [working-dir](https://st.suckless.org/patches/workingdir/)   | ✔️    | [key-board-select](https://st.suckless.org/patches/keyboard_select/) | ✔️    | [w3m](https://st.suckless.org/patches/w3m/)                  |      |
 | [new-term](https://st.suckless.org/patches/newterm/)         | ✔️    | [sync](https://st.suckless.org/patches/sync/)                |      | [boxdraw](https://st.suckless.org/patches/boxdraw/)          |      |
 | [xresources](https://st.suckless.org/patches/xresources/)    | ✔️    | [scrollback](https://st.suckless.org/patches/scrollback/)    |      |                                                              |      |
 

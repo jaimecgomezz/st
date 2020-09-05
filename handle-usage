@@ -87,3 +87,6 @@ Patches:
                             terminal when the bg color has been changed.
   vertcenter                This patch vertically center lines in the space available if you have
                             set a larger chscale in config.h.
+  keyboard-select           This patch allows you to select and copy text to primary buffer with
+                            keyboard shortcuts like the perl extension keyboard-select for urxvt.
+                              Usage: Ctrl+Shift+Esc

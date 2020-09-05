@@ -20,6 +20,10 @@
 // ==================== vim-browse
 // ==================== vim-browse
 // <<<<<<<<<<<<<<<<<<<< vim-browse
+// >>>>>>>>>>>>>>>>>>>> keyboard-select
+// ==================== keyboard-select
+// ==================== keyboard-select
+// <<<<<<<<<<<<<<<<<<<< keyboard-select
 
 #include "st.h"
 #include "win.h"
@@ -2423,6 +2427,11 @@ void tresize(int col, int row) {
   int *bp;
   TCursor c;
 
+  // >>>>>>>>>>>>>>>>>>>> keyboard-select
+  // ==================== keyboard-select
+  // ==================== keyboard-select
+  // <<<<<<<<<<<<<<<<<<<< keyboard-select
+
   if (col < 1 || row < 1) {
     fprintf(stderr, "tresize: error resizing to %dx%d\n", col, row);
     return;
@@ -2639,3 +2648,8 @@ void redraw(void) {
 // ==================== iso14755
 // ==================== iso14755
 // <<<<<<<<<<<<<<<<<<<< iso14755
+
+// >>>>>>>>>>>>>>>>>>>> keyboard-select
+// ==================== keyboard-select
+// ==================== keyboard-select
+// <<<<<<<<<<<<<<<<<<<< keyboard-select

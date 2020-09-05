@@ -174,3 +174,8 @@ extern unsigned int defaultbg;
 // ==================== iso14755
 // ==================== iso14755
 // <<<<<<<<<<<<<<<<<<<< iso14755
+
+// >>>>>>>>>>>>>>>>>>>> keyboard-select
+// ==================== keyboard-select
+// ==================== keyboard-select
+// <<<<<<<<<<<<<<<<<<<< keyboard-select
