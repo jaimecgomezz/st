@@ -25,6 +25,10 @@ enum win_mode {
   // <<<<<<<<<<<<<<<<<<<< vim-browse
   MODE_MOUSE       = MODE_MOUSEBTN|MODE_MOUSEMOTION|MODE_MOUSEX10\
                     |MODE_MOUSEMANY,
+  // >>>>>>>>>>>>>>>>>>>> keyboard-select
+  // ==================== keyboard-select
+  // ==================== keyboard-select
+  // <<<<<<<<<<<<<<<<<<<< keyboard-select
 };
 
 void xbell(void);
@@ -49,3 +53,7 @@ void xximspot(int, int);
 // ==================== xclearwin
 // ==================== xclearwin
 // <<<<<<<<<<<<<<<<<<<< xclearwin
+// >>>>>>>>>>>>>>>>>>>> keyboard-select
+// ==================== keyboard-select
+// ==================== keyboard-select
+// <<<<<<<<<<<<<<<<<<<< keyboard-select

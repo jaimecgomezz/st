@@ -257,6 +257,10 @@ static Shortcut shortcuts[] = {
   // ==================== iso14755
   // ==================== iso14755
   // <<<<<<<<<<<<<<<<<<<< iso14755
+  // >>>>>>>>>>>>>>>>>>>> keyboard-select
+  // ==================== keyboard-select
+  // ==================== keyboard-select
+  // <<<<<<<<<<<<<<<<<<<< keyboard-select
 };
 
 /*

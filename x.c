@@ -2093,6 +2093,10 @@ void kpress(XEvent *ev) {
   // ==================== vim-browse
   // ==================== vim-browse
   // <<<<<<<<<<<<<<<<<<<< vim-browse
+  // >>>>>>>>>>>>>>>>>>>> keyboard-select
+  // ==================== keyboard-select
+  // ==================== keyboard-select
+  // <<<<<<<<<<<<<<<<<<<< keyboard-select
   /* 1. shortcuts */
   for (bp = shortcuts; bp < shortcuts + LEN(shortcuts); bp++) {
     if (ksym == bp->keysym && match(bp->mod, e->state)) {
@@ -2311,6 +2315,11 @@ void usage(void) {
     argv0
   );
 }
+
+// >>>>>>>>>>>>>>>>>>>> keyboard-select
+// ==================== keyboard-select
+// ==================== keyboard-select
+// <<<<<<<<<<<<<<<<<<<< keyboard-select
 
 int main(int argc, char *argv[]) {
   xw.l = xw.t = 0;
