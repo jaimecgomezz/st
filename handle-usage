@@ -90,3 +90,4 @@ Patches:
   keyboard-select           This patch allows you to select and copy text to primary buffer with
                             keyboard shortcuts like the perl extension keyboard-select for urxvt.
                               Usage: Ctrl+Shift+Esc
+                              Not compatible with: vim-browse
