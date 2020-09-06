@@ -91,3 +91,5 @@ Patches:
                             keyboard shortcuts like the perl extension keyboard-select for urxvt.
                               Usage: Ctrl+Shift+Esc
                               Not compatible with: vim-browse
+  sync                      This patch is for better draw timing to reduce flicker/tearing and
+                            improve animation smoothness.
