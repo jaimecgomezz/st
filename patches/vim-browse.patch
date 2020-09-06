@@ -939,33 +939,33 @@ index 6621628..80d77b9 100644
    // <<<<<<<<<<<<<<<<<<<< vim-browse
  
      if (sel.type == SEL_RECTANGULAR) {
-       // >>>>>>>>>>>>>>>>>>>> vim-browse
--      // ==================== vim-browse
+       // >>>>>>>>>>>>>>>>>>>> vim-browse-scrollback
+-      // ==================== vim-browse-scrollback
 -      gp = &term.line[y][sel.nb.x];
--      // ==================== vim-browse
+-      // ==================== vim-browse-scrollback
 +      gp = &cbuf[yy][sel.nb.x];
-       // <<<<<<<<<<<<<<<<<<<< vim-browse
+       // <<<<<<<<<<<<<<<<<<<< vim-browse-scrollback
        lastx = sel.ne.x;
      } else {
-       // >>>>>>>>>>>>>>>>>>>> vim-browse
--      // ==================== vim-browse
+       // >>>>>>>>>>>>>>>>>>>> vim-browse-scrollback
+-      // ==================== vim-browse-scrollback
 -      gp = &term.line[y][sel.nb.y == y ? sel.nb.x : 0];
 -      lastx = (sel.ne.y == y) ? sel.ne.x : term.col - 1;
--      // ==================== vim-browse
+-      // ==================== vim-browse-scrollback
 +      gp = &cbuf[yy][start == y ? sel.nb.x : 0];
 +      lastx = (endy == y) ? sel.ne.x : term.col-1;
-       // <<<<<<<<<<<<<<<<<<<< vim-browse
+       // <<<<<<<<<<<<<<<<<<<< vim-browse-scrollback
      }
-     // >>>>>>>>>>>>>>>>>>>> vim-browse
--    // ==================== vim-browse
+     // >>>>>>>>>>>>>>>>>>>> vim-browse-scrollback
+-    // ==================== vim-browse-scrollback
 -    last = &term.line[y][MIN(lastx, linelen - 1)];
 -    while (last >= gp && last->u == ' ')
 -      --last;
--    // ==================== vim-browse
+-    // ==================== vim-browse-scrollback
 +    last = &cbuf[yy][lastx];
 +    if (!(cbuf[yy][term.col - 1].mode & ATTR_WRAP))
 +      while (last > gp && last->u == ' ') --last;
-     // <<<<<<<<<<<<<<<<<<<< vim-browse
+     // <<<<<<<<<<<<<<<<<<<< vim-browse-scrollback
  
      for (; gp <= last; ++gp) {
        // >>>>>>>>>>>>>>>>>>>> vim-browse

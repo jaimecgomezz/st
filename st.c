@@ -665,27 +665,27 @@ char *getsel(void) {
   // <<<<<<<<<<<<<<<<<<<< vim-browse
 
     if (sel.type == SEL_RECTANGULAR) {
-      // >>>>>>>>>>>>>>>>>>>> vim-browse
-      // ==================== vim-browse
+      // >>>>>>>>>>>>>>>>>>>> vim-browse-scrollback
+      // ==================== vim-browse-scrollback
       gp = &term.line[y][sel.nb.x];
-      // ==================== vim-browse
-      // <<<<<<<<<<<<<<<<<<<< vim-browse
+      // ==================== vim-browse-scrollback
+      // <<<<<<<<<<<<<<<<<<<< vim-browse-scrollback
       lastx = sel.ne.x;
     } else {
-      // >>>>>>>>>>>>>>>>>>>> vim-browse
-      // ==================== vim-browse
+      // >>>>>>>>>>>>>>>>>>>> vim-browse-scrollback
+      // ==================== vim-browse-scrollback
       gp = &term.line[y][sel.nb.y == y ? sel.nb.x : 0];
       lastx = (sel.ne.y == y) ? sel.ne.x : term.col - 1;
-      // ==================== vim-browse
-      // <<<<<<<<<<<<<<<<<<<< vim-browse
+      // ==================== vim-browse-scrollback
+      // <<<<<<<<<<<<<<<<<<<< vim-browse-scrollback
     }
-    // >>>>>>>>>>>>>>>>>>>> vim-browse
-    // ==================== vim-browse
+    // >>>>>>>>>>>>>>>>>>>> vim-browse-scrollback
+    // ==================== vim-browse-scrollback
     last = &term.line[y][MIN(lastx, linelen - 1)];
     while (last >= gp && last->u == ' ')
       --last;
-    // ==================== vim-browse
-    // <<<<<<<<<<<<<<<<<<<< vim-browse
+    // ==================== vim-browse-scrollback
+    // <<<<<<<<<<<<<<<<<<<< vim-browse-scrollback
 
     for (; gp <= last; ++gp) {
       // >>>>>>>>>>>>>>>>>>>> vim-browse
@@ -2636,6 +2636,8 @@ void draw(void) {
   drawregion(0, 0, term.col, term.row);
   // ==================== vim-browse
   // <<<<<<<<<<<<<<<<<<<< vim-browse
+  // >>>>>>>>>>>>>>>>>>>> ligatures-scrollback
+  // ==================== ligatures-scrollback
   xdrawcursor(
     cx,
     term.c.y,
@@ -2643,11 +2645,9 @@ void draw(void) {
     term.ocx,
     term.ocy,
     term.line[term.ocy][term.ocx]
-    // >>>>>>>>>>>>>>>>>>>> ligatures
-    // ==================== ligatures
-    // ==================== ligatures
-    // <<<<<<<<<<<<<<<<<<<< ligatures
   );
+  // ==================== ligatures-scrollback
+  // <<<<<<<<<<<<<<<<<<<< ligatures-scrollback
 
   term.ocx = cx;
   term.ocy = term.c.y;
