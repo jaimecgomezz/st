@@ -273,6 +273,11 @@ static Rune utfmax[UTF_SIZ + 1] = {0x10FFFF, 0x7F, 0x7FF, 0xFFFF, 0x10FFFF};
 // ==================== vim-browse
 // <<<<<<<<<<<<<<<<<<<< vim-browse
 
+// >>>>>>>>>>>>>>>>>>>> sync
+// ==================== sync
+// ==================== sync
+// <<<<<<<<<<<<<<<<<<<< sync
+
 ssize_t xwrite(int fd, const char *s, size_t len) {
   size_t aux = len;
   ssize_t r;
@@ -885,13 +890,22 @@ int ttynew(char *line, char *cmd, char *out, char **args) {
   return cmdfd;
 }
 
+// >>>>>>>>>>>>>>>>>>>> sync
+// ==================== sync
+// ==================== sync
+// <<<<<<<<<<<<<<<<<<<< sync
+
 size_t ttyread(void) {
   static char buf[BUFSIZ];
   static int buflen = 0;
   int ret, written;
 
   /* append read bytes to unprocessed bytes */
+  // >>>>>>>>>>>>>>>>>>>> sync
+  // ==================== sync
   ret = read(cmdfd, buf + buflen, LEN(buf) - buflen);
+  // ==================== sync
+  // <<<<<<<<<<<<<<<<<<<< sync
 
   switch (ret) {
   case 0:
@@ -899,7 +913,11 @@ size_t ttyread(void) {
   case -1:
     die("couldn't read from shell: %s\n", strerror(errno));
   default:
+    // >>>>>>>>>>>>>>>>>>>> sync
+    // ==================== sync
     buflen += ret;
+    // ==================== sync
+    // <<<<<<<<<<<<<<<<<<<< sync
     written = twrite(buf, buflen, 0);
     buflen -= written;
     /* keep any incomplete UTF-8 byte sequence for the next call */
@@ -1042,7 +1060,13 @@ void tsetdirtattr(int attr) {
   }
 }
 
-void tfulldirt(void) { tsetdirt(0, term.row - 1); }
+void tfulldirt(void) {
+  // >>>>>>>>>>>>>>>>>>>> sync
+  // ==================== sync
+  // ==================== sync
+  // <<<<<<<<<<<<<<<<<<<< sync
+  tsetdirt(0, term.row - 1);
+}
 
 void tcursor(int mode) {
   // >>>>>>>>>>>>>>>>>>>> vim-browse
@@ -1894,6 +1918,10 @@ void strhandle(void) {
     xsettitle(strescseq.args[0]);
     return;
   case 'P': /* DCS -- Device Control String */
+  // >>>>>>>>>>>>>>>>>>>> sync
+  // ==================== sync
+  // ==================== sync
+  // <<<<<<<<<<<<<<<<<<<< sync
   case '_': /* APC -- Application Program Command */
   case '^': /* PM -- Privacy Message */
     return;
@@ -2391,6 +2419,11 @@ int twrite(const char *buf, int buflen, int show_ctrl) {
   Rune u;
   int n;
 
+  // >>>>>>>>>>>>>>>>>>>> sync
+  // ==================== sync
+  // ==================== sync
+  // <<<<<<<<<<<<<<<<<<<< sync
+
   for (n = 0; n < buflen; n += charsize) {
     if (IS_SET(MODE_UTF8)) {
       /* process a complete utf8 char */
@@ -2401,6 +2434,10 @@ int twrite(const char *buf, int buflen, int show_ctrl) {
       u = buf[n] & 0xFF;
       charsize = 1;
     }
+    // >>>>>>>>>>>>>>>>>>>> sync
+    // ==================== sync
+    // ==================== sync
+    // <<<<<<<<<<<<<<<<<<<< sync
     if (show_ctrl && ISCONTROL(u)) {
       if (u & 0x80) {
         u &= 0x7f;

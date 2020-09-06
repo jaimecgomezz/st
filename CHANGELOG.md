@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.37.0] - 2020-09-06
+
+### Changed
+
+- Prepare the sync patch integration
+
+### Added
+
+- Add support for the sync patch
+
 ## [0.36.0] - 2020-09-05
 
 ### Changed
