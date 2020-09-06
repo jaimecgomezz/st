@@ -2154,6 +2154,11 @@ void resize(XEvent *e) {
   cresize(e->xconfigure.width, e->xconfigure.height);
 }
 
+// >>>>>>>>>>>>>>>>>>>> sync
+// ==================== sync
+// ==================== sync
+// <<<<<<<<<<<<<<<<<<<< sync
+
 void run(void) {
   XEvent ev;
   int w = win.w, h = win.h;
@@ -2186,7 +2191,11 @@ void run(void) {
     FD_SET(ttyfd, &rfd);
     FD_SET(xfd, &rfd);
 
+    // >>>>>>>>>>>>>>>>>>>> sync
+    // ==================== sync
     if (XPending(xw.dpy))
+    // ==================== sync
+    // <<<<<<<<<<<<<<<<<<<< sync
       timeout = 0; /* existing events might not set xfd */
 
     seltv.tv_sec = timeout / 1E3;
@@ -2200,7 +2209,11 @@ void run(void) {
     }
     clock_gettime(CLOCK_MONOTONIC, &now);
 
+    // >>>>>>>>>>>>>>>>>>>> sync
+    // ==================== sync
     if (FD_ISSET(ttyfd, &rfd))
+    // ==================== sync
+    // <<<<<<<<<<<<<<<<<<<< sync
       ttyread();
 
     xev = 0;
@@ -2224,7 +2237,11 @@ void run(void) {
      * maximum latency intervals during `cat huge.txt`, and perfect
      * sync with periodic updates from animations/key-repeats/etc.
      */
+    // >>>>>>>>>>>>>>>>>>>> sync
+    // ==================== sync
     if (FD_ISSET(ttyfd, &rfd) || xev) {
+    // ==================== sync
+    // <<<<<<<<<<<<<<<<<<<< sync
       if (!drawing) {
         trigger = now;
 
@@ -2239,6 +2256,11 @@ void run(void) {
       if (timeout > 0)
         continue; /* we have time, try to find idle */
     }
+
+    // >>>>>>>>>>>>>>>>>>>> sync
+    // ==================== sync
+    // ==================== sync
+    // <<<<<<<<<<<<<<<<<<<< sync
 
     /* idle detected or maxlatency exhausted -> draw */
     timeout = -1;
