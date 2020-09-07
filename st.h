@@ -179,3 +179,8 @@ extern unsigned int defaultbg;
 // ==================== keyboard-select
 // ==================== keyboard-select
 // <<<<<<<<<<<<<<<<<<<< keyboard-select
+
+// >>>>>>>>>>>>>>>>>>>> scrollback
+// ==================== scrollback
+// ==================== scrollback
+// <<<<<<<<<<<<<<<<<<<< scrollback

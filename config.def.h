@@ -261,6 +261,10 @@ static Shortcut shortcuts[] = {
   // ==================== keyboard-select
   // ==================== keyboard-select
   // <<<<<<<<<<<<<<<<<<<< keyboard-select
+  // >>>>>>>>>>>>>>>>>>>> scrollback
+  // ==================== scrollback
+  // ==================== scrollback
+  // <<<<<<<<<<<<<<<<<<<< scrollback
 };
 
 /*

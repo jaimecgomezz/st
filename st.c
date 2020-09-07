@@ -43,6 +43,10 @@
 #define ESC_ARG_SIZ   16
 #define STR_BUF_SIZ   ESC_BUF_SIZ
 #define STR_ARG_SIZ   ESC_ARG_SIZ
+// >>>>>>>>>>>>>>>>>>>> scrollback
+// ==================== scrollback
+// ==================== scrollback
+// <<<<<<<<<<<<<<<<<<<< scrollback
 
 /* macros */
 #define IS_SET(flag)    ((term.mode & (flag)) != 0)
@@ -50,6 +54,10 @@
 #define ISCONTROLC1(c)    (BETWEEN(c, 0x80, 0x9f))
 #define ISCONTROL(c)    (ISCONTROLC0(c) || ISCONTROLC1(c))
 #define ISDELIM(u)    (u && wcschr(worddelimiters, u))
+// >>>>>>>>>>>>>>>>>>>> scrollback
+// ==================== scrollback
+// ==================== scrollback
+// <<<<<<<<<<<<<<<<<<<< scrollback
 
 // >>>>>>>>>>>>>>>>>>>> vim-browse
 // ==================== vim-browse
@@ -145,6 +153,10 @@ typedef struct {
   int icharset; /* selected charset for sequence */
   int *tabs;
   Rune lastc;   /* last printed char outside of sequence, 0 if control */
+  // >>>>>>>>>>>>>>>>>>>> scrollback
+  // ==================== scrollback
+  // ==================== scrollback
+  // <<<<<<<<<<<<<<<<<<<< scrollback
 } Term;
 
 /* CSI Escape sequence structs */
@@ -201,8 +213,12 @@ static void tnewline(int);
 static void tputtab(int);
 static void tputc(Rune);
 static void treset(void);
+// >>>>>>>>>>>>>>>>>>>> scrollback
+// ==================== scrollback
 static void tscrollup(int, int);
 static void tscrolldown(int, int);
+// ==================== scrollback
+// <<<<<<<<<<<<<<<<<<<< scrollback
 static void tsetattr(int *, int);
 static void tsetchar(Rune, Glyph *, int, int);
 static void tsetdirt(int, int);
@@ -434,10 +450,18 @@ void selinit(void) {
 int tlinelen(int y) {
   int i = term.col;
 
+  // >>>>>>>>>>>>>>>>>>>> scrollback
+  // ==================== scrollback
   if (term.line[y][i - 1].mode & ATTR_WRAP)
+  // ==================== scrollback
+  // <<<<<<<<<<<<<<<<<<<< scrollback
     return i;
 
+  // >>>>>>>>>>>>>>>>>>>> scrollback
+  // ==================== scrollback
   while (i > 0 && term.line[y][i - 1].u == ' ')
+  // ==================== scrollback
+  // <<<<<<<<<<<<<<<<<<<< scrollback
     --i;
 
   return i;
@@ -574,7 +598,11 @@ void selsnap(int *x, int *y, int direction) {
      * Snap around if the word wraps around at the end or
      * beginning of a line.
      */
+    // >>>>>>>>>>>>>>>>>>>> scrollback
+    // ==================== scrollback
     prevgp = &term.line[*y][*x];
+    // ==================== scrollback
+    // <<<<<<<<<<<<<<<<<<<< scrollback
     prevdelim = ISDELIM(prevgp->u);
     for (;;) {
       newx = *x + direction;
@@ -589,14 +617,22 @@ void selsnap(int *x, int *y, int direction) {
           yt = *y, xt = *x;
         else
           yt = newy, xt = newx;
+        // >>>>>>>>>>>>>>>>>>>> scrollback
+        // ==================== scrollback
         if (!(term.line[yt][xt].mode & ATTR_WRAP))
+        // ==================== scrollback
+        // <<<<<<<<<<<<<<<<<<<< scrollback
           break;
       }
 
       if (newx >= tlinelen(newy))
         break;
 
+      // >>>>>>>>>>>>>>>>>>>> scrollback
+      // ==================== scrollback
       gp = &term.line[newy][newx];
+      // ==================== scrollback
+      // <<<<<<<<<<<<<<<<<<<< scrollback
       delim = ISDELIM(gp->u);
       if (!(gp->mode & ATTR_WDUMMY) &&
           (delim != prevdelim || (delim && gp->u != prevgp->u)))
@@ -617,13 +653,21 @@ void selsnap(int *x, int *y, int direction) {
     *x = (direction < 0) ? 0 : term.col - 1;
     if (direction < 0) {
       for (; *y > 0; *y += direction) {
+        // >>>>>>>>>>>>>>>>>>>> scrollback
+        // ==================== scrollback
         if (!(term.line[*y - 1][term.col - 1].mode & ATTR_WRAP)) {
+        // ==================== scrollback
+        // <<<<<<<<<<<<<<<<<<<< scrollback
           break;
         }
       }
     } else if (direction > 0) {
       for (; *y < term.row - 1; *y += direction) {
+        // >>>>>>>>>>>>>>>>>>>> scrollback
+        // ==================== scrollback
         if (!(term.line[*y][term.col - 1].mode & ATTR_WRAP)) {
+        // ==================== scrollback
+        // <<<<<<<<<<<<<<<<<<<< scrollback
           break;
         }
       }
@@ -929,6 +973,10 @@ size_t ttyread(void) {
 
 void ttywrite(const char *s, size_t n, int may_echo) {
   const char *next;
+  // >>>>>>>>>>>>>>>>>>>> scrollback
+  // ==================== scrollback
+  // ==================== scrollback
+  // <<<<<<<<<<<<<<<<<<<< scrollback
 
   if (may_echo && IS_SET(MODE_ECHO))
     twrite(s, n, 1);
@@ -1124,7 +1172,16 @@ void tswapscreen(void) {
   tfulldirt();
 }
 
+// >>>>>>>>>>>>>>>>>>>> scrollback
+// ==================== scrollback
+// ==================== scrollback
+// <<<<<<<<<<<<<<<<<<<< scrollback
+
+// >>>>>>>>>>>>>>>>>>>> scrollback
+// ==================== scrollback
 void tscrolldown(int orig, int n) {
+// ==================== scrollback
+// <<<<<<<<<<<<<<<<<<<< scrollback
   // >>>>>>>>>>>>>>>>>>>> vim-browse
   // ==================== vim-browse
   // ==================== vim-browse
@@ -1133,6 +1190,11 @@ void tscrolldown(int orig, int n) {
   Line temp;
 
   LIMIT(n, 0, term.bot - orig + 1);
+
+  // >>>>>>>>>>>>>>>>>>>> scrollback
+  // ==================== scrollback
+  // ==================== scrollback
+  // <<<<<<<<<<<<<<<<<<<< scrollback
 
   tsetdirt(orig, term.bot - n);
   tclearregion(0, term.bot - n + 1, term.col - 1, term.bot);
@@ -1143,7 +1205,11 @@ void tscrolldown(int orig, int n) {
     term.line[i - n] = temp;
   }
 
+  // >>>>>>>>>>>>>>>>>>>> scrollback
+  // ==================== scrollback
   selscroll(orig, n);
+  // ==================== scrollback
+  // <<<<<<<<<<<<<<<<<<<< scrollback
 }
 
 void tscrollup(int orig, int n) {
@@ -1190,7 +1256,11 @@ void tnewline(int first_col) {
   int y = term.c.y;
 
   if (y == term.bot) {
+    // >>>>>>>>>>>>>>>>>>>> scrollback
+    // ==================== scrollback
     tscrollup(term.top, 1);
+    // ==================== scrollback
+    // <<<<<<<<<<<<<<<<<<<< scrollback
   } else {
     y++;
   }
@@ -1348,12 +1418,20 @@ void tinsertblank(int n) {
 
 void tinsertblankline(int n) {
   if (BETWEEN(term.c.y, term.top, term.bot))
+    // >>>>>>>>>>>>>>>>>>>> scrollback
+    // ==================== scrollback
     tscrolldown(term.c.y, n);
+    // ==================== scrollback
+    // <<<<<<<<<<<<<<<<<<<< scrollback
 }
 
 void tdeleteline(int n) {
   if (BETWEEN(term.c.y, term.top, term.bot))
+    // >>>>>>>>>>>>>>>>>>>> scrollback
+    // ==================== scrollback
     tscrollup(term.c.y, n);
+    // ==================== scrollback
+    // <<<<<<<<<<<<<<<<<<<< scrollback
 }
 
 int32_t tdefcolor(int *attr, int *npar, int l) {
@@ -1761,11 +1839,19 @@ void csihandle(void) {
     break;
   case 'S': /* SU -- Scroll <n> line up */
     DEFAULT(csiescseq.arg[0], 1);
+    // >>>>>>>>>>>>>>>>>>>> scrollback
+    // ==================== scrollback
     tscrollup(term.top, csiescseq.arg[0]);
+    // ==================== scrollback
+    // <<<<<<<<<<<<<<<<<<<< scrollback
     break;
   case 'T': /* SD -- Scroll <n> line down */
     DEFAULT(csiescseq.arg[0], 1);
+    // >>>>>>>>>>>>>>>>>>>> scrollback
+    // ==================== scrollback
     tscrolldown(term.top, csiescseq.arg[0]);
+    // ==================== scrollback
+    // <<<<<<<<<<<<<<<<<<<< scrollback
     break;
   case 'L': /* IL -- Insert <n> blank lines */
     DEFAULT(csiescseq.arg[0], 1);
@@ -2226,7 +2312,11 @@ int eschandle(uchar ascii) {
     return 0;
   case 'D': /* IND -- Linefeed */
     if (term.c.y == term.bot) {
+      // >>>>>>>>>>>>>>>>>>>> scrollback
+      // ==================== scrollback
       tscrollup(term.top, 1);
+      // ==================== scrollback
+      // <<<<<<<<<<<<<<<<<<<< scrollback
     } else {
       tmoveto(term.c.x, term.c.y + 1);
     }
@@ -2239,7 +2329,11 @@ int eschandle(uchar ascii) {
     break;
   case 'M': /* RI -- Reverse index */
     if (term.c.y == term.top) {
+    // >>>>>>>>>>>>>>>>>>>> scrollback
+    // ==================== scrollback
       tscrolldown(term.top, 1);
+    // ==================== scrollback
+    // <<<<<<<<<<<<<<<<<<<< scrollback
     } else {
       tmoveto(term.c.x, term.c.y - 1);
     }
@@ -2463,6 +2557,10 @@ void tresize(int col, int row) {
   // <<<<<<<<<<<<<<<<<<<< vim-browse
   int *bp;
   TCursor c;
+  // >>>>>>>>>>>>>>>>>>>> scrollback
+  // ==================== scrollback
+  // ==================== scrollback
+  // <<<<<<<<<<<<<<<<<<<< scrollback
 
   // >>>>>>>>>>>>>>>>>>>> keyboard-select
   // ==================== keyboard-select
@@ -2519,6 +2617,11 @@ void tresize(int col, int row) {
   term.alt = xrealloc(term.alt, row * sizeof(Line));
   term.dirty = xrealloc(term.dirty, row * sizeof(*term.dirty));
   term.tabs = xrealloc(term.tabs, col * sizeof(*term.tabs));
+
+  // >>>>>>>>>>>>>>>>>>>> scrollback
+  // ==================== scrollback
+  // ==================== scrollback
+  // <<<<<<<<<<<<<<<<<<<< scrollback
 
   /* resize each row to new width, zero-pad if needed */
   for (i = 0; i < minrow; i++) {
