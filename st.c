@@ -1212,7 +1212,11 @@ void tscrolldown(int orig, int n) {
   // <<<<<<<<<<<<<<<<<<<< scrollback
 }
 
+// >>>>>>>>>>>>>>>>>>>> scrollback
+// ==================== scrollback
 void tscrollup(int orig, int n) {
+// ==================== scrollback
+// <<<<<<<<<<<<<<<<<<<< scrollback
   // >>>>>>>>>>>>>>>>>>>> vim-browse
   // ==================== vim-browse
   // ==================== vim-browse
@@ -1221,6 +1225,11 @@ void tscrollup(int orig, int n) {
   Line temp;
 
   LIMIT(n, 0, term.bot - orig + 1);
+
+  // >>>>>>>>>>>>>>>>>>>> scrollback
+  // ==================== scrollback
+  // ==================== scrollback
+  // <<<<<<<<<<<<<<<<<<<< scrollback
 
   tclearregion(0, orig, term.col - 1, orig + n - 1);
   tsetdirt(orig + n, term.bot);
@@ -1231,7 +1240,11 @@ void tscrollup(int orig, int n) {
     term.line[i + n] = temp;
   }
 
+  // >>>>>>>>>>>>>>>>>>>> scrollback
+  // ==================== scrollback
   selscroll(orig, -n);
+  // ==================== scrollback
+  // <<<<<<<<<<<<<<<<<<<< scrollback
 }
 
 void selscroll(int orig, int n) {
