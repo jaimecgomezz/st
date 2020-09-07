@@ -1218,18 +1218,18 @@ index 6621628..80d77b9 100644
    int y;
  
    for (y = y1; y < y2; y++) {
-     // >>>>>>>>>>>>>>>>>>>> vim-browse
--    // ==================== vim-browse
+     // >>>>>>>>>>>>>>>>>>>> vim-browse-scrollback
+-    // ==================== vim-browse-scrollback
 -    if (!term.dirty[y])
 -      continue;
 -
 -    term.dirty[y] = 0;
 -    xdrawline(term.line[y], x1, y, x2);
--    // ==================== vim-browse
+-    // ==================== vim-browse-scrollback
 +    int const oy = o ? (y + insertOff - histOff + h) % h : y;
 +    if (!BETWEEN(oy, 0, term.row-1) || !term.dirty[y]) continue;
 +    xdrawline(term.line[y], x1, oy, x2);
-     // <<<<<<<<<<<<<<<<<<<< vim-browse
+     // <<<<<<<<<<<<<<<<<<<< vim-browse-scrollback
    }
  
    // >>>>>>>>>>>>>>>>>>>> vim-browse

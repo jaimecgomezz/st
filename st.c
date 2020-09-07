@@ -2600,15 +2600,15 @@ void drawregion(int x1, int y1, int x2, int y2) {
   int y;
 
   for (y = y1; y < y2; y++) {
-    // >>>>>>>>>>>>>>>>>>>> vim-browse
-    // ==================== vim-browse
+    // >>>>>>>>>>>>>>>>>>>> vim-browse-scrollback
+    // ==================== vim-browse-scrollback
     if (!term.dirty[y])
       continue;
 
     term.dirty[y] = 0;
     xdrawline(term.line[y], x1, y, x2);
-    // ==================== vim-browse
-    // <<<<<<<<<<<<<<<<<<<< vim-browse
+    // ==================== vim-browse-scrollback
+    // <<<<<<<<<<<<<<<<<<<< vim-browse-scrollback
   }
 
   // >>>>>>>>>>>>>>>>>>>> vim-browse
