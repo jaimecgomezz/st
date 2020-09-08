@@ -93,3 +93,5 @@ Patches:
                               Not compatible with: vim-browse
   sync                      This patch is for better draw timing to reduce flicker/tearing and
                             improve animation smoothness.
+  scrollback                This patch allows to Scroll back through terminal output.
+                              - Usage: Shift+{PageUp, PageDown}.

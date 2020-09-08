@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.38.0] - 2020-09-07
+
+### Changed
+
+- Make vim-browse compatible with scrollback
+- Make ligatures compatible with scrollback
+- Prepare the scrollback patch integration
+
+### Added
+
+- Add support for the scrollback patch
+
 ## [0.37.0] - 2020-09-06
 
 ### Changed
