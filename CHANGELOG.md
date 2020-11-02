@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.39.0] - 2020-11-02
+
+### Changed
+
+- Make previous themes compatible with nord-theme
+- More colors into selection-colors chunk
+
+### Added
+
+- Add support for the nord theme patch
+
 ## [0.38.0] - 2020-09-07
 
 ### Changed

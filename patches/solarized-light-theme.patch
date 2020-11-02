@@ -5,8 +5,8 @@ index 5d318a9..cb0bf86 100644
 @@ -104,29 +104,23 @@ unsigned int tabspaces = 8;
  /* Terminal colors (16 first used in escape sequence) */
  static const char *colorname[] = {
-   // >>>>>>>>>>>>>>>>>>>> iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme
--  // ==================== iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme
+   // >>>>>>>>>>>>>>>>>>>> iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme-nord-theme
+-  // ==================== iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme-nord-theme
 -  /* 8 normal colors */
 -  "black",
 -  "red3",
@@ -28,7 +28,7 @@ index 5d318a9..cb0bf86 100644
 -  "white",
 -
 -  [255] = 0,
--  // ==================== iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme
+-  // ==================== iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme-nord-theme
 +  /* solarized light */
 +  "#eee8d5",  /*  0: black    */
 +  "#dc322f",  /*  1: red      */
@@ -46,14 +46,14 @@ index 5d318a9..cb0bf86 100644
 +  "#6c71c4",  /* 13: brmagenta*/
 +  "#586e75",  /* 14: brcyan   */
 +  "#002b36",  /* 15: brwhite  */
-   // <<<<<<<<<<<<<<<<<<<< iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme
+   // <<<<<<<<<<<<<<<<<<<< iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme-nord-theme
  
    /* more colors can be added after 255 to use with DefaultXX */
 @@ -145,16 +139,10 @@ static const char *colorname[] = {
  
  
- // >>>>>>>>>>>>>>>>>>>> iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme
--// ==================== iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme
+ // >>>>>>>>>>>>>>>>>>>> iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme-nord-theme
+-// ==================== iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme-nord-theme
 -/*
 - * Default colors (colorname index)
 - * foreground, background, cursor, reverse cursor
@@ -62,11 +62,11 @@ index 5d318a9..cb0bf86 100644
 -unsigned int defaultbg = 0;
 -static unsigned int defaultcs = 256;
 -static unsigned int defaultrcs = 257;
--// ==================== iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme
+-// ==================== iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme-nord-theme
 +unsigned int defaultfg = 12;
 +unsigned int defaultbg = 8;
 +static unsigned int defaultcs = 14;
 +static unsigned int defaultrcs = 15;
- // <<<<<<<<<<<<<<<<<<<< iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme
+ // <<<<<<<<<<<<<<<<<<<< iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme-nord-theme
  
  // >>>>>>>>>>>>>>>>>>>> selection-colors

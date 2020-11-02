@@ -1,8 +1,8 @@
 diff --git a/config.def.h b/config.def.h
-index bed130f..7a28fff 100644
+index 7007edd..5b41392 100644
 --- a/config.def.h
 +++ b/config.def.h
-@@ -96,29 +96,27 @@ unsigned int tabspaces = 8;
+@@ -104,37 +104,33 @@ unsigned int tabspaces = 8;
  /* Terminal colors (16 first used in escape sequence) */
  static const char *colorname[] = {
    // >>>>>>>>>>>>>>>>>>>> iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme-nord-theme
@@ -16,14 +16,14 @@ index bed130f..7a28fff 100644
 -  "magenta3",
 -  "cyan3",
 -  "gray90",
-+  "#161821", /* black   */
-+  "#e27878", /* red     */
-+  "#b4be82", /* green   */
-+  "#e2a478", /* yellow  */
-+  "#84a0c6", /* blue    */
-+  "#a093c7", /* magenta */
-+  "#89b8c2", /* cyan    */
-+  "#c6c8d1", /* white   */
++  "#3b4252", /* black   */
++  "#bf616a", /* red     */
++  "#a3be8c", /* green   */
++  "#ebcb8b", /* yellow  */
++  "#81a1c1", /* blue    */
++  "#b48ead", /* magenta */
++  "#88c0d0", /* cyan    */
++  "#e5e9f0", /* white   */
  
    /* 8 bright colors */
 -  "gray50",
@@ -34,21 +34,31 @@ index bed130f..7a28fff 100644
 -  "magenta",
 -  "cyan",
 -  "white",
-+  "#6b7089", /* black   */
-+  "#e98989", /* red     */
-+  "#c0ca8e", /* green   */
-+  "#e9b189", /* yellow  */
-+  "#91acd1", /* blue    */
-+  "#ada0d3", /* magenta */
-+  "#95c4ce", /* cyan    */
-+  "#d2d4de", /* white   */
++  "#4c566a", /* black   */
++  "#bf616a", /* red     */
++  "#a3be8c", /* green   */
++  "#ebcb8b", /* yellow  */
++  "#81a1c1", /* blue    */
++  "#b48ead", /* magenta */
++  "#8fbcbb", /* cyan    */
++  "#eceff4", /* white   */
  
    [255] = 0,
 -  // ==================== iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme-nord-theme
    // <<<<<<<<<<<<<<<<<<<< iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme-nord-theme
  
+   // >>>>>>>>>>>>>>>>>>>> selection-colors-nord-theme
+-  // ==================== selection-colors-nord-theme
    /* more colors can be added after 255 to use with DefaultXX */
-@@ -137,16 +135,14 @@ static const char *colorname[] = {
+-  "#cccccc",
+-  "#555555",
+-  // ==================== selection-colors-nord-theme
++  "#2e3440", /* background */
++  "#d8dee9", /* foreground */
+   // <<<<<<<<<<<<<<<<<<<< selection-colors-nord-theme
+ 
+   // >>>>>>>>>>>>>>>>>>>> alpha
+@@ -145,16 +141,14 @@ static const char *colorname[] = {
  
  
  // >>>>>>>>>>>>>>>>>>>> iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme-nord-theme
@@ -57,13 +67,15 @@ index bed130f..7a28fff 100644
   * Default colors (colorname index)
   * foreground, background, cursor, reverse cursor
   */
- unsigned int defaultfg = 7;
- unsigned int defaultbg = 0;
+-unsigned int defaultfg = 7;
+-unsigned int defaultbg = 0;
 -static unsigned int defaultcs = 256;
 -static unsigned int defaultrcs = 257;
 -// ==================== iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme-nord-theme
-+static unsigned int defaultcs = 13;
-+static unsigned int defaultrcs = 0;
++unsigned int defaultfg = 257;
++unsigned int defaultbg = 256;
++static unsigned int defaultcs = 257;
++static unsigned int defaultrcs = 256;
  // <<<<<<<<<<<<<<<<<<<< iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme-nord-theme
  
  // >>>>>>>>>>>>>>>>>>>> selection-colors

@@ -1,20 +1,22 @@
 diff --git a/config.def.h b/config.def.h
-index 3e98437..9349526 100644
+index 2bdfaba..8c40d48 100644
 --- a/config.def.h
 +++ b/config.def.h
-@@ -124,9 +124,7 @@ static const char *colorname[] = {
+@@ -130,11 +130,9 @@ static const char *colorname[] = {
+   // <<<<<<<<<<<<<<<<<<<< iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme-nord-theme
+ 
+   // >>>>>>>>>>>>>>>>>>>> selection-colors-nord-theme
+-  // ==================== selection-colors-nord-theme
    /* more colors can be added after 255 to use with DefaultXX */
    "#cccccc",
-   // >>>>>>>>>>>>>>>>>>>> selection-colors
--  // ==================== selection-colors
 -  "#555555",
--  // ==================== selection-colors
+-  // ==================== selection-colors-nord-theme
 +  "#2e3440",
-   // <<<<<<<<<<<<<<<<<<<< selection-colors
+   // <<<<<<<<<<<<<<<<<<<< selection-colors-nord-theme
  
    // >>>>>>>>>>>>>>>>>>>> alpha
-@@ -150,8 +148,12 @@ static unsigned int defaultrcs = 257;
- // <<<<<<<<<<<<<<<<<<<< iceberg-theme
+@@ -158,8 +156,12 @@ static unsigned int defaultrcs = 257;
+ // <<<<<<<<<<<<<<<<<<<< iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme-nord-theme
  
  // >>>>>>>>>>>>>>>>>>>> selection-colors
 -// ==================== selection-colors
@@ -29,10 +31,10 @@ index 3e98437..9349526 100644
  
  // >>>>>>>>>>>>>>>>>>>> blinking-cursor
 diff --git a/st.h b/st.h
-index e9456b1..8941128 100644
+index 07a228d..48add35 100644
 --- a/st.h
 +++ b/st.h
-@@ -42,8 +42,7 @@ enum glyph_attribute {
+@@ -46,8 +46,7 @@ enum glyph_attribute {
    // ==================== ligatures
    // <<<<<<<<<<<<<<<<<<<< ligatures
    // >>>>>>>>>>>>>>>>>>>> selection-colors
@@ -43,10 +45,10 @@ index e9456b1..8941128 100644
    ATTR_BOLD_FAINT = ATTR_BOLD | ATTR_FAINT,
  };
 diff --git a/x.c b/x.c
-index daa7ebb..c4afdac 100644
+index e0ebaba..ccfce59 100644
 --- a/x.c
 +++ b/x.c
-@@ -1451,8 +1451,11 @@ void xdrawglyphfontspecs(const XftGlyphFontSpec *specs, Glyph base, int len,
+@@ -1589,8 +1589,11 @@ void xdrawglyphfontspecs(const XftGlyphFontSpec *specs, Glyph base, int len,
    }
  
    // >>>>>>>>>>>>>>>>>>>> selection-colors
@@ -60,7 +62,7 @@ index daa7ebb..c4afdac 100644
    // <<<<<<<<<<<<<<<<<<<< selection-colors
  
    if (base.mode & ATTR_BLINK && win.mode & MODE_BLINK)
-@@ -1545,9 +1548,7 @@ void xdrawcursor(
+@@ -1696,9 +1699,7 @@ void xdrawcursor(
    /* remove the old cursor */
    if (selected(ox, oy))
      // >>>>>>>>>>>>>>>>>>>> selection-colors
@@ -71,7 +73,7 @@ index daa7ebb..c4afdac 100644
      // <<<<<<<<<<<<<<<<<<<< selection-colors
  
    // >>>>>>>>>>>>>>>>>>>> ligatures
-@@ -1567,33 +1568,17 @@ void xdrawcursor(
+@@ -1718,33 +1719,17 @@ void xdrawcursor(
    if (IS_SET(MODE_REVERSE)) {
      g.mode |= ATTR_REVERSE;
      // >>>>>>>>>>>>>>>>>>>> selection-colors
@@ -110,7 +112,7 @@ index daa7ebb..c4afdac 100644
      // <<<<<<<<<<<<<<<<<<<< selection-colors
    }
  
-@@ -1739,9 +1724,7 @@ void xdrawline(Line line, int x1, int y1, int x2) {
+@@ -1894,9 +1879,7 @@ void xdrawline(Line line, int x1, int y1, int x2) {
        continue;
      if (selected(x, y1))
        // >>>>>>>>>>>>>>>>>>>> selection-colors

@@ -103,8 +103,8 @@ unsigned int tabspaces = 8;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-  // >>>>>>>>>>>>>>>>>>>> iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme
-  // ==================== iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme
+  // >>>>>>>>>>>>>>>>>>>> iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme-nord-theme
+  // ==================== iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme-nord-theme
   /* 8 normal colors */
   "black",
   "red3",
@@ -126,16 +126,16 @@ static const char *colorname[] = {
   "white",
 
   [255] = 0,
-  // ==================== iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme
-  // <<<<<<<<<<<<<<<<<<<< iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme
+  // ==================== iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme-nord-theme
+  // <<<<<<<<<<<<<<<<<<<< iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme-nord-theme
 
+  // >>>>>>>>>>>>>>>>>>>> selection-colors-nord-theme
+  // ==================== selection-colors-nord-theme
   /* more colors can be added after 255 to use with DefaultXX */
   "#cccccc",
-  // >>>>>>>>>>>>>>>>>>>> selection-colors
-  // ==================== selection-colors
   "#555555",
-  // ==================== selection-colors
-  // <<<<<<<<<<<<<<<<<<<< selection-colors
+  // ==================== selection-colors-nord-theme
+  // <<<<<<<<<<<<<<<<<<<< selection-colors-nord-theme
 
   // >>>>>>>>>>>>>>>>>>>> alpha
   // ==================== alpha
@@ -144,8 +144,8 @@ static const char *colorname[] = {
 };
 
 
-// >>>>>>>>>>>>>>>>>>>> iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme
-// ==================== iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme
+// >>>>>>>>>>>>>>>>>>>> iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme-nord-theme
+// ==================== iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme-nord-theme
 /*
  * Default colors (colorname index)
  * foreground, background, cursor, reverse cursor
@@ -154,8 +154,8 @@ unsigned int defaultfg = 7;
 unsigned int defaultbg = 0;
 static unsigned int defaultcs = 256;
 static unsigned int defaultrcs = 257;
-// ==================== iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme
-// <<<<<<<<<<<<<<<<<<<< iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme
+// ==================== iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme-nord-theme
+// <<<<<<<<<<<<<<<<<<<< iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme-nord-theme
 
 // >>>>>>>>>>>>>>>>>>>> selection-colors
 // ==================== selection-colors
