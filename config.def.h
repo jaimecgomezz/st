@@ -129,13 +129,13 @@ static const char *colorname[] = {
   // ==================== iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme-nord-theme
   // <<<<<<<<<<<<<<<<<<<< iceberg-theme-dracula-theme-gruvbox-theme-solarized-theme-nord-theme
 
-  // >>>>>>>>>>>>>>>>>>>> selection-colors
-  // ==================== selection-colors
+  // >>>>>>>>>>>>>>>>>>>> selection-colors-nord-theme
+  // ==================== selection-colors-nord-theme
   /* more colors can be added after 255 to use with DefaultXX */
   "#cccccc",
   "#555555",
-  // ==================== selection-colors
-  // <<<<<<<<<<<<<<<<<<<< selection-colors
+  // ==================== selection-colors-nord-theme
+  // <<<<<<<<<<<<<<<<<<<< selection-colors-nord-theme
 
   // >>>>>>>>>>>>>>>>>>>> alpha
   // ==================== alpha
