@@ -2,9 +2,6 @@
 
 A patch-friendly [st](https://st.suckless.org/) distribution. Lets make `suckless software for everybody`.
 
-## Important
-As you might know, there have been some sever accusations [[1](https://chaos.social/@raichoo/101880564196043164), [2](https://twitter.com/pid_eins/status/1113738764797534208)] towards some `suckless` chairmans and their relation with some nazi stuff. To be honest, I can't completely verify this, but it really makes me prefer keeping the project on standby until the whole thing can be clarified. So... yeah, hope for the best.
-
 [![ss-Sat-15-Aug20-21-54.png](https://i.postimg.cc/zfKKZKFs/ss-Sat-15-Aug20-21-54.png)](https://postimg.cc/GB3HvBNK)
 
 ## Features
